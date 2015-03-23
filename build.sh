@@ -1,6 +1,6 @@
 #!/bin/sh
-rm -rf target/*
-mvn -q package
+rm -rf target
+mvn package
 cd target
 
 
