@@ -1,0 +1,5741 @@
+[
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/max",
+        "value": 8160477184,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.841Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/committed",
+        "value": 8160477184,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.841Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/used",
+        "value": 3023730640,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.841Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/init",
+        "value": 8589934592,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.842Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/max",
+        "value": 136314880,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.842Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/committed",
+        "value": 35717120,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.842Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/used",
+        "value": 35121184,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.842Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/init",
+        "value": 24313856,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.842Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 50331648,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.842Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.843Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 2054464,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.843Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.843Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.843Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.843Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 3023730640,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.843Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.844Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.844Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.844Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 0,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.844Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.844Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.844Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.845Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 0,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.845Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.845Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 85983232,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.845Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 33357824,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.845Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 33158360,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.845Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 21757952,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.846Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 1637274,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.846Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/used",
+        "value": 1637274,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.846Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/count",
+        "value": 26,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.846Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 15955096,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.846Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/used",
+        "value": 15955096,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.846Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/count",
+        "value": 151,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.848Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/mem/max",
+        "value": 33668935680
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.848Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/mem/used",
+        "value": 9088466944
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/max",
+        "value": 51605344256,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.851Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/used",
+        "value": 2679042048,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.852Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/max",
+        "value": 466269642752,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.852Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/used",
+        "value": 18919317504,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/pageIn",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/pageOut",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/max",
+        "value": 10737410048
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/free",
+        "value": 10628018176
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/numEntries",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/sizeBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/hits",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/misses",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/evictions",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/hitRate",
+        "value": 0.0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/averageBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/timeouts",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/errors",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/numEntries",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/sizeBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/hits",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/misses",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/evictions",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/hitRate",
+        "value": 0.0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/averageBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/timeouts",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/errors",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/max",
+        "value": 150000000000
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 625831,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000041722066666666665,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 13284,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 8.856E-8,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 518853,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000345902,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 2831547,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00001887698,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 5263176,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00003508784,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 586104,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000390736,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 521191,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000034746066666666666,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 15703,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.0468666666666666E-7,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 752643,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000501762,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 998326,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000006655506666666667,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 7829,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 5.219333333333333E-8,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 6181,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.1206666666666664E-8,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 354958,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000023663866666666666,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 67036,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.4690666666666665E-7,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 2396,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.5973333333333333E-8,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 17776,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.1850666666666666E-7,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 32857,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 2.1904666666666667E-7,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 20358,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.3572E-7,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 182213,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000012147533333333333,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 224192,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000014946133333333333,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 62020,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.134666666666667E-7,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 19695,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.313E-7,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 14016,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 9.344E-8,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 92936,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 6.195733333333333E-7,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 1145759,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000007638393333333334,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 260174,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000017344933333333332,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 906097,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000060406466666666665,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 670099,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000004467326666666667,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 4,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 24,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 6,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 6,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 3,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 17,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 17,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 7,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 4,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 24,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalUsed",
+        "value": 16213250,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalUsedPercent",
+        "value": 0.00010808833333333333,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:42:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalCount",
+        "value": 151,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "alerts",
+        "timestamp": "2015-01-22T03:43:09.454Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "severity": "component-failure",
+        "description": "Failed to load segment for dataSource",
+        "data": {
+            "class": "io.druid.server.coordination.ZkCoordinator",
+            "exceptionType": "io.druid.segment.loading.SegmentLoadingException",
+            "exceptionMessage": "Exception loading segment[ssp_spot_only_2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z_2015-01-06T07:00:00.000Z_1]",
+            "exceptionStackTrace": "io.druid.segment.loading.SegmentLoadingException: Exception loading segment[ssp_spot_only_2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z_2015-01-06T07:00:00.000Z_1]\n\tat io.druid.server.coordination.ZkCoordinator.loadSegment(ZkCoordinator.java:140)\n\tat io.druid.server.coordination.ZkCoordinator.addSegment(ZkCoordinator.java:165)\n\tat io.druid.server.coordination.SegmentChangeRequestLoad.go(SegmentChangeRequestLoad.java:44)\n\tat io.druid.server.coordination.BaseZkCoordinator$1.childEvent(BaseZkCoordinator.java:127)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache$5.apply(PathChildrenCache.java:509)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache$5.apply(PathChildrenCache.java:503)\n\tat org.apache.curator.framework.listen.ListenerContainer$1.run(ListenerContainer.java:92)\n\tat com.google.common.util.concurrent.MoreExecutors$SameThreadExecutorService.execute(MoreExecutors.java:297)\n\tat org.apache.curator.framework.listen.ListenerContainer.forEach(ListenerContainer.java:83)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache.callListeners(PathChildrenCache.java:500)\n\tat org.apache.curator.framework.recipes.cache.EventOperation.invoke(EventOperation.java:35)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache$10.run(PathChildrenCache.java:762)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: io.druid.segment.loading.SegmentLoadingException: Asked to load path[hdfs:/192.168.10.60:9000/druid/segment_data/ssp_spot_only/2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z/2015-01-06T07:00:00.000Z/1/index.zip], but it doesn't exist.\n\tat io.druid.segment.loading.LocalDataSegmentPuller.getFile(LocalDataSegmentPuller.java:100)\n\tat io.druid.segment.loading.LocalDataSegmentPuller.getSegmentFiles(LocalDataSegmentPuller.java:41)\n\tat io.druid.segment.loading.OmniSegmentLoader.getSegmentFiles(OmniSegmentLoader.java:125)\n\tat io.druid.segment.loading.OmniSegmentLoader.getSegment(OmniSegmentLoader.java:93)\n\tat io.druid.server.coordination.ServerManager.loadSegment(ServerManager.java:145)\n\tat io.druid.server.coordination.ZkCoordinator.loadSegment(ZkCoordinator.java:136)\n\t... 18 more\n",
+            "segment": {
+                "dataSource": "ssp_spot_only",
+                "interval": "2015-01-06T07:00:00.000Z/2015-01-06T08:00:00.000Z",
+                "version": "2015-01-06T07:00:00.000Z",
+                "loadSpec": {
+                    "type": "local",
+                    "path": "hdfs:/192.168.10.60:9000/druid/segment_data/ssp_spot_only/2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z/2015-01-06T07:00:00.000Z/1/index.zip"
+                },
+                "dimensions": "date,media_id,screen,spot_id,user_id",
+                "metrics": "row_count,impressions,cost,clicks,bid_impressions,bids",
+                "shardSpec": {
+                    "type": "linear",
+                    "partitionNum": 1
+                },
+                "binaryVersion": 9,
+                "size": 2363,
+                "identifier": "ssp_spot_only_2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z_2015-01-06T07:00:00.000Z_1"
+            }
+        }
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/max",
+        "value": 8160477184,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/committed",
+        "value": 8160477184,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/used",
+        "value": 3229894016,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/init",
+        "value": 8589934592,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/max",
+        "value": 136314880,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/committed",
+        "value": 36896768,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/used",
+        "value": 36337032,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/init",
+        "value": 24313856,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 50331648,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 2079936,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 3229894016,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 0,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 0,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 85983232,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 34340864,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 34259928,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 21757952,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/time",
+        "value": 0,
+        "user1": "ParNew"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/count",
+        "value": 0,
+        "user1": "ParNew"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/time",
+        "value": 0,
+        "user1": "ConcurrentMarkSweep"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/count",
+        "value": 0,
+        "user1": "ConcurrentMarkSweep"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 1915116,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/used",
+        "value": 1915116,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.836Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/count",
+        "value": 31,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.836Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 15955096,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.836Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/used",
+        "value": 15955096,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.836Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/count",
+        "value": 151,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.847Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/mem/max",
+        "value": 33668935680
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.847Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/mem/used",
+        "value": 9112612864
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.848Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/max",
+        "value": 51605344256,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.848Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/used",
+        "value": 2679218176,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.849Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/max",
+        "value": 466269642752,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.849Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "severity",
+        "value": 18919325696,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.849Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/count",
+        "value": 24,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/size",
+        "value": 143360,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/count",
+        "value": 0,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/size",
+        "value": 0,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/count",
+        "value": 24,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/size",
+        "value": 143360,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.851Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/count",
+        "value": 0,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.851Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/size",
+        "value": 0,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.851Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/net/write/size",
+        "value": 923662,
+        "user1": "eth0",
+        "user2": "192.168.10.51",
+        "user3": "00:0C:29:D2:92:6A"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.852Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/net/read/size",
+        "value": 667656,
+        "user1": "eth0",
+        "user2": "192.168.10.51",
+        "user3": "00:0C:29:D2:92:6A"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.852Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "0",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "0",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "0",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "0",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "6",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "6",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 1,
+        "user1": "6",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "6",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/pageIn",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/pageOut",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/max",
+        "value": 10737410048
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/free",
+        "value": 10628018176
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/numEntries",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/sizeBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/hits",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/misses",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/evictions",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/hitRate",
+        "value": 0.0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/averageBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/timeouts",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/errors",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/numEntries",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/sizeBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/hits",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/misses",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/evictions",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/hitRate",
+        "value": 0.0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/averageBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/timeouts",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/errors",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/max",
+        "value": 150000000000
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 625831,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000041722066666666665,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 13284,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 8.856E-8,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 518853,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000345902,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 2831547,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00001887698,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 5263176,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00003508784,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 586104,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000390736,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 521191,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000034746066666666666,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 15703,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.0468666666666666E-7,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 752643,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000501762,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 998326,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000006655506666666667,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 7829,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 5.219333333333333E-8,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 6181,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.1206666666666664E-8,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 354958,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000023663866666666666,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 67036,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.4690666666666665E-7,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 2396,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.5973333333333333E-8,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 17776,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.1850666666666666E-7,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 32857,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 2.1904666666666667E-7,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 20358,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.3572E-7,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 182213,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000012147533333333333,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 224192,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000014946133333333333,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 62020,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.134666666666667E-7,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 19695,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.313E-7,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 14016,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 9.344E-8,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 92936,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 6.195733333333333E-7,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 1145759,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000007638393333333334,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 260174,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000017344933333333332,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 906097,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000060406466666666665,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 670099,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000004467326666666667,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 4,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 24,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 6,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 6,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 3,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 17,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 17,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 7,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 4,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 24,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalUsed",
+        "value": 16213250,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalUsedPercent",
+        "value": 0.00010808833333333333,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:13.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalCount",
+        "value": 151,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/max",
+        "value": 8160477184,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/committed",
+        "value": 8160477184,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/used",
+        "value": 3298615184,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/init",
+        "value": 8589934592,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.830Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/max",
+        "value": 136314880,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/committed",
+        "value": 36896768,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/used",
+        "value": 36325712,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/mem/init",
+        "value": 24313856,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 50331648,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 2051200,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.831Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 3298615184,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 3436052480,
+        "user1": "heap",
+        "user2": "Par Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 0,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.832Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 429457408,
+        "user1": "heap",
+        "user2": "Par Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 0,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 4294967296,
+        "user1": "heap",
+        "user2": "CMS Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/max",
+        "value": 85983232,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.833Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/committed",
+        "value": 34340864,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/used",
+        "value": 34275968,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/pool/init",
+        "value": 21757952,
+        "user1": "nonheap",
+        "user2": "CMS Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/time",
+        "value": 0,
+        "user1": "ParNew"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/count",
+        "value": 0,
+        "user1": "ParNew"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/time",
+        "value": 0,
+        "user1": "ConcurrentMarkSweep"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/gc/count",
+        "value": 0,
+        "user1": "ConcurrentMarkSweep"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 1915116,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.834Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/used",
+        "value": 1915116,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/count",
+        "value": 31,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 15955096,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/used",
+        "value": 15955096,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.835Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "jvm/bufferpool/count",
+        "value": 151,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.847Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/mem/max",
+        "value": 33668935680
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.847Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/mem/used",
+        "value": 9112502272
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.848Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/max",
+        "value": 51605344256,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.848Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/used",
+        "value": 2679234560,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.848Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/max",
+        "value": 466269642752,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.849Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/fs/used",
+        "value": 18919321600,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.849Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/count",
+        "value": 17,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.849Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/size",
+        "value": 282624,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/count",
+        "value": 0,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/size",
+        "value": 0,
+        "user1": "/dev/sda1",
+        "user2": "/",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/count",
+        "value": 17,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/write/size",
+        "value": 282624,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.850Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/count",
+        "value": 0,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.851Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/disk/read/size",
+        "value": 0,
+        "user1": "/dev/sda3",
+        "user2": "/data",
+        "user3": "local",
+        "user4": "ext4",
+        "user5": [
+            "rw"
+        ]
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.851Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/net/write/size",
+        "value": 605102,
+        "user1": "eth0",
+        "user2": "192.168.10.51",
+        "user3": "00:0C:29:D2:92:6A"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.851Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/net/read/size",
+        "value": 692929,
+        "user1": "eth0",
+        "user2": "192.168.10.51",
+        "user3": "00:0C:29:D2:92:6A"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.852Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "0",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.852Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "0",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.852Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 1,
+        "user1": "0",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "0",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "1",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.853Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "2",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "3",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.854Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "4",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.855Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "5",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "6",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "6",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "6",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "6",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.856Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "7",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "8",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.857Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "9",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "10",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.858Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "sys"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "nice"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "wait"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/cpu",
+        "value": 0,
+        "user1": "11",
+        "user2": "user"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/pageIn",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/pageOut",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/max",
+        "value": 10737410048
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.859Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "sys/swap/free",
+        "value": 10628018176
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.860Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/numEntries",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/sizeBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/hits",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/misses",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/evictions",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/hitRate",
+        "value": 0.0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/averageBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/timeouts",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.861Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/delta/errors",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/numEntries",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/sizeBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/hits",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/misses",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/evictions",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/hitRate",
+        "value": 0.0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.862Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/averageBytes",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/timeouts",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "cache/total/errors",
+        "value": 0
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/max",
+        "value": 150000000000
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 625831,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.863Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000041722066666666665,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 13284,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 8.856E-8,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 518853,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000345902,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 2831547,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.864Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00001887698,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 5263176,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00003508784,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 586104,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000390736,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 521191,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000034746066666666666,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.865Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 15703,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.0468666666666666E-7,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 752643,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.00000501762,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 998326,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000006655506666666667,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.866Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 7829,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 5.219333333333333E-8,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 6181,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.1206666666666664E-8,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 354958,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.867Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000023663866666666666,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 67036,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.4690666666666665E-7,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 2396,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.5973333333333333E-8,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 17776,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.868Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.1850666666666666E-7,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 32857,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 2.1904666666666667E-7,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 20358,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.3572E-7,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 182213,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.869Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000012147533333333333,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 224192,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000014946133333333333,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 62020,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 4.134666666666667E-7,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 19695,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.870Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 1.313E-7,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 14016,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 9.344E-8,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 92936,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 6.195733333333333E-7,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 1145759,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.871Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000007638393333333334,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 260174,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000017344933333333332,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 906097,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.0000060406466666666665,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/used",
+        "value": 670099,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.872Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/usedPercent",
+        "value": 0.000004467326666666667,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_visitor",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_gutm",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 4,
+        "user1": "dsp_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_flow",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 24,
+        "user1": "clicki_session",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.873Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_frequency",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 6,
+        "user1": "dsp_campaign",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 6,
+        "user1": "dsp_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_channel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 3,
+        "user1": "dsp_user_cost",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 17,
+        "user1": "clicki_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.874Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_geo",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "dsp_exchange",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_entrance",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_loyalty",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_search",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 17,
+        "user1": "clicki_site_custom",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 7,
+        "user1": "dsp_bid",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.875Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_client",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_gutm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_utm_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 4,
+        "user1": "dsp_campaign_only",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_funnel_page",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 24,
+        "user1": "clicki_site",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 1,
+        "user1": "clicki_funnel",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/count",
+        "value": 8,
+        "user1": "dsp_source",
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.876Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalUsed",
+        "value": 16213250,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalUsedPercent",
+        "value": 0.00010808833333333333,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-01-22T03:43:43.877Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "metric": "server/segment/totalCount",
+        "value": 151,
+        "user2": "_default_tier"
+    },
+    {
+        "feed": "alerts",
+        "timestamp": "2015-01-22T03:44:09.480Z",
+        "service": "historical",
+        "host": "192.168.10.51:8001",
+        "severity": "component-failure",
+        "description": "Failed to load segment for dataSource",
+        "data": {
+            "class": "io.druid.server.coordination.ZkCoordinator",
+            "exceptionType": "io.druid.segment.loading.SegmentLoadingException",
+            "exceptionMessage": "Exception loading segment[ssp_spot_only_2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z_2015-01-06T07:00:00.000Z_1]",
+            "exceptionStackTrace": "io.druid.segment.loading.SegmentLoadingException: Exception loading segment[ssp_spot_only_2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z_2015-01-06T07:00:00.000Z_1]\n\tat io.druid.server.coordination.ZkCoordinator.loadSegment(ZkCoordinator.java:140)\n\tat io.druid.server.coordination.ZkCoordinator.addSegment(ZkCoordinator.java:165)\n\tat io.druid.server.coordination.SegmentChangeRequestLoad.go(SegmentChangeRequestLoad.java:44)\n\tat io.druid.server.coordination.BaseZkCoordinator$1.childEvent(BaseZkCoordinator.java:127)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache$5.apply(PathChildrenCache.java:509)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache$5.apply(PathChildrenCache.java:503)\n\tat org.apache.curator.framework.listen.ListenerContainer$1.run(ListenerContainer.java:92)\n\tat com.google.common.util.concurrent.MoreExecutors$SameThreadExecutorService.execute(MoreExecutors.java:297)\n\tat org.apache.curator.framework.listen.ListenerContainer.forEach(ListenerContainer.java:83)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache.callListeners(PathChildrenCache.java:500)\n\tat org.apache.curator.framework.recipes.cache.EventOperation.invoke(EventOperation.java:35)\n\tat org.apache.curator.framework.recipes.cache.PathChildrenCache$10.run(PathChildrenCache.java:762)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: io.druid.segment.loading.SegmentLoadingException: Asked to load path[hdfs:/192.168.10.60:9000/druid/segment_data/ssp_spot_only/2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z/2015-01-06T07:00:00.000Z/1/index.zip], but it doesn't exist.\n\tat io.druid.segment.loading.LocalDataSegmentPuller.getFile(LocalDataSegmentPuller.java:100)\n\tat io.druid.segment.loading.LocalDataSegmentPuller.getSegmentFiles(LocalDataSegmentPuller.java:41)\n\tat io.druid.segment.loading.OmniSegmentLoader.getSegmentFiles(OmniSegmentLoader.java:125)\n\tat io.druid.segment.loading.OmniSegmentLoader.getSegment(OmniSegmentLoader.java:93)\n\tat io.druid.server.coordination.ServerManager.loadSegment(ServerManager.java:145)\n\tat io.druid.server.coordination.ZkCoordinator.loadSegment(ZkCoordinator.java:136)\n\t... 18 more\n",
+            "segment": {
+                "dataSource": "ssp_spot_only",
+                "interval": "2015-01-06T07:00:00.000Z/2015-01-06T08:00:00.000Z",
+                "version": "2015-01-06T07:00:00.000Z",
+                "loadSpec": {
+                    "type": "local",
+                    "path": "hdfs:/192.168.10.60:9000/druid/segment_data/ssp_spot_only/2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z/2015-01-06T07:00:00.000Z/1/index.zip"
+                },
+                "dimensions": "date,media_id,screen,spot_id,user_id",
+                "metrics": "row_count,impressions,cost,clicks,bid_impressions,bids",
+                "shardSpec": {
+                    "type": "linear",
+                    "partitionNum": 1
+                },
+                "binaryVersion": 9,
+                "size": 2363,
+                "identifier": "ssp_spot_only_2015-01-06T07:00:00.000Z_2015-01-06T08:00:00.000Z_2015-01-06T07:00:00.000Z_1"
+            }
+        }
+    }
+]

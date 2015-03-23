@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+	#include("/static/tags.html")
+<html>
+<head>
+    <title>
+        Kafka Monitor
+    </title>
+
+	#include("/static/head.html")
+    <script src="/js/highstock.js"></script>
+    <script src="/js/kafka_topic.js"></script>
+    <script src="/js/WdatePicker.js"></script>
+
+</head>
+<body>
+
+	#include("/static/nav.html")
+
+<div>
+    <ul class="list-inline">
+				<li>topic:</li>
+        <li><h3 id="kafka_topic">$topic</h3></li>
+		  	<li>consumer:</li>
+				<li><h3 id="kafka_consumer">$consumer</h3</li>
+    </ul>
+</div>
+
+<div class="container">
+
+		<div style="display: none">
+        <a id="period">${period}</a>
+		</div>
+    <h4>Analysis <a class="plus">-</a></h4>
+    <div class="col-md-12">
+				<div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="from">Start Time</label>
+                    <input type="text" class="form-control" id="from" placeholder="From" onfocus="WdatePicker({isShowWeek:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                </div>
+                <div class="form-group">
+                    <label for="to">End Time</label>
+                    <input type="text" class="form-control" id="to" placeholder="To" onfocus="WdatePicker({isShowWeek:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                </div>
+                <input  id="go" type="button" class="btn btn-default" value="GO" />
+            </form>
+				</div>
+
+			  <div data="data" class="ng-scope ng-isolate-scope grap">
+            <div class="ng-scope">
+                <div class="row speed" ng-hide="loading"><div class="label label-info col-md-3">
+                    <strong class="ng-binding" id="pro_rate">0.000</strong>
+                    <span class="small">msg/s</span><br><small class="ng-binding timePeriod"></small>
+                </div>
+                    <div class="label label-info  col-md-3 col-md-offset-5">
+												<strong class="ng-binding" id="consu_rate">0.000</strong>
+                        <span class="small">msg/s</span> <br><small class="ng-binding timePeriod"></small></div>
+                </div>
+            </div>
+
+            <div  id="container" style="width:100%; height:400px;">
+
+					  </div>
+
+        </div>
+
+    </div>
+
+    <h4>Consumer Offsets <a class="plus">-</a></h4>
+    <table id="kfk_table" class="m_table table table-bordered table-striped success">
+
+    </table>
+
+
+
+</div>
+
+
+</body>
+
+<script>
+
+
+</script>
+</html>

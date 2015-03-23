@@ -1,0 +1,45 @@
+{
+    "influxdb": {
+        "influxdbUrl": "http://192.168.10.60:8086",
+        "influxdbDatabase": "dcmonitor",
+        "influxdbUser": "root",
+        "influxdbPassword": "root"
+    },
+    "zookeeper": {
+        "addrs": "192.168.10.60:2181",
+        "connectionTimeout": 5000
+    },
+    "druid": {
+        "zkInfoCompress": false,
+        "zkRootPath": "/druid",
+        "zkDiscoveryPath": "/druid/discovery",
+        "zkOverlordName": "overlord",
+        "zkBrokerName": "broker",
+        "zkCoordinatorName": "coordinator"
+    },
+    "kafka": {
+        "warning": true,
+        "warnDefaultLag": 100,
+        "warnLagSpec": {
+            "test|dsp_druid_ingester_0": 200
+        }
+    },
+    "notify": {
+        "doSend": false,
+        "appName": "myApp",
+        "url": "http://notify.com",
+        "emails":["test@test.com"],
+        "phones":[]
+    },
+    "fetchers": {
+        "druidFetcher": {
+            "fetchPeriod": "PT5S"
+        },
+        "kafkaFetcher": {
+            "fetchPeriod": "PT5S"
+        },
+        "zookeeperFetcher": {
+            "fetchPeriod": "PT5S"
+        }
+    }
+}

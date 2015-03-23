@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+	#include("/static/tags.html")
+<html>
+<head>
+	#include("/static/head.html")
+    <title>
+        Zookeeper Monitor
+    </title>
+    <script src="/js/zk_console.js"></script>
+</head>
+<body>
+	#include("/static/nav.html")
+
+<div class="container">
+
+		<h1>TO BE CONTINUE</h1>
+
+</div>
+
+
+</body>
+
+<script>
+
+
+</script>
+</html>

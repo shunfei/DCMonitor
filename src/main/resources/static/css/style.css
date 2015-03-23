@@ -1,0 +1,43 @@
+.plus{
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+body {
+    padding-top: 60px;
+}
+
+nav {
+    font-size: 25px;
+}
+thead{
+    background-color: burlywood;
+}
+
+.active{
+    color : #FFF;
+}
+
+#zk_res {
+}
+
+.inline {
+    display: inline;
+}
+
+.mtr{
+    color : #EAF;
+}
+.grap{
+    background-color: #272b30;
+    color : #ffffff;
+}
+.speed {
+    margin : 25px 0;
+}
+
+.speed .label {
+    font-size: 30px;
+}
