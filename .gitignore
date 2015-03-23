@@ -1,0 +1,25 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+.DS_Store
+.idea
+*.iml
+
+# Folders
+_obj
+_test
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.exe
+*.test
+*.prof
+
+msg.json
+run.out
+target
+libs
+sync_*.sh

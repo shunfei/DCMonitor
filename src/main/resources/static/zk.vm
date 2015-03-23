@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+	#include("/static/tags.html")
+<html>
+<head>
+	#include("/static/head.html")
+    <title>
+        Zookeeper Monitor
+    </title>
+    <script src="/js/zk_console.js"></script>
+</head>
+<body>
+	#include("/static/nav.html")
+
+<div class="container">
+
+    <div class="panel panel-warning">
+        <div class="panel-heading"> Zk Cluster <a class="plus">-</a></div>
+				<table id="zk_table" class="panel-body m_table table table-bordered table-striped success">
+
+				</table>
+    </div>
+
+
+    <div class="panel panel-warning">
+				<div class="panel-heading">
+            Zk Cmd<a class="plus">-</a>
+				</div>
+
+        <form class="form-inline panel-body">
+            <div class="form-group">
+                <label for="zk_select"> host: </label>
+                <select id="zk_select" class="form-control">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label  for="zk_cmd">cmd:</label>
+                <select id="zk_cmd"  class="form-control">
+                    <option value="conf">conf</option>
+                    <option value="cons">cons</option>
+                    <option value="crst">crst</option>
+                    <option value="dump">dump</option>
+                    <option value="envi">envi</option>
+                    <option value="ruok">ruok</option>
+                    <option value="srst">srst</option>
+                    <option value="srvr">srvr</option>
+                    <option value="stat">stat</option>
+                    <option value="wchs">wchs</option>
+                    <option value="wchc">wchc</option>
+                    <option value="wchp">wchp</option>
+                    <option value="mntr">mntr</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="button" value="go" id="cmd_go"/>
+            </div>
+
+            <div>
+                <textarea name="" id="zk_res" cols="300" rows="30"></textarea>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+
+</body>
+
+<script>
+
+
+</script>
+</html>
