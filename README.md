@@ -16,9 +16,17 @@ It is written in java, and use [InfluxDB v0.9](https://github.com/influxdb/influ
 ![](img/kafka_sum.png)
 ![](img/kafka_offset.png)
 
-##Installation
 
-Node: java(1.6 or later version) is needed for compilation and runing.
+
+##Dependences
+
+* Run
+	* java(1.6 or later)
+	* [netcat](http://netcat.sourceforge.net/)
+* Compilation
+	* java(1.6 or later)
+
+##Installation
 
 * Set up your Zookeeper, Kafka, Druid(If you have) for monitoring.
 * Set up [InfluxDB](https://github.com/influxdb/influxdb) v0.9.
@@ -34,10 +42,14 @@ Node: java(1.6 or later version) is needed for compilation and runing.
 	cd DCMonitor
 	./build.sh
 	```
-Then a `target` folder will be generated.
+Then a `target` folder will be generated under root folder.
 	
 	* deploy
 	
-	You only need to deploy `target`, `run.sh`, `config` to target machine. Modify those files in `config` and run `run.sh`. If every thing is fine, visit `http://hostname:8075` to enjoy!
+	You only need to deploy `target`, `run.sh`, `config` to target machine. 
+	
+	Modify configurations in `config/config.json`.
+	
+	Run `run.sh`, if every thing is fine, visit `http://hostname:8075` to enjoy!
 	
 	
