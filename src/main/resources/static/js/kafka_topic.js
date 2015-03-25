@@ -84,6 +84,22 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                                        });
                                                    }, parseInt(pt));
                                                }
+                                               //初始化rate
+                                               var tmp = data;
+                                               var len = tmp.length;
+                                               var logDiffs = tmp[len-1]['logSize'] - tmp[0]['logSize'];
+                                               var offDiffs = tmp[len-1]['offset'] - tmp[0]['offset'];
+
+                                               var millSeconds =   tmp[len-1]['timeStamp'] - tmp[0]['timeStamp'];
+
+                                               $('#pro_rate').html( Math.round(logDiffs
+                                                                               * 1000.0
+                                                                               / millSeconds));
+                                               $('#consu_rate').html(Math.round(offDiffs
+                                                                                * 1000.0
+                                                                                / millSeconds));
+
+                                               $('.timePeriod').html("over " + Math.round(millSeconds/1000)  + " seconds.");
                                            }
 
                                        }
@@ -110,7 +126,7 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                                                        * 1000.0
                                                                        / millSeconds));
 
-                                               $('.timePeriod').html("over " + Math.round(millSeconds/1000)  + " seconds.")
+                                               $('.timePeriod').html("over " + Math.round(millSeconds/1000)  + " seconds.");
                                            }
                                        }
                                    },
