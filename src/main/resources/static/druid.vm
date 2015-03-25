@@ -6,7 +6,7 @@
     <title>
         Zookeeper Monitor
     </title>
-    <script src="/js/zk_console.js"></script>
+    <script src="/js/druid_console.js"></script>
 </head>
 <body>
 	#include("/static/nav.html")

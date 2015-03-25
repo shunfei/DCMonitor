@@ -1,4 +1,6 @@
 $(function(){
+    addActive($('#kafka_nav'));
+
     var pt = $('#period').html();
     var topic = $('#kafka_topic').html().trim();
     var consumer = $('#kafka_consumer').html().trim();

@@ -1,18 +1,19 @@
 var zkHosts = new Array();
 $(document).ready(function() {
+    addActive($('#zk_nav'));
+
     $.get('/zk/hosts', function(data) {
         buildRotatTable(data, $('#zk_table'));
         buildZkHosts(data);
+        zkCmd();
     });
 
-    $('#cmd_go').click(function(){
-        $.post('/zk/cmd', { 'host' : $('#zk_select').val(), 'cmd' : $('#zk_cmd').val().trim() }, function(data){
-            if(! data){
-                data = "No msg output";
-            }
-            $('#zk_res').val(data);
-        })
-    })
+
+
+    $('#zk_cmd').change(function(){
+        zkCmd();
+    });
+
 
     function buildZkHosts(data){
         for(var i in data){
@@ -23,6 +24,15 @@ $(document).ready(function() {
                 }
             }
         }
+    }
+
+    function zkCmd(){
+        $.post('/zk/cmd', { 'host' : $('#zk_select').val(), 'cmd' : $('#zk_cmd').val().trim() }, function(data){
+            if(! data){
+                data = "No msg output";
+            }
+            $('#zk_res').val(data);
+        });
     }
 
 });
