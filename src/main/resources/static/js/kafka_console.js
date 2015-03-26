@@ -1,5 +1,7 @@
 var zkHosts = new Array();
 $(document).ready(function() {
+
+    addActive($('#kafka_nav'));
     $.get('/kafka/hosts', function(data) {
         buildTable(data, $('#kafka_table'));
     });

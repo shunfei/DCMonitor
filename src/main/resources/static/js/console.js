@@ -1,6 +1,5 @@
 // requires tableHelper
 
-
 $(function(){
 
     $('.plus').click(function(){
@@ -13,6 +12,12 @@ $(function(){
         }
     })
 })
+
+
+function addActive($li){
+    $li.siblings().removeClass("active");
+    $li.addClass("active");
+}
 
 function buildTable(data, jq){
     jq.html("");

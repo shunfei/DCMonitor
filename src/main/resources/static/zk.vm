@@ -52,10 +52,6 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <input type="button" value="go" id="cmd_go"/>
-            </div>
-
             <div>
                 <textarea name="" id="zk_res" cols="300" rows="30"></textarea>
             </div>
