@@ -11,5 +11,4 @@ public interface InfoFetcher {
 
   public void stop();
 
-
 }

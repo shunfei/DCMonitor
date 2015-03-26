@@ -25,32 +25,32 @@ import java.util.Properties;
 @AutoConfigureAfter(WebMvcAutoConfiguration.class)
 class VelocityConfiguration implements EnvironmentAware {
 
-	private RelaxedPropertyResolver environment;
+  private RelaxedPropertyResolver environment;
 
-	@Override
-	public void setEnvironment(Environment environment) {
-		this.environment = new RelaxedPropertyResolver(environment,"spring.velocity.");
-	}
+  @Override
+  public void setEnvironment(Environment environment) {
+    this.environment = new RelaxedPropertyResolver(environment, "spring.velocity.");
+  }
 
-	@Bean
-	VelocityConfigurer velocityConfig() {
-		return new VelocityConfigurer();
-	}
+  @Bean
+  VelocityConfigurer velocityConfig() {
+    return new VelocityConfigurer();
+  }
 
-	@Bean
-	VelocityViewResolver velocityViewResolver() {
-		VelocityViewResolver resolver = new VelocityViewResolver();
-		resolver.setSuffix(this.environment.getProperty("suffix", ".vm"));
-		resolver.setPrefix(this.environment.getProperty("prefix", "/static/"));
-		// Needs to come before any fallback resolver (e.g. a
-		// InternalResourceViewResolver)
-		resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 20);
-		Properties p = new Properties();
-		p.put(Velocity.FILE_RESOURCE_LOADER_PATH, "/static/");
-		p.put("input.encoding", "utf-8");
-		p.put("output.encoding", "utf-8");
-		resolver.setAttributes(p);
-		resolver.setContentType("text/html;charset=utf-8");
-		return resolver;
-	}
+  @Bean
+  VelocityViewResolver velocityViewResolver() {
+    VelocityViewResolver resolver = new VelocityViewResolver();
+    resolver.setSuffix(this.environment.getProperty("suffix", ".vm"));
+    resolver.setPrefix(this.environment.getProperty("prefix", "/static/"));
+    // Needs to come before any fallback resolver (e.g. a
+    // InternalResourceViewResolver)
+    resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 20);
+    Properties p = new Properties();
+    p.put(Velocity.FILE_RESOURCE_LOADER_PATH, "/static/");
+    p.put("input.encoding", "utf-8");
+    p.put("output.encoding", "utf-8");
+    resolver.setAttributes(p);
+    resolver.setContentType("text/html;charset=utf-8");
+    return resolver;
+  }
 }

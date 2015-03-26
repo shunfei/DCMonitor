@@ -43,7 +43,7 @@ public class Resources {
   public static ZkClient zkClient;
   public static KafkaInfos kafkaInfos;
   public static DruidInfos druidInfos;
-	public static ZookeeperHosts zkHosts;
+  public static ZookeeperHosts zkHosts;
   public static InfluxDB influxDB;
   public static Notify notify;
   public static Config.Fetchers fetchers;
@@ -61,7 +61,7 @@ public class Resources {
       zkClient = new ZkClient(config.addrs, 30000, config.connectionTimeout, zkSerializer);
       kafkaInfos = new KafkaInfos(zkClient);
       druidInfos = Config.config.druidInfos;
-			zkHosts = new ZookeeperHosts(Config.config.zookeeper.addrs);
+      zkHosts = new ZookeeperHosts(Config.config.zookeeper.addrs);
       druidInfos.init();
       influxDB = InfluxDBFactory.connect(
         Config.config.influxdb.influxdbUrl,

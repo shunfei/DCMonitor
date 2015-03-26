@@ -32,7 +32,7 @@ public class DCMonitor extends SpringBootServletInitializer {
     SpringApplication.run(DCMonitor.class);
   }
 
-  private static void preare(){
+  private static void preare() {
     Config.init("config");
     Resources.init();
 
@@ -58,7 +58,7 @@ public class DCMonitor extends SpringBootServletInitializer {
       try {
         fetcher.start();
       } catch (Exception e) {
-        logger.error(e + "start %s failed!"+ fetcher.type());
+        logger.error(e + "start %s failed!" + fetcher.type());
         System.exit(-1);
       }
     }

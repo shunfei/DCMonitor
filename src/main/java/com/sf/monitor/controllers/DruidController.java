@@ -21,13 +21,14 @@ public class DruidController {
                   consumes = MediaType.APPLICATION_JSON_VALUE,
                   produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.OK)
-  public @ResponseBody
+  public
+  @ResponseBody
   String writeMetrics(HttpEntity<String> httpEntity) {
     try {
       Resources.fetchers.druidFetcher.writeMetrics(httpEntity.getBody());
-    }catch (Exception e){
-    log.error(e, "");
-  }
-  return "done";
+    } catch (Exception e) {
+      log.error(e, "");
+    }
+    return "done";
   }
 }
