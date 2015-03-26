@@ -52,7 +52,7 @@ public class Config {
     public int connectionTimeout;
   }
 
-  public static class NotifyConfig{
+  public static class NotifyConfig {
     @JsonProperty
     public boolean doSend;
     @JsonProperty
@@ -65,7 +65,7 @@ public class Config {
     public List<String> phones;
   }
 
-  public static class KafkaConfig{
+  public static class KafkaConfig {
     @JsonProperty
     public boolean warning;
     @JsonProperty
@@ -73,12 +73,12 @@ public class Config {
     @JsonProperty
     public Map<String, Long> warnLagSpec;
 
-    public long getWarnLag(String topic, String consumer){
-      if(warnLagSpec == null){
+    public long getWarnLag(String topic, String consumer) {
+      if (warnLagSpec == null) {
         return warnDefaultLag;
       }
       Long lag = warnLagSpec.get(topic + "|" + consumer);
-      return lag != null ? lag :  warnDefaultLag;
+      return lag != null ? lag : warnDefaultLag;
     }
   }
 

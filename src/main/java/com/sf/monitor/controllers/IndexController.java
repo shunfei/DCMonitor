@@ -14,33 +14,33 @@ import java.util.Map;
  */
 @Controller
 public class IndexController {
-	@RequestMapping("/hello")
-	public
-	@ResponseBody
-	String hello() {
-		return "hello world";
-	}
+  @RequestMapping("/hello")
+  public
+  @ResponseBody
+  String hello() {
+    return "hello world";
+  }
 
-	@RequestMapping("/")
-	public ModelAndView index(){
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("message", "DC_MONITOR");
-		return new ModelAndView("console",model);
-	}
+  @RequestMapping("/")
+  public ModelAndView index() {
+    Map<String, Object> model = new HashMap<String, Object>();
+    model.put("message", "DC_MONITOR");
+    return new ModelAndView("console", model);
+  }
 
-	@RequestMapping("/kafka")
-	public String kafka(){
-		return "kafka";
-	}
+  @RequestMapping("/kafka")
+  public String kafka() {
+    return "kafka";
+  }
 
-	@RequestMapping("/zk")
-	public String zk(){
-		return "zk";
-	}
+  @RequestMapping("/zk")
+  public String zk() {
+    return "zk";
+  }
 
-	@RequestMapping("/druid")
-	public String druid(){
-		return "druid";
-	}
+  @RequestMapping("/druid")
+  public String druid() {
+    return "druid";
+  }
 
 }

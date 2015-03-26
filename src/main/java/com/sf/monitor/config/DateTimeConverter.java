@@ -15,14 +15,14 @@ import java.util.Set;
  */
 @EnableAutoConfiguration
 public class DateTimeConverter {
-	@Bean
-	FormattingConversionServiceFactoryBean conversionService(){
-		FormattingConversionServiceFactoryBean bean = new FormattingConversionServiceFactoryBean();
-		Set<FormatterRegistrar> set = new HashSet<FormatterRegistrar>();
-		JodaTimeFormatterRegistrar registrar = new JodaTimeFormatterRegistrar();
-		registrar.setUseIsoFormat(true);
-		set.add(registrar);
-		bean.setFormatterRegistrars(set);
-		return bean;
-	}
+  @Bean
+  FormattingConversionServiceFactoryBean conversionService() {
+    FormattingConversionServiceFactoryBean bean = new FormattingConversionServiceFactoryBean();
+    Set<FormatterRegistrar> set = new HashSet<FormatterRegistrar>();
+    JodaTimeFormatterRegistrar registrar = new JodaTimeFormatterRegistrar();
+    registrar.setUseIsoFormat(true);
+    set.add(registrar);
+    bean.setFormatterRegistrars(set);
+    return bean;
+  }
 }
