@@ -1,5 +1,6 @@
 package com.sf.monitor.controllers;
 
+import com.google.common.collect.ImmutableMap;
 import com.sf.monitor.Resources;
 import com.sf.monitor.kafka.KafkaInfos;
 import org.joda.time.DateTime;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,13 +47,11 @@ public class KafkaController {
 	Object active() {
 		KafkaInfos.ActiveTopics topics = Resources.kafkaInfos.getActiveTopicMap();
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		for (String s : topics.topicToConsumer.keySet()) {
-			Set<String> ss = topics.topicToConsumer.get(s);
-			Map<String, String> tmp = new LinkedHashMap<String, String>();
-			for (String consumer : ss) {
-				tmp.put("Topic", s);
-				tmp.put("Consumer", consumer);
-				list.add(tmp);
+		for (Map.Entry<String, Set<String>> e : topics.topicToConsumer.entrySet()) {
+      String topic = e.getKey();
+      Set<String> consumers = e.getValue();
+			for (String consumer : consumers) {
+        list.add(ImmutableMap.of("Topic", topic, "Consumer", consumer));
 			}
 		}
 		return list;
