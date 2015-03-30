@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 
 
-    $('#zk_cmd').change(function(){
+    $('#zk_cmd_go').click(function(){
         zkCmd();
     });
 
