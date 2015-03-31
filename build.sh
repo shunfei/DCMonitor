@@ -10,11 +10,15 @@ Compile failed!
     exit 1
 }
 trap 'abort' 0
+set -e
 
 rm -rf target
 mvn package
+if [[ ! -d "target" ]]; then
+  echo "target folder not found!"
+  exit -1
+fi
 cd target
-
 
 BUILD_JAR=dcmonitor-1.0.one-jar.jar
 jar -xf ${BUILD_JAR}
