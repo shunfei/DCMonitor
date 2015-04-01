@@ -42,7 +42,7 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
     Highcharts.setOptions({
                               global: {
                                   useUTC: false,
-                                  timezoneOffset : 8 * 60
+                                  timezoneOffset :  timeZoneOffsetHour * 60
                               }
                           });
 

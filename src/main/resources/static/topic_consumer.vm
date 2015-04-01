@@ -7,6 +7,9 @@
     </title>
 
 	#include("/static/head.html")
+    <script>
+       var  timeZoneOffsetHour = parseInt("$!{timeZoneOffsetHour}");
+		</script>
     <script src="/js/highstock.js"></script>
     <script src="/js/kafka_topic.js"></script>
     <script src="/js/WdatePicker.js"></script>
