@@ -34,6 +34,9 @@ public class KafkaController {
   @Value("${kafka.query.flushInterval}")
   private String period;
 
+	@Value("${timeZoneOffsetHour}")
+	private int timeZoneOffsetHour;
+
   @RequestMapping("/hosts")
   public
   @ResponseBody
@@ -90,6 +93,7 @@ public class KafkaController {
     mp.put("topic", topic);
     mp.put("consumer", consumer);
     mp.put("period", period);
+		mp.put("timeZoneOffsetHour", timeZoneOffsetHour);
     return "topic_consumer";
   }
 
