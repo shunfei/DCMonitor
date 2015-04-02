@@ -3,14 +3,16 @@ package com.sf.monitor.zk;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sf.exec.SystemCommandExecutor;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
 import com.sf.monitor.utils.JsonValues;
 import com.sf.monitor.utils.Utils;
+import org.apache.commons.io.IOUtils;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.List;
 import java.util.Map;
 
@@ -130,44 +132,31 @@ public class ZookeeperHosts {
     }
 
     public String command(String command) {
-      try {
-        List<String> commands = new ArrayList<String>();
-        commands.add("/bin/sh");
-        commands.add("-c");
-        commands.add(String.format("echo %s | nc %s %d", command, hostName, port));
-
-        SystemCommandExecutor executor = new SystemCommandExecutor(commands);
-        int result = executor.executeCommand();
-        String err = executor.getStandardErrorFromCommand();
-        String res = executor.getStandardOutputFromCommand();
-        if (result == 0) {
-          return res.trim();
-        } else {
-          log.error(
-            "send 4LTR command[%s] to [%s:%d] failed, error code: %d, error msg: %s",
-            command,
-            hostName,
-            port,
-            result,
-            err
-          );
-          return err;
+      // Try 10 times if we face "Connection reset" error.
+      String resp = null;
+      for (int i = 0; i < 10; i++) {
+        resp = doCommand(command);
+        if (!"Connection reset".equals(resp)) {
+          return resp;
         }
+      }
+      return resp;
+    }
 
-        // The following code could throw "Connection reset" time to time,
-        // so use system command instead temporary!
-
-        //Socket socket = new Socket(hostName, port);
-        //OutputStream os = socket.getOutputStream();
-        //IOUtils.write(command + "\n", os);
-        //os.flush();
-        //String resp = IOUtils.toString(socket.getInputStream());
-        //IOUtils.closeQuietly(socket);
-        //return resp;
-
-      } catch (Exception e) {
-        log.error(e, "send 4LTR command[%s] to [%s:%d] failed", command, hostName, port);
+    public String doCommand(String command) {
+      Socket s = null;
+      try {
+        s = new Socket();
+        s.setSoLinger(false, 10);
+        s.setSoTimeout(20000);
+        s.connect(new InetSocketAddress(hostName, port));
+        IOUtils.write(command, s.getOutputStream());
+        return IOUtils.toString(s.getInputStream());
+      } catch (IOException e) {
+        log.warn(e, "send 4TLR command [%s] to [%s:%d] error", command, hostName, port);
         return e.getMessage();
+      } finally {
+        IOUtils.closeQuietly(s);
       }
     }
   }

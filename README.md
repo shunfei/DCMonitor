@@ -20,10 +20,7 @@ It is written in java, and use [InfluxDB v0.9](https://github.com/influxdb/influ
 
 ##Dependences
 
-* Run
-	* java(1.6 or later)
-	* [netcat](http://netcat.sourceforge.net/)
-* Compilation
+* Run & Compile
 	* java(1.6 or later)
 
 ##Installation
