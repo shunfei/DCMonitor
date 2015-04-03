@@ -28,13 +28,13 @@ import java.util.Set;
 @RequestMapping("/kafka")
 public class KafkaController {
 
-  @Value("${kafka.query.time.offset}")
+  @Value("${kafka.query.time.offset:PT15m}")
   private String timeOffset;
 
-  @Value("${kafka.query.flushInterval}")
+  @Value("${kafka.query.flushInterval:10000}")
   private String period;
 
-	@Value("${timeZoneOffsetHour}")
+	@Value("${timeZoneOffsetHour:0}")
 	private int timeZoneOffsetHour;
 
   @RequestMapping("/hosts")
