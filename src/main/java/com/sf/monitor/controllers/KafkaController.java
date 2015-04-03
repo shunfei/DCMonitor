@@ -34,8 +34,8 @@ public class KafkaController {
   @Value("${kafka.query.flushInterval:10000}")
   private String period;
 
-	@Value("${timeZoneOffsetHour:0}")
-	private int timeZoneOffsetHour;
+  @Value("${timeZoneOffsetHour:0}")
+  private int timeZoneOffsetHour;
 
   @RequestMapping("/hosts")
   public
@@ -93,7 +93,7 @@ public class KafkaController {
     mp.put("topic", topic);
     mp.put("consumer", consumer);
     mp.put("period", period);
-		mp.put("timeZoneOffsetHour", timeZoneOffsetHour);
+    mp.put("timeZoneOffsetHour", timeZoneOffsetHour);
     return "topic_consumer";
   }
 
@@ -126,8 +126,8 @@ public class KafkaController {
   Object consumerInfos(final String topic, String consumer) {
     Object o = Resources.kafkaInfos.getConsumerInfos(
       consumer, new HashSet<String>() {{
-      add(topic);
-    }}
+        add(topic);
+      }}
     );
     return o;
   }
