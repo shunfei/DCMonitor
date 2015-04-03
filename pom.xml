@@ -10,7 +10,11 @@
 
 
   <dependencies>
-
+    <dependency>
+      <groupId>org.apache.curator</groupId>
+      <artifactId>curator-framework</artifactId>
+      <version>2.6.0</version>
+    </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.jaxrs</groupId>

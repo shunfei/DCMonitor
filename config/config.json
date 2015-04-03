@@ -6,16 +6,19 @@
         "influxdbPassword": "root"
     },
     "zookeeper": {
-        "addrs": "192.168.10.60:2181",
-        "connectionTimeout": 5000
+        "addrs": "192.168.10.60:2181,192.168.10.41:2181,192.168.10.42:2181",
+        "connectionTimeout": 5000,
+        "baseSleepTimeMs": 1000,
+        "maxRetries": 20,
+        "maxSleepMs": 30000
     },
     "druid": {
         "zkInfoCompress": false,
-        "zkRootPath": "/druid",
-        "zkDiscoveryPath": "/druid/discovery",
-        "zkOverlordName": "overlord",
-        "zkBrokerName": "broker",
-        "zkCoordinatorName": "coordinator"
+        "zkRootPath": "/druid/prod",
+        "zkDiscoveryPath": "/prod/discovery",
+        "zkOverlordName": "druid:prod:overlord",
+        "zkBrokerName": "druid:prod:broker",
+        "zkCoordinatorName": "druid:prod:coordinator"
     },
     "kafka": {
         "warning": true,

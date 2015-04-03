@@ -3,6 +3,7 @@ package com.sf.influxdb.dto;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -16,11 +17,19 @@ public class Series {
 
   public List<Map<String, Object>> indexedValues() {
     if (indexedValues == null) {
+      if (values == null){
+        return Collections.emptyList();
+      }
       indexedValues = Lists.newArrayListWithCapacity(values.length);
       for (Object[] r : values) {
         Map<String, Object> indexV = Maps.newHashMap();
         for (int i = 0; i < columns.length; i++) {
           indexV.put(columns[i], r[i]);
+        }
+        if (tags != null) {
+          for (Map.Entry<String, Object> e : tags.entrySet()) {
+            indexV.put(e.getKey(), e.getValue());
+          }
         }
         indexedValues.add(indexV);
       }

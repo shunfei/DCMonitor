@@ -1,0 +1,427 @@
+[
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:55:19.424Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "events/thrownAway",
+        "value": 0,
+        "user2": "dsp_campaign_only"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:55:19.424Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "events/unparseable",
+        "value": 0,
+        "user2": "dsp_campaign_only"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:55:19.424Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "events/processed",
+        "value": 0,
+        "user2": "dsp_campaign_only"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:55:19.424Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "rows/output",
+        "value": 0,
+        "user2": "dsp_campaign_only"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:55:19.424Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "persists/num",
+        "value": 0,
+        "user2": "dsp_campaign_only"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:55:19.424Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "persists/time",
+        "value": 0,
+        "user2": "dsp_campaign_only"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:55:19.424Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "persists/backPressure",
+        "value": 0,
+        "user2": "dsp_campaign_only"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.197Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/max",
+        "value": 3221225472,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.197Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/committed",
+        "value": 526385152,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/used",
+        "value": 144410472,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/init",
+        "value": 526077120,
+        "user1": "heap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/max",
+        "value": 136314880,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/committed",
+        "value": 45547520,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/used",
+        "value": 45123240,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/mem/init",
+        "value": 23527424,
+        "user1": "nonheap"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/max",
+        "value": 50331648,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.198Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/committed",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.199Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/used",
+        "value": 2320064,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.199Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/init",
+        "value": 2555904,
+        "user1": "nonheap",
+        "user2": "Code Cache"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.199Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/max",
+        "value": -1,
+        "user1": "heap",
+        "user2": "G1 Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.199Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/committed",
+        "value": 314572800,
+        "user1": "heap",
+        "user2": "G1 Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.199Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/used",
+        "value": 116391936,
+        "user1": "heap",
+        "user2": "G1 Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.199Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/init",
+        "value": 28311552,
+        "user1": "heap",
+        "user2": "G1 Eden Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.199Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/max",
+        "value": -1,
+        "user1": "heap",
+        "user2": "G1 Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/committed",
+        "value": 17825792,
+        "user1": "heap",
+        "user2": "G1 Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/used",
+        "value": 17825792,
+        "user1": "heap",
+        "user2": "G1 Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/init",
+        "value": 0,
+        "user1": "heap",
+        "user2": "G1 Survivor Space"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/max",
+        "value": 3221225472,
+        "user1": "heap",
+        "user2": "G1 Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/committed",
+        "value": 193986560,
+        "user1": "heap",
+        "user2": "G1 Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/used",
+        "value": 10192744,
+        "user1": "heap",
+        "user2": "G1 Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/init",
+        "value": 498073600,
+        "user1": "heap",
+        "user2": "G1 Old Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.200Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/max",
+        "value": 85983232,
+        "user1": "nonheap",
+        "user2": "G1 Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.201Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/committed",
+        "value": 42991616,
+        "user1": "nonheap",
+        "user2": "G1 Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.201Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/used",
+        "value": 42803176,
+        "user1": "nonheap",
+        "user2": "G1 Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.201Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/pool/init",
+        "value": 20971520,
+        "user1": "nonheap",
+        "user2": "G1 Perm Gen"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.201Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/gc/time",
+        "value": 0,
+        "user1": "G1 Young Generation"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.201Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/gc/count",
+        "value": 0,
+        "user1": "G1 Young Generation"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.201Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/gc/time",
+        "value": 0,
+        "user1": "G1 Old Generation"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.202Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/gc/count",
+        "value": 0,
+        "user1": "G1 Old Generation"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.202Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 3173718,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.202Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/bufferpool/used",
+        "value": 3173718,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.202Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/bufferpool/count",
+        "value": 72,
+        "user2": "direct"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.202Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/bufferpool/capacity",
+        "value": 0,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.202Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/bufferpool/used",
+        "value": 0,
+        "user2": "mapped"
+    },
+    {
+        "feed": "metrics",
+        "timestamp": "2015-04-01T08:56:17.202Z",
+        "service": "druid/prod/middlemanager",
+        "host": "192.168.10.51:8100",
+        "metric": "jvm/bufferpool/count",
+        "value": 0,
+        "user2": "mapped"
+    }
+]

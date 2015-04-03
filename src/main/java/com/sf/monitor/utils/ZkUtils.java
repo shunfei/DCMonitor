@@ -3,6 +3,7 @@ package com.sf.monitor.utils;
 import com.google.common.collect.Lists;
 import com.sf.log.Logger;
 import com.sf.monitor.Resources;
+import org.apache.commons.io.Charsets;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,9 +16,36 @@ import java.util.zip.GZIPInputStream;
 public class ZkUtils {
   private static final Logger log = new Logger(ZkUtils.class);
 
+  public static String getLeader(String electionPath) {
+     List<String> children = getZKChildren(electionPath);
+     if (children.size() == 0) {
+       return null;
+     }
+    String leader = children.get(0);
+    for (String child : children) {
+      if (child.length() < 10) {
+        continue;
+      }
+      String leaderSNum = leader.substring(leader.length() - 10, leader.length());
+      String curSNum = child.substring(child.length() - 10, child.length());
+      if (curSNum.compareTo(leaderSNum) < 0) {
+        leader = child;
+      }
+    }
+    return leader;
+  }
+
+  public static String getLeaderContent(String electionPath) {
+    String leader = getLeader(electionPath);
+    if(leader == null) {
+      return null;
+    }
+    return readZKData(electionPath + "/" + leader, false);
+  }
+
   public static List<Map<String, Object>> getZKChildContentAsMap(String path, boolean tryDecompress) {
     List<Map<String, Object>> lists = Lists.newArrayList();
-    for (String content : getZKChildContentOf(path, tryDecompress)) {
+    for (String content : getZKChildrenContent(path, tryDecompress)) {
       Map<String, Object> map = Utils.toMap(content);
       if (map == null) {
         continue;
@@ -27,8 +55,8 @@ public class ZkUtils {
     return lists;
   }
 
-  public static List<String> getZKChildContentOf(String path, boolean tryDecompress) {
-    List<String> children = getZKChildOf(path);
+  public static List<String> getZKChildrenContent(String path, boolean tryDecompress) {
+    List<String> children = getZKChildren(path);
     List<String> contents = Lists.newArrayListWithCapacity(children.size());
     for (String child : children) {
       String content = readZKData(path + '/' + child, tryDecompress);
@@ -39,9 +67,9 @@ public class ZkUtils {
     return contents;
   }
 
-  public static List<String> getZKChildOf(String path) {
+  public static List<String> getZKChildren(String path) {
     try {
-      List<String> list = Resources.zkClient.getChildren(path);
+      List<String> list = Resources.curator.getChildren().forPath(path);
       return list == null ? Collections.<String>emptyList() : list;
     } catch (Exception e) {
       log.error(e, "read children of [%s] from zookeeper failed!", path);
@@ -50,24 +78,18 @@ public class ZkUtils {
   }
 
   public static String readZKData(String path, boolean tryDecompress) {
-    if (tryDecompress) {
-      byte[] bytes = null;
-      try {
-        // Make the serializer return the bytes directly.
-        Resources.isZKDirectBytes.set(true);
-        bytes = (byte[]) Resources.zkClient.readData(path, true);
-      } catch (Throwable t) {
-        log.error(t, "error");
-      } finally {
-        Resources.isZKDirectBytes.set(false);
+    byte[] bytes = null;
+    try {
+      if (tryDecompress) {
+        bytes = Resources.curator.getData().decompressed().forPath(path);
+      } else {
+        bytes = Resources.curator.getData().forPath(path);
       }
-      if (bytes == null) {
-        return null;
-      }
-      return decompress(bytes);
-    } else {
-      return Resources.zkClient.readData(path, true);
+    } catch (Throwable t) {
+      log.error(t, "error");
+      return null;
     }
+    return new String(bytes, Charsets.UTF_8);
   }
 
   public static String decompress(byte[] compressedData) {

@@ -27,6 +27,8 @@ import java.util.Set;
 @Controller
 @RequestMapping("/kafka")
 public class KafkaController {
+  private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+
 
   @Value("${kafka.query.time.offset:PT15m}")
   private String timeOffset;
@@ -101,7 +103,6 @@ public class KafkaController {
   public
   @ResponseBody
   Object topicDetail(String topic, String consumer, String from, String to) {
-    DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
     DateTime fromDate = null;
     try {
       fromDate = DateTime.parse(from, formatter);

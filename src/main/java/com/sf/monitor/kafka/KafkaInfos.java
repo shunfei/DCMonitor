@@ -31,12 +31,13 @@ import scala.collection.JavaConversions;
 import scala.collection.Seq;
 import scala.collection.immutable.Map.Map1;
 
+import java.io.Closeable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class KafkaInfos {
+public class KafkaInfos implements Closeable{
   private static final Logger log = new Logger(KafkaInfos.class);
 
   private ZkClient zkClient;
@@ -302,20 +303,24 @@ public class KafkaInfos {
           info.logSize = ((Double) row.get("size")).longValue();
           info.offset = ((Double) row.get("offs")).longValue();
           info.lag = ((Double) row.get("lag")).longValue();
-          info.timeStr = (String)row.get("time");
+          info.timeStr = (String) row.get("time");
           info.time = DateTime.parse(info.timeStr);
-					info.timeStamp = info.time.getMillis();
+          info.timeStamp = info.time.getMillis();
           return info;
         }
       }
     );
   }
 
+  @Override
   public void close() {
     for (SimpleConsumer consumer : consumerMap.values()) {
       if (consumer != null) {
         consumer.close();
       }
+    }
+    if (zkClient != null) {
+      zkClient.close();
     }
   }
 
@@ -347,8 +352,8 @@ public class KafkaInfos {
     public long offset;
     public long logSize;
     public long lag;
-		public long timeStamp;
-	}
+    public long timeStamp;
+  }
 
   public static class BrokerInfo {
     public Integer id;
@@ -360,7 +365,7 @@ public class KafkaInfos {
     Config.init("config");
     Resources.init();
 
-    KafkaInfos checker = new KafkaInfos(Resources.zkClient);
+    KafkaInfos checker = Resources.kafkaInfos;
 
     System.out.println("getActiveTopicMap: " + Resources.jsonMapper.writeValueAsString(checker.getActiveTopicMap()));
     System.out.println("getTopics: " + Resources.jsonMapper.writeValueAsString(checker.getTopics()));

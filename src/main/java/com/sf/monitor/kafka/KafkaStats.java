@@ -15,6 +15,7 @@ import java.util.Set;
 
 public class KafkaStats {
   private static final Logger log = new Logger(KafkaStats.class);
+  public static final String tableName = "kafka_metrics";
 
   public static List<Point> fetchTrendInfos() {
     List<Point> points = Lists.newArrayList();
