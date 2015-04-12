@@ -20,7 +20,7 @@ public class Config {
   @JsonProperty
   public InfluxdbConfig influxdb;
   @JsonProperty
-  public ZKConfig zookeeper;
+  public CuratorConfig zookeeper;
   @JsonProperty("druid")
   public DruidInfos druidInfos;
   @JsonProperty
@@ -45,11 +45,17 @@ public class Config {
     public String influxdbPassword;
   }
 
-  public static class ZKConfig {
+  public static class CuratorConfig {
     @JsonProperty
     public String addrs;
     @JsonProperty
     public int connectionTimeout;
+    @JsonProperty
+    public int baseSleepTimeMs = 1000;
+    @JsonProperty
+    public int maxRetries = 20;
+    @JsonProperty
+    public int maxSleepMs = 30000;
   }
 
   public static class NotifyConfig {

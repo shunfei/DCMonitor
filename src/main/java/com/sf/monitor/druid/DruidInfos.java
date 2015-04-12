@@ -3,19 +3,22 @@ package com.sf.monitor.druid;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.sf.influxdb.dto.Results;
 import com.sf.influxdb.dto.Series;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
-import com.sf.monitor.utils.HttpRequest;
 import com.sf.monitor.utils.JsonValues;
+import com.sf.monitor.utils.TagValue;
 import com.sf.monitor.utils.Utils;
 import com.sf.monitor.utils.ZkUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import java.util.Collections;
 import java.util.List;
@@ -23,13 +26,17 @@ import java.util.Map;
 
 public class DruidInfos {
   private static final Logger log = new Logger(DruidInfos.class);
-  private static final String dataServingHostAnnPath = "/announcements";
-  private static final String coordinatorHostPath = "/coordinator/_COORDINATOR";
-  private static final String overlordHostPath = "/indexer/leaderLatchPath";
-  private static final String middleManagerHostPath = "/indexer/announcements";
+  private static final String coordinatorLeaderElectionPath = "/coordinator/_COORDINATOR";
+  private static final String overlordLeaderElectionPath = "/indexer/leaderLatchPath";
 
-  @JsonProperty
-  public boolean zkInfoCompress;
+  public static class AnnounceNode {
+    public String host;
+    public String name;
+    public String role;
+    public String regTime;
+    public String serviceType;
+  }
+
   @JsonProperty
   public String zkRootPath;
   @JsonProperty
@@ -41,131 +48,212 @@ public class DruidInfos {
   @JsonProperty
   public String zkCoordinatorName;
 
-  private DruidOverlordService overlordService;
+  private DruidService<DruidService.OverlordService> overlordService;
+  private DruidService<DruidService.CoordinatorService> coordinatorService;
 
   public void init() {
-    DruidNode masterOverlord = getMasterOverlord();
-    if (masterOverlord != null) {
-      String overlordUrl = String.format("http://%s:%d", masterOverlord.address, masterOverlord.port);
-      overlordService = HttpRequest.create(overlordUrl, DruidOverlordService.class);
+    overlordService = new DruidService<DruidService.OverlordService>(
+      zkRootPath + overlordLeaderElectionPath,
+      DruidService.OverlordService.class
+    );
+    coordinatorService = new DruidService<DruidService.CoordinatorService>(
+      zkRootPath + coordinatorLeaderElectionPath,
+      DruidService.CoordinatorService.class
+    );
+  }
+
+  private List<JsonValues> getDataServiceNodes(String type) {
+    DruidService.CoordinatorService service = coordinatorService.getService();
+    if (service == null) {
+      log.warn("coordinator service not found!");
+      return Collections.emptyList();
     }
-  }
-
-  public List<JsonValues> getBrokers() {
-    List<String> brokers = ZkUtils.getZKChildContentOf(zkDiscoveryPath + '/' + zkBrokerName, false);
-    return Lists.transform(
-      brokers, new Function<String, JsonValues>() {
-        @Override
-        public JsonValues apply(String input) {
-          return JsonValues.of(Utils.toMap(input), "host", "name", "regTime", "serviceType");
-        }
-      }
-    );
-  }
-
-  public List<JsonValues> getRealtimes() {
-    List<Map<String, Object>> nodes = ZkUtils.getZKChildContentAsMap(
-      zkRootPath + dataServingHostAnnPath,
-      zkInfoCompress
-    );
-    List<JsonValues> realtimeNodes = Lists.newArrayList();
+    List<Map<String, Object>> nodes = service.getDataServers();
+    List<JsonValues> typeNodes = Lists.newArrayList();
     for (Map<String, Object> node : nodes) {
-      if ("realtime".equals(node.get("type"))) {
-        realtimeNodes.add(JsonValues.of(node, "type", "host", "maxSize", "tier", "priority"));
+      if (type.equals(node.get("type"))) {
+        node.put("used", (Double) node.get("currSize") / (Double) node.get("maxSize"));
+        typeNodes.add(JsonValues.of(node, "type", "host", "maxSize", "currSize", "used", "tier", "priority"));
       }
     }
-    return realtimeNodes;
+    return typeNodes;
   }
 
-  public List<JsonValues> getHistoricals() {
-    List<Map<String, Object>> nodes = ZkUtils.getZKChildContentAsMap(
-      zkRootPath + dataServingHostAnnPath,
-      zkInfoCompress
-    );
-    Results results = Resources.influxDB.query(
-      Config.config.influxdb.influxdbDatabase,
-      "select last(totalUsedPercent) as totalUsedPercent from druid_server_segment group by host"
-    );
-
-    List<JsonValues> realtimeNodes = Lists.newArrayList();
-    for (Map<String, Object> node : nodes) {
-      if (!"historical".equals(node.get("type"))) {
-        continue;
-      }
-      Series row = results.getFirstResSeriesWith(ImmutableMap.of("host", (String) node.get("host")));
-      if (row != null) {
-        node.put("used", row.indexedValues().get(0).get("totalUsedPercent"));
-      }
-
-      realtimeNodes.add(JsonValues.of(node, "type", "host", "maxSize", "used", "tier", "priority"));
-    }
-    return realtimeNodes;
+  public List<JsonValues> getRealtimeNodes() {
+    return getDataServiceNodes("realtime");
   }
 
-  public List<JsonValues> getMiddleManagers() {
-    if (overlordService == null) {
+  public List<JsonValues> getHistoricalNodes() {
+    return getDataServiceNodes("historical");
+  }
+
+  public List<JsonValues> getMiddleManagerNodes() {
+    DruidService.OverlordService service = overlordService.getService();
+    if (service == null) {
+      log.warn("overlord service not found!");
       return Collections.emptyList();
     }
     return Lists.transform(
-      overlordService.getWorkers(), new Function<MiddleManager, JsonValues>() {
+      service.getWorkers(), new Function<DruidService.MiddleManager, JsonValues>() {
         @Override
-        public JsonValues apply(MiddleManager input) {
+        public JsonValues apply(DruidService.MiddleManager input) {
           return input.toJsonValues();
         }
       }
     );
   }
 
-  public List<DruidNode> getCoordinators() {
-    return getNodes(zkRootPath + coordinatorHostPath, zkDiscoveryPath + '/' + zkCoordinatorName);
+  public List<AnnounceNode> getBrokerNodes() {
+    return getAnnounceNodes(zkBrokerName, null);
   }
 
-  public List<DruidNode> getOverlords() {
-    return getNodes(zkRootPath + overlordHostPath, zkDiscoveryPath + '/' + zkOverlordName);
+  public List<AnnounceNode> getCoordinatorNodes() {
+    return getAnnounceNodes(zkCoordinatorName, zkRootPath + coordinatorLeaderElectionPath);
   }
 
+  public List<AnnounceNode> getOverlordNodes() {
+    return getAnnounceNodes(zkOverlordName, zkRootPath + overlordLeaderElectionPath);
+  }
 
-  private List<DruidNode> getNodes(String nodePath, String masterPath) {
-    List<String> hosts = ZkUtils.getZKChildContentOf(nodePath, true);
-    DruidNode masterNode = getMasterNode(masterPath);
-    if (masterNode == null) {
-      return Collections.emptyList();
+  private List<AnnounceNode> getAnnounceNodes(String serviceName, String leaderElectionPath) {
+    List<AnnounceNode> nodes = Lists.transform(
+      ZkUtils.getZKChildrenContent(zkDiscoveryPath + "/" + serviceName, false), new Function<String, AnnounceNode>() {
+        @Override
+        public AnnounceNode apply(String input) {
+          Map<String, Object> m = Utils.toMap(input);
+          AnnounceNode node = new AnnounceNode();
+          node.host = (String) m.get("address") + ":" + (Integer) m.get("port");
+          node.name = (String) m.get("name");
+          node.role = "-";
+          node.regTime = new DateTime((Long) m.get("registrationTimeUTC")).toString();
+          node.serviceType = (String) m.get("serviceType");
+          return node;
+        }
+      }
+    );
+    String leaderHost = null;
+    List<String> waitingHosts = Collections.emptyList();
+    if (leaderElectionPath != null) {
+      leaderHost = ZkUtils.getLeaderContent(leaderElectionPath);
+      waitingHosts = ZkUtils.getZKChildrenContent(leaderElectionPath, false);
     }
-    String masterHost = masterNode.address + ":" + masterNode.port;
-    List<DruidNode> nodes = Lists.newArrayList();
-    nodes.add(masterNode);
-    for (String host : hosts) {
-      if (!StringUtils.equals(host, masterHost)) {
-        DruidNode node = new DruidNode();
-        node.address = host.split(":")[0];
-        node.port = Integer.parseInt(host.split(":")[1]);
-        node.name = "unknown";
-        node.role = "backup";
+
+    Map<String, AnnounceNode> nodeMap = Maps.newHashMap();
+    for (AnnounceNode node : nodes) {
+      if (node.host.equals(leaderHost)) {
+        node.role = "leader";
+      }
+      nodeMap.put(node.host, node);
+    }
+
+    // Backup nodes won't announce themseleves until them got a chance to be leader,
+    // we also need to put them in.
+    for (String host : waitingHosts) {
+      if (!nodeMap.containsKey(host)) {
+        AnnounceNode node = new AnnounceNode();
+        node.host = host;
+        node.name = serviceName;
         node.regTime = "unknown";
+        node.role = "-";
         node.serviceType = "unknown";
-        nodes.add(node);
+        nodeMap.put(host, node);
       }
     }
-    return nodes;
+    return Lists.newArrayList(nodeMap.values());
   }
 
-  private DruidNode getMasterNode(String masterPath) {
-    List<String> masterStr = ZkUtils.getZKChildContentOf(masterPath, false);
-    if (masterStr == null || masterStr.size() == 0) {
-      return null;
+  public static class MetricsParam {
+    public String from;
+    public String to;
+    public DateTime fromDateTime;
+    public DateTime toDateTime;
+    public List<String> metrics;
+    public List<TagValue> tagValues;
+    public boolean debug;
+  }
+
+  public static class Result<T> {
+    public T res;
+    public boolean suc;
+    public Object debugMsg;
+
+    public Result(T res, boolean suc, Object debugMsg) {
+      this.res = res;
+      this.suc = suc;
+      this.debugMsg = debugMsg;
     }
-    DruidNode node = Utils.toObject(masterStr.get(0), DruidNode.class);
-    node.regTime = new DateTime(node.registrationTimeUTC).toString();
-    node.role = "master";
-    return node;
   }
 
-  public DruidNode getMasterOverlord() {
-    return getMasterNode(zkDiscoveryPath + '/' + zkOverlordName);
+  public Result<List<JsonValues>> getTrendData(MetricsParam param) {
+    List<TagValue> nullCheck = Lists.transform(
+      param.metrics, new Function<String, TagValue>() {
+        @Override
+        public TagValue apply(String input) {
+          return new TagValue(input, TagValue.GreaterEqual, 0);
+        }
+      }
+    );
+    String fromStr = param.fromDateTime.withZone(DateTimeZone.UTC).toString();
+    String toStr = param.toDateTime.withZone(DateTimeZone.UTC).toString();
+    List<TagValue> timeLimit = ImmutableList.of(
+      new TagValue("time", TagValue.GreaterEqual, fromStr),
+      new TagValue("time", TagValue.LessEqaul, toStr)
+    );
+    String selects = Joiner.on(",").join(param.metrics);
+    String where = Joiner.on(" and ").join(
+      Iterators.transform(
+        Iterators.concat(param.tagValues.iterator(), nullCheck.iterator(), timeLimit.iterator()),
+        new Function<TagValue, String>() {
+          @Override
+          public String apply(TagValue input) {
+            return "(" + input.toSql() + ")";
+          }
+        }
+      )
+    );
+
+    String sql = String.format(
+      "select %s from %s where %s ",
+      selects,
+      EmitMetricsAnalyzer.tableName,
+      where
+    );
+
+    System.out.println(sql);
+
+    Results results = Resources.influxDB.query(
+      Config.config.influxdb.influxdbDatabase,
+      sql
+    );
+    Series series = results.getFirstSeries();
+
+    Object debugMsg = param.debug ? sql : null;
+    List<JsonValues> res;
+    if (series == null) {
+      res = Collections.emptyList();
+    } else {
+      res = Lists.transform(
+        series.indexedValues(), new Function<Map<String, Object>, JsonValues>() {
+          @Override
+          public JsonValues apply(Map<String, Object> row) {
+            return JsonValues.of(row);
+          }
+        }
+      );
+    }
+    return new Result<List<JsonValues>>(res, true, debugMsg);
   }
 
-  public DruidNode getMasterCoodinator() {
-    return getMasterNode(zkDiscoveryPath + '/' + zkCoordinatorName);
+  public Result<JsonValues> getLatestData(MetricsParam param) {
+    DateTime now = new DateTime();
+    param.fromDateTime = now.minusMinutes(5);
+    param.toDateTime = now;
+    Result<List<JsonValues>> result = getTrendData(param);
+    if (result.res.size() > 0) {
+      return new Result<JsonValues>(result.res.get(0), true, result.debugMsg);
+    } else {
+      return new Result<JsonValues>(null, true, result.debugMsg);
+    }
   }
 
   public static void main(String[] args) throws Exception {
@@ -174,12 +262,34 @@ public class DruidInfos {
     DruidInfos infos = Resources.druidInfos;
     ObjectMapper om = Resources.jsonMapper;
 
-    System.out.println("realtime: " + om.writeValueAsString(infos.getRealtimes()));
-    System.out.println("broker: " + om.writeValueAsString(infos.getBrokers()));
-    System.out.println("historical: " + om.writeValueAsString(infos.getHistoricals()));
-    System.out.println("middle manager: " + om.writeValueAsString(infos.getMiddleManagers()));
-    System.out.println("coodinator: " + om.writeValueAsString(infos.getCoordinators()));
-    System.out.println("overlord: " + om.writeValueAsString(infos.getOverlords()));
+    System.out.println("realtime: " + om.writeValueAsString(infos.getRealtimeNodes()));
+    System.out.println("broker: " + om.writeValueAsString(infos.getBrokerNodes()));
+    System.out.println("historical: " + om.writeValueAsString(infos.getHistoricalNodes()));
+    System.out.println("middle manager: " + om.writeValueAsString(infos.getMiddleManagerNodes()));
+    System.out.println("coodinator: " + om.writeValueAsString(infos.getCoordinatorNodes()));
+    System.out.println("overlord: " + om.writeValueAsString(infos.getOverlordNodes()));
+
+    MetricsParam param = new MetricsParam();
+    param.toDateTime = new DateTime();
+    param.fromDateTime = param.toDateTime.minusMinutes(10);
+    param.metrics = ImmutableList.of(
+      "events_processed",
+      "events_thrownAway",
+      "events_unparseable"
+    );
+    param.tagValues = ImmutableList.of(
+      new TagValue(
+        "host",
+        TagValue.In,
+        ImmutableList.of(
+          "192.168.10.51:8001",
+          "192.168.10.52:8001"
+        )
+      )
+    );
+
+    System.out.println("trendData: " + om.writeValueAsString(infos.getTrendData(param)));
+    System.out.println("latestData: " + om.writeValueAsString(infos.getLatestData(param)));
 
     Resources.close();
   }

@@ -1,7 +1,11 @@
 package com.sf.monitor.utils;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Pair<K, V> {
+  @JsonProperty("key")
   public K k;
+  @JsonProperty("value")
   public V v;
 
   public Pair(K k, V v) {

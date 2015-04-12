@@ -14,6 +14,10 @@ import kafka.utils.ZKStringSerializer;
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.exception.ZkMarshallingError;
 import org.I0Itec.zkclient.serialize.ZkSerializer;
+import org.apache.commons.io.IOUtils;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.retry.ExponentialBackoffRetry;
 
 public class Resources {
   private static final Logger log = new Logger(Resources.class);
@@ -40,7 +44,7 @@ public class Resources {
     }
   };
 
-  public static ZkClient zkClient;
+  public static CuratorFramework curator;
   public static KafkaInfos kafkaInfos;
   public static DruidInfos druidInfos;
   public static ZookeeperHosts zkHosts;
@@ -57,9 +61,14 @@ public class Resources {
 
   public static void init() {
     try {
-      Config.ZKConfig config = Config.config.zookeeper;
-      zkClient = new ZkClient(config.addrs, 30000, config.connectionTimeout, zkSerializer);
-      kafkaInfos = new KafkaInfos(zkClient);
+      Config.CuratorConfig zkConfig = Config.config.zookeeper;
+      curator = CuratorFrameworkFactory
+        .builder()
+        .connectString(zkConfig.addrs)
+        .retryPolicy(new ExponentialBackoffRetry(zkConfig.baseSleepTimeMs, zkConfig.maxRetries, zkConfig.maxSleepMs))
+        .build();
+      curator.start();
+      kafkaInfos = new KafkaInfos(new ZkClient(zkConfig.addrs, 30000, zkConfig.connectionTimeout, zkSerializer));
       druidInfos = Config.config.druidInfos;
       zkHosts = new ZookeeperHosts(Config.config.zookeeper.addrs);
       druidInfos.init();
@@ -77,11 +86,7 @@ public class Resources {
   }
 
   public static void close() {
-    if (zkClient != null) {
-      zkClient.close();
-    }
-    if (kafkaInfos != null) {
-      kafkaInfos.close();
-    }
+    IOUtils.closeQuietly(kafkaInfos);
+    IOUtils.closeQuietly(curator);
   }
 }
