@@ -1,5 +1,6 @@
 package com.sf.monitor;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.ImmutableList;
@@ -13,6 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Config {
   private static final Logger log = new Logger(Config.class);
@@ -78,6 +81,21 @@ public class Config {
     public long warnDefaultLag = 100000;
     @JsonProperty
     public Map<String, Long> warnLagSpec;
+    @JsonProperty
+    public Pattern ignoreConsumerRegex;
+
+    @JsonCreator
+    public KafkaConfig(
+      @JsonProperty("warning") boolean warning,
+      @JsonProperty("warnDefaultLag") long warnDefaultLag,
+      @JsonProperty("warnLagSpec") Map<String, Long> warnLagSpec,
+      @JsonProperty("ignoreConsumerRegex") String ignoreConsumerRegex
+    ) {
+      this.warning = warning;
+      this.warnDefaultLag = warnDefaultLag;
+      this.warnLagSpec = warnLagSpec;
+      this.ignoreConsumerRegex = Pattern.compile(ignoreConsumerRegex);
+    }
 
     public long getWarnLag(String topic, String consumer) {
       if (warnLagSpec == null) {
@@ -85,6 +103,17 @@ public class Config {
       }
       Long lag = warnLagSpec.get(topic + "|" + consumer);
       return lag != null ? lag : warnDefaultLag;
+    }
+
+    public boolean shouldAlarm(String topic, String consumer, long lag) {
+      if (!warning) {
+        return false;
+      }
+      Matcher matcher = ignoreConsumerRegex.matcher(consumer);
+      if (matcher.matches()) {
+        return false;
+      }
+      return lag > getWarnLag(topic, consumer);
     }
   }
 

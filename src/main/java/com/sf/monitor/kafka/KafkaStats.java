@@ -54,17 +54,16 @@ public class KafkaStats {
           points.add(createOffsetPoint(topic, group, -1, totalInfo.totalSize, totalInfo.totalOffset));
 
           long lag = totalInfo.totalSize - totalInfo.totalOffset;
-          long threshold = Config.config.kafka.getWarnLag(topic, group);
-          if (Config.config.kafka.warning && lag > threshold) {
+          if (Config.config.kafka.shouldAlarm(topic, group, lag)) {
             String warnMsg = String.format(
               "topic:[%s],consumer:[%s] - consum lag: current[%d],threshold[%d], topic lag too long!",
               topic,
               group,
               lag,
-              threshold
+              Config.config.kafka.getWarnLag(topic, group)
             );
             Utils.sendNotify("kafka", warnMsg);
-            log.error("kafka - " + warnMsg);
+            log.warn("kafka - " + warnMsg);
           }
         }
       }

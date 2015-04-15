@@ -25,14 +25,16 @@
         "warnDefaultLag": 100,
         "warnLagSpec": {
             "test|dsp_druid_ingester_0": 200
-        }
+        },
+        "@comment": "set ignoreConsumerRegex to ignore sending warning on those test consumers",
+        "ignoreConsumerRegex": "^console-consumer-.+$"
     },
     "notify": {
         "doSend": false,
         "appName": "myApp",
         "url": "http://notify.com",
-        "emails":["test@test.com"],
-        "phones":[]
+        "emails": ["test@test.com"],
+        "phones": []
     },
     "fetchers": {
         "druidFetcher": {
