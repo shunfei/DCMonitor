@@ -83,18 +83,22 @@ public class Config {
     public Map<String, Long> warnLagSpec;
     @JsonProperty
     public Pattern ignoreConsumerRegex;
+    @JsonProperty
+    public String stormKafkaRoot;
 
     @JsonCreator
     public KafkaConfig(
       @JsonProperty("warning") boolean warning,
       @JsonProperty("warnDefaultLag") long warnDefaultLag,
       @JsonProperty("warnLagSpec") Map<String, Long> warnLagSpec,
-      @JsonProperty("ignoreConsumerRegex") String ignoreConsumerRegex
+      @JsonProperty("ignoreConsumerRegex") String ignoreConsumerRegex,
+      @JsonProperty("stormKafka") String stormKafkaRoot
     ) {
       this.warning = warning;
       this.warnDefaultLag = warnDefaultLag;
       this.warnLagSpec = warnLagSpec;
       this.ignoreConsumerRegex = Pattern.compile(ignoreConsumerRegex);
+      this.stormKafkaRoot = stormKafkaRoot;
     }
 
     public long getWarnLag(String topic, String consumer) {

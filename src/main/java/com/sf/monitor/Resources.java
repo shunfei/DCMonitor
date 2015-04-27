@@ -17,6 +17,7 @@ import org.I0Itec.zkclient.serialize.ZkSerializer;
 import org.apache.commons.io.IOUtils;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.imps.GzipCompressionProvider;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 
 public class Resources {
@@ -66,6 +67,7 @@ public class Resources {
         .builder()
         .connectString(zkConfig.addrs)
         .retryPolicy(new ExponentialBackoffRetry(zkConfig.baseSleepTimeMs, zkConfig.maxRetries, zkConfig.maxSleepMs))
+        .compressionProvider(new GzipCompressionProvider())
         .build();
       curator.start();
       kafkaInfos = new KafkaInfos(new ZkClient(zkConfig.addrs, 30000, zkConfig.connectionTimeout, zkSerializer));

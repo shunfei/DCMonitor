@@ -3,7 +3,7 @@ package com.sf.monitor.druid;
 import com.google.common.collect.Maps;
 import com.sf.monitor.utils.HttpRequest;
 import com.sf.monitor.utils.JsonValues;
-import com.sf.monitor.utils.ZkUtils;
+import com.sf.monitor.utils.DCMZkUtils;
 import org.apache.commons.lang.StringUtils;
 import retrofit.http.GET;
 
@@ -24,7 +24,7 @@ public class DruidService<T> {
   }
 
   public T getService() {
-    String host = ZkUtils.getLeaderContent(leaderElectionPath);
+    String host = DCMZkUtils.getLeaderContent(leaderElectionPath);
     if (StringUtils.isEmpty(host)) {
       return null;
     }

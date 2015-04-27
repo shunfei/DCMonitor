@@ -16,7 +16,7 @@ import com.sf.monitor.Resources;
 import com.sf.monitor.utils.JsonValues;
 import com.sf.monitor.utils.TagValue;
 import com.sf.monitor.utils.Utils;
-import com.sf.monitor.utils.ZkUtils;
+import com.sf.monitor.utils.DCMZkUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -117,13 +117,13 @@ public class DruidInfos {
 
   private List<AnnounceNode> getAnnounceNodes(String serviceName, String leaderElectionPath) {
     List<AnnounceNode> nodes = Lists.transform(
-      ZkUtils.getZKChildrenContent(zkDiscoveryPath + "/" + serviceName, false), new Function<String, AnnounceNode>() {
+      DCMZkUtils.getZKChildrenContent(zkDiscoveryPath + "/" + serviceName, false), new Function<String, AnnounceNode>() {
         @Override
         public AnnounceNode apply(String input) {
           Map<String, Object> m = Utils.toMap(input);
           AnnounceNode node = new AnnounceNode();
           node.host = (String) m.get("address") + ":" + (Integer) m.get("port");
-          node.name = (String) m.get("name");
+          node.name = (String) m.get("topoName");
           node.role = "-";
           node.regTime = new DateTime((Long) m.get("registrationTimeUTC")).toString();
           node.serviceType = (String) m.get("serviceType");
@@ -134,8 +134,8 @@ public class DruidInfos {
     String leaderHost = null;
     List<String> waitingHosts = Collections.emptyList();
     if (leaderElectionPath != null) {
-      leaderHost = ZkUtils.getLeaderContent(leaderElectionPath);
-      waitingHosts = ZkUtils.getZKChildrenContent(leaderElectionPath, false);
+      leaderHost = DCMZkUtils.getLeaderContent(leaderElectionPath);
+      waitingHosts = DCMZkUtils.getZKChildrenContent(leaderElectionPath, false);
     }
 
     Map<String, AnnounceNode> nodeMap = Maps.newHashMap();

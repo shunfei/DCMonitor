@@ -2,7 +2,6 @@ package com.sf.monitor.kafka;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
@@ -20,51 +19,21 @@ public class KafkaStats {
   public static List<Point> fetchTrendInfos() {
     List<Point> points = Lists.newArrayList();
 
-    fetchOffsets(points);
+    fetchKafkaPartitionInfos(points);
+    fetchStormKafkaPartitionInfos(points);
 
     return points;
   }
 
-  private static void fetchOffsets(List<Point> points) {
+  private static void fetchKafkaPartitionInfos(List<Point> points) {
     try {
       KafkaInfos.ActiveTopics activeInfos = Resources.kafkaInfos.getActiveTopicMap();
       Map<String, Set<String>> groupToTopic = activeInfos.consumerToTopic;
       for (Map.Entry<String, Set<String>> e : groupToTopic.entrySet()) {
         String group = e.getKey();
         Set<String> topics = e.getValue();
-        List<KafkaInfos.OffsetInfo> offsetInfos = Resources.kafkaInfos.getConsumerInfos(group, topics);
-
-        Map<String, TotalInfo> totalInfos = Maps.newHashMap();
-
-        for (KafkaInfos.OffsetInfo info : offsetInfos) {
-          points.add(createOffsetPoint(info.topic, info.group, info.partition, info.logSize, info.offset));
-
-          TotalInfo totalInfo = totalInfos.get(info.topic);
-          if (totalInfo == null) {
-            totalInfo = new TotalInfo();
-          }
-          totalInfo.totalSize += info.logSize;
-          totalInfo.totalOffset += info.offset;
-          totalInfos.put(info.topic, totalInfo);
-        }
-
-        for (Map.Entry<String, TotalInfo> te : totalInfos.entrySet()) {
-          String topic = te.getKey();
-          TotalInfo totalInfo = te.getValue();
-          points.add(createOffsetPoint(topic, group, -1, totalInfo.totalSize, totalInfo.totalOffset));
-
-          long lag = totalInfo.totalSize - totalInfo.totalOffset;
-          if (Config.config.kafka.shouldAlarm(topic, group, lag)) {
-            String warnMsg = String.format(
-              "topic:[%s],consumer:[%s] - consum lag: current[%d],threshold[%d], topic lag too long!",
-              topic,
-              group,
-              lag,
-              Config.config.kafka.getWarnLag(topic, group)
-            );
-            Utils.sendNotify("kafka", warnMsg);
-            log.warn("kafka - " + warnMsg);
-          }
+        for (String topic : topics) {
+          parsePartitionInfos(topic, group, Resources.kafkaInfos.getPartitionInfos(group, topic), points);
         }
       }
     } catch (Exception e) {
@@ -72,13 +41,60 @@ public class KafkaStats {
     }
   }
 
-  private static Point createOffsetPoint(String topic, String consumer, int partition, long logSize, long offset) {
+  private static void fetchStormKafkaPartitionInfos(List<Point> points) {
+    try {
+      List<KafkaInfos.StormKafkaClientInfo> infos = Resources.kafkaInfos.getStormKafkaClients();
+      for (KafkaInfos.StormKafkaClientInfo info : infos) {
+        parsePartitionInfos(
+          info.topic,
+          info.clientId,
+          Resources.kafkaInfos.getStormkafkaPartitionInfos(info.clientId),
+          points
+        );
+      }
+    } catch (Exception e) {
+      log.error(e, "");
+    }
+  }
+
+  private static void parsePartitionInfos(
+    String topic,
+    String consumer,
+    List<KafkaInfos.PartitionInfo> infos,
+    List<Point> points
+  ) {
+    long totalSize = 0;
+    long totalOffset = 0;
+    for (KafkaInfos.PartitionInfo info : infos) {
+      totalSize += info.logSize;
+      totalOffset += info.offset;
+
+      points.add(createPoint(info.topic, info.group, info.partition, info.logSize, info.offset));
+    }
+
+    points.add(createPoint(topic, consumer, -1, totalSize, totalOffset));
+
+    long lag = totalSize - totalOffset;
+    if (Config.config.kafka.shouldAlarm(topic, consumer, lag)) {
+      String warnMsg = String.format(
+        "topic:[%s],consumer:[%s] - consum lag: current[%d],threshold[%d], topic lag too long!",
+        topic,
+        consumer,
+        lag,
+        Config.config.kafka.getWarnLag(topic, consumer)
+      );
+      Utils.sendNotify("kafka", warnMsg);
+      log.warn("kafka - " + warnMsg);
+    }
+  }
+
+  private static Point createPoint(String topic, String consumer, int partition, long logSize, long offset) {
     Point p = new Point();
-    p.name = "kafka_consume";
+    p.name = tableName;
     p.fields = ImmutableMap.<String, Object>of(
       "size",
       logSize,
-      "offs", // Stupid influxdb cannot use key word, e.g. offset, as field name!
+      "offs", // Stupid influxdb cannot use key word, e.g. offset, as field topoName!
       offset,
       "lag",
       logSize - offset

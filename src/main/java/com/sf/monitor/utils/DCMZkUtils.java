@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
-public class ZkUtils {
-  private static final Logger log = new Logger(ZkUtils.class);
+public class DCMZkUtils {
+  private static final Logger log = new Logger(DCMZkUtils.class);
 
   public static String getLeader(String electionPath) {
      List<String> children = getZKChildren(electionPath);
