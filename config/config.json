@@ -28,7 +28,7 @@
         },
         "@comment": "set ignoreConsumerRegex to ignore sending warning on those test consumers",
         "ignoreConsumerRegex": "^console-consumer-.+$",
-        "stormKafkaRoot": "/clicki_track_storm"
+        "stormKafkaRoot": "/storm_kafka"
     },
     "notify": {
         "doSend": false,
