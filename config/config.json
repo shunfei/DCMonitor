@@ -27,7 +27,8 @@
             "test|dsp_druid_ingester_0": 200
         },
         "@comment": "set ignoreConsumerRegex to ignore sending warning on those test consumers",
-        "ignoreConsumerRegex": "^console-consumer-.+$"
+        "ignoreConsumerRegex": "^console-consumer-.+$",
+        "stormKafkaRoot": "/clicki_track_storm"
     },
     "notify": {
         "doSend": false,

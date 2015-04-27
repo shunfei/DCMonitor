@@ -1,6 +1,8 @@
+
 package com.sf.monitor.kafka;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
@@ -11,6 +13,7 @@ import com.sf.influxdb.dto.Series;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
+import com.sf.monitor.utils.DCMZkUtils;
 import kafka.api.OffsetRequest;
 import kafka.api.OffsetResponse;
 import kafka.api.PartitionOffsetRequestInfo;
@@ -21,6 +24,7 @@ import kafka.common.TopicAndPartition;
 import kafka.consumer.SimpleConsumer;
 import kafka.utils.ZkUtils;
 import org.I0Itec.zkclient.ZkClient;
+import org.apache.commons.lang.StringUtils;
 import org.apache.zookeeper.data.Stat;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -37,7 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class KafkaInfos implements Closeable{
+public class KafkaInfos implements Closeable {
   private static final Logger log = new Logger(KafkaInfos.class);
 
   private ZkClient zkClient;
@@ -47,11 +51,11 @@ public class KafkaInfos implements Closeable{
     this.zkClient = zkClient;
   }
 
-  private SimpleConsumer getConsumer(Integer bid) {
+  private SimpleConsumer createSimpleConsumer(Integer brokerId) {
     try {
-      String brokerInfo = zkClient.readData(ZkUtils.BrokerIdsPath() + "/" + bid, true);
+      String brokerInfo = zkClient.readData(ZkUtils.BrokerIdsPath() + "/" + brokerId, true);
       if (brokerInfo == null) {
-        log.error("Broker id %d does not exist", bid);
+        log.error("Broker clientId %d does not exist", brokerId);
         return null;
       }
       Map<String, Object> map = Resources.jsonMapper.readValue(
@@ -62,12 +66,39 @@ public class KafkaInfos implements Closeable{
       Integer port = (Integer) map.get("port");
       return new SimpleConsumer(host, port, 10000, 100000, "KafkaConsumerInfos");
     } catch (Exception e) {
-      log.error(e, "Could not parse broker[%d] info", bid);
+      log.error(e, "Could not parse broker[%d] info", brokerId);
       return null;
     }
   }
 
-  private OffsetInfo processPartition(String group, String topic, int pid) {
+  private long getTopicLogSize(String topic, int pid) {
+    Option<Object> o = ZkUtils.getLeaderForPartition(zkClient, topic, pid);
+    if (o.get() == null) {
+      log.error("No broker for partition %s - %s", topic, pid);
+    }
+    Integer leaderId = Int.unbox(o.get());
+    SimpleConsumer consumer = consumerMap.get(leaderId);
+    if (consumer == null) {
+      consumer = createSimpleConsumer(leaderId);
+    }
+    // createSimpleConsumer may fail.
+    if (consumer == null) {
+      return 0;
+    }
+    consumerMap.put(leaderId, consumer);
+    TopicAndPartition topicAndPartition = new TopicAndPartition(topic, pid);
+    PartitionOffsetRequestInfo requestInfo = new PartitionOffsetRequestInfo(OffsetRequest.LatestTime(), 1);
+    OffsetRequest request = new OffsetRequest(
+      new Map1<TopicAndPartition, PartitionOffsetRequestInfo>(topicAndPartition, requestInfo),
+      0,
+      Request.OrdinaryConsumerId()
+    );
+    OffsetResponse response = consumer.getOffsetsBefore(request);
+    PartitionOffsetsResponse offsetsResponse = response.partitionErrorAndOffsets().get(topicAndPartition).get();
+    return scala.Long.unbox(offsetsResponse.offsets().head());
+  }
+
+  private PartitionInfo getPartitionInfo(String group, String topic, int pid) {
     try {
       Stat stat = new Stat();
       String offsetStr = zkClient.readData(
@@ -93,32 +124,9 @@ public class KafkaInfos implements Closeable{
         ), true
       );
 
-      Option<Object> o = ZkUtils.getLeaderForPartition(zkClient, topic, pid);
-      if (o.get() == null) {
-        log.error("No broker for partition %s - %s", topic, pid);
-      }
-      Integer leaderId = Int.unbox(o.get());
-      SimpleConsumer consumer = consumerMap.get(leaderId);
-      if (consumer == null) {
-        consumer = getConsumer(leaderId);
-      }
-      // getConsumer may fail.
-      if (consumer == null) {
-        return null;
-      }
-      consumerMap.put(leaderId, consumer);
-      TopicAndPartition topicAndPartition = new TopicAndPartition(topic, pid);
-      PartitionOffsetRequestInfo requestInfo = new PartitionOffsetRequestInfo(OffsetRequest.LatestTime(), 1);
-      OffsetRequest request = new OffsetRequest(
-        new Map1<TopicAndPartition, PartitionOffsetRequestInfo>(topicAndPartition, requestInfo),
-        0,
-        Request.OrdinaryConsumerId()
-      );
-      OffsetResponse response = consumer.getOffsetsBefore(request);
-      PartitionOffsetsResponse offsetsResponse = response.partitionErrorAndOffsets().get(topicAndPartition).get();
-      Long logSize = scala.Long.unbox(offsetsResponse.offsets().head());
+      long logSize = getTopicLogSize(topic, pid);
 
-      OffsetInfo info = new OffsetInfo();
+      PartitionInfo info = new PartitionInfo();
       info.group = group;
       info.topic = topic;
       info.partition = pid;
@@ -130,6 +138,7 @@ public class KafkaInfos implements Closeable{
       info.modified = modified;
       info.creationTime = creation.toString();
       info.modifiedTime = modified.toString();
+
       return info;
     } catch (Exception e) {
       log.error(e, "Could not parse partition info. group: [%s] topic: [%s]", group, topic);
@@ -137,16 +146,76 @@ public class KafkaInfos implements Closeable{
     }
   }
 
-  private List<OffsetInfo> processTopic(String group, String topic) {
+  private PartitionInfo getStormKafkaPartitionInfo(final String clientId, final int pid) {
+    try {
+      final String zkRoot = Config.config.kafka.stormKafkaRoot;
+      if (StringUtils.isEmpty(zkRoot)) {
+        return null;
+      }
+      Stat stat = new Stat();
+      String msg = zkClient.readData(
+        String.format(
+          "%s/%s/partition_%d",
+          zkRoot,
+          clientId,
+          pid
+        ), stat
+      );
+      StormkafkaPartitionInfo pInfo = Resources.jsonMapper.readValue(msg, StormkafkaPartitionInfo.class);
+
+      Long offset = pInfo.offset;
+      DateTime creation = new DateTime(stat.getCtime());
+      DateTime modified = new DateTime(stat.getMtime());
+
+      long logSize = getTopicLogSize(pInfo.topic, pid);
+
+      PartitionInfo info = new PartitionInfo();
+      info.group = clientId;
+      info.topic = pInfo.topic;
+      info.partition = pid;
+      info.offset = offset;
+      info.logSize = logSize;
+      info.lag = logSize - offset;
+      info.owner = pInfo.topology.topoName + "|" + pInfo.topology.workerId;
+      info.creation = creation;
+      info.modified = modified;
+      info.creationTime = creation.toString();
+      info.modifiedTime = modified.toString();
+
+      return info;
+    } catch (Exception e) {
+      log.error(e, "Could not parse storm kafka partition info. clientId: [%s] topic: [%d]", clientId, pid);
+      return null;
+    }
+  }
+
+  public List<PartitionInfo> getStormkafkaPartitionInfos(final String clientId) {
+    final String zkRoot = Config.config.kafka.stormKafkaRoot;
+    if (StringUtils.isEmpty(zkRoot)) {
+      return null;
+    }
+    List<String> partitions = DCMZkUtils.getZKChildren(String.format("%s/%s", zkRoot, clientId));
+    return Lists.transform(
+      partitions, new Function<String, PartitionInfo>() {
+        @Override
+        public PartitionInfo apply(String input) {
+          Integer partitionId = Integer.valueOf(input.split("_")[1]);
+          return getStormKafkaPartitionInfo(clientId, partitionId);
+        }
+      }
+    );
+  }
+
+  public List<PartitionInfo> getPartitionInfos(String group, String topic) {
     Seq<String> singleTopic = JavaConversions.asScalaBuffer(Collections.singletonList(topic)).toSeq();
     scala.collection.Map<String, Seq<Object>> pidMap = ZkUtils.getPartitionsForTopics(zkClient, singleTopic);
     Option<Seq<Object>> partitions = pidMap.get(topic);
     if (partitions.get() == null) {
       return Collections.emptyList();
     }
-    List<OffsetInfo> infos = Lists.newArrayList();
+    List<PartitionInfo> infos = Lists.newArrayList();
     for (Object o : JavaConversions.asJavaList(partitions.get())) {
-      OffsetInfo info = processPartition(group, topic, Int.unbox(o));
+      PartitionInfo info = getPartitionInfo(group, topic, Int.unbox(o));
       if (info != null) {
         infos.add(info);
       }
@@ -154,7 +223,7 @@ public class KafkaInfos implements Closeable{
     return infos;
   }
 
-  private List<BrokerInfo> brokerInfo() {
+  private List<BrokerInfo> getBrokerInfos() {
     List<BrokerInfo> infos = Lists.newArrayListWithExpectedSize(consumerMap.size());
     for (Map.Entry<Integer, SimpleConsumer> entry : consumerMap.entrySet()) {
       BrokerInfo info = new BrokerInfo();
@@ -162,28 +231,6 @@ public class KafkaInfos implements Closeable{
       info.host = entry.getValue().host();
       info.port = entry.getValue().port();
       infos.add(info);
-    }
-    return infos;
-  }
-
-  // Get the detail consumer information of given topics, if topics not specificed, i.e. null,
-  // operate on all topics.
-  public List<OffsetInfo> getConsumerInfos(String group, Set<String> topics) {
-    List<String> topicList = null;
-    if (topics != null && topics.size() > 0) {
-      topicList = Lists.newArrayList(topics);
-    } else {
-      try {
-        topicList = zkClient.getChildren(String.format("%s/%s/offsets", ZkUtils.ConsumersPath(), group));
-        topicList = topicList == null ? Collections.<String>emptyList() : topicList;
-      } catch (Exception e) {
-        return Collections.emptyList();
-      }
-    }
-    Collections.sort(topicList);
-    List<OffsetInfo> infos = Lists.newArrayListWithExpectedSize(topicList.size());
-    for (String topic : topicList) {
-      infos.addAll(processTopic(group, topic));
     }
     return infos;
   }
@@ -274,14 +321,39 @@ public class KafkaInfos implements Closeable{
     );
   }
 
+  public List<StormKafkaClientInfo> getStormKafkaClients() {
+    final String zkRoot = Config.config.kafka.stormKafkaRoot;
+    if (StringUtils.isEmpty(zkRoot)) {
+      return Collections.emptyList();
+    }
+    List<String> ids = DCMZkUtils.getZKChildren(zkRoot);
+    return Lists.transform(
+      ids, new Function<String, StormKafkaClientInfo>() {
+        @Override
+        public StormKafkaClientInfo apply(String id) {
+          StormKafkaClientInfo it = new StormKafkaClientInfo();
+          it.clientId = id;
+          PartitionInfo info = getStormKafkaPartitionInfo(id, 0);
+          if (info == null) {
+            return it;
+          } else {
+            it.topic = info.topic;
+            return it;
+          }
+        }
+      }
+    );
+  }
+
   // 获取topic消费历史数据
-  public List<SimpleOffsetInfo> getTrendConsumeInfos(String consumer, String topic, DateTime from, DateTime to) {
+  public List<OffsetInfo> getTrendConsumeInfos(String consumer, String topic, DateTime from, DateTime to) {
     String fromStr = from.withZone(DateTimeZone.UTC).toString();
     String toStr = to.withZone(DateTimeZone.UTC).toString();
     String sql = String.format(
-      "select size, offs, lag from kafka_consume "
+      "select size, offs, lag from %s "
       + "where consumer='%s' and topic='%s' and partition='-1' and time >= '%s' and time <= '%s' "
       + "group by topic, consumer",
+      KafkaStats.tableName,
       consumer,
       topic,
       fromStr,
@@ -296,10 +368,10 @@ public class KafkaInfos implements Closeable{
       return Collections.emptyList();
     }
     return Lists.transform(
-      series.indexedValues(), new Function<Map<String, Object>, SimpleOffsetInfo>() {
+      series.indexedValues(), new Function<Map<String, Object>, OffsetInfo>() {
         @Override
-        public SimpleOffsetInfo apply(Map<String, Object> row) {
-          SimpleOffsetInfo info = new SimpleOffsetInfo();
+        public OffsetInfo apply(Map<String, Object> row) {
+          OffsetInfo info = new OffsetInfo();
           info.logSize = ((Double) row.get("size")).longValue();
           info.offset = ((Double) row.get("offs")).longValue();
           info.lag = ((Double) row.get("lag")).longValue();
@@ -329,7 +401,10 @@ public class KafkaInfos implements Closeable{
     public Map<String, Set<String>> consumerToTopic = Collections.emptyMap();
   }
 
-  public static class OffsetInfo {
+  public static class PartitionInfo {
+    /**
+     * kafka consumer group or storm kafka client clientId.
+     */
     public String group;
     public String topic;
     public Integer partition;
@@ -345,7 +420,7 @@ public class KafkaInfos implements Closeable{
     public DateTime modified;
   }
 
-  public static class SimpleOffsetInfo {
+  public static class OffsetInfo {
     @JsonIgnore
     public DateTime time;
     public String timeStr;
@@ -361,6 +436,27 @@ public class KafkaInfos implements Closeable{
     public Integer port;
   }
 
+  public static class StormKafkaClientInfo {
+    public String clientId;
+    public String topic;
+  }
+
+  public static class StormkafkaPartitionInfo {
+    public StormTopology topology;
+    public long offset;
+    public int partition;
+    public String topic;
+  }
+
+  public static class StormTopology {
+    @JsonProperty("id")
+    public String workerId;
+    @JsonProperty("name")
+    public String topoName;
+  }
+
+  //public static class StormKafka
+
   public static void main(String[] args) throws Exception {
     Config.init("config");
     Resources.init();
@@ -373,22 +469,48 @@ public class KafkaInfos implements Closeable{
       "getTopicConsumers: "
       + Resources.jsonMapper.writeValueAsString(checker.getTopicConsumers("clicki_stat_topic"))
     );
+    System.out.println("getCluster: " + Resources.jsonMapper.writeValueAsString(checker.getCluster()));
     System.out.println(
-      "getConsumerInfos: " + Resources.jsonMapper.writeValueAsString(
-        checker.getConsumerInfos("druid-real-time-node-bid", null)
+      "getPartitionInfo: " + Resources.jsonMapper.writeValueAsString(
+        checker.getPartitionInfo(
+          "ssp_mbv_druid_ingester_0",
+          "ssp_mbv_stat_topic",
+          0
+        )
       )
     );
-    System.out.println("getCluster: " + Resources.jsonMapper.writeValueAsString(checker.getCluster()));
+    System.out.println(
+      "getStormKafkaPartitionInfo: " + Resources.jsonMapper.writeValueAsString(
+        checker.getStormkafkaPartitionInfos(
+          "clicki_track_storm"
+        )
+      )
+    );
+    System.out.println(
+      "getStormKafkaClients: " + Resources.jsonMapper.writeValueAsString(
+        checker.getStormKafkaClients()
+      )
+    );
+    System.out.println(
+      "getStormkafkaPartitionInfos: " + Resources.jsonMapper.writeValueAsString(
+        checker.getStormkafkaPartitionInfos("clicki_track_storm")
+      )
+    );
+
+    System.out.println(
+      "fetchTrendInfos: " + Resources.jsonMapper.writeValueAsString(
+        KafkaStats.fetchTrendInfos()
+      )
+    );
 
     DateTime to = new DateTime();
-
     DateTime from = to.minus(new Period("PT3H"));
 
     System.out.println(
       "getTrendOffsetInfos: " + Resources.jsonMapper.writeValueAsString(
         checker.getTrendConsumeInfos(
-          "clicki_druid_ingester_0",
-          "clicki_stat_topic",
+          "clicki_track_storm",
+          "clicki_track_topic",
           from,
           to
         )
