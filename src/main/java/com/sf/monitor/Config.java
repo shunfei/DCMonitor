@@ -97,7 +97,9 @@ public class Config {
       this.warning = warning;
       this.warnDefaultLag = warnDefaultLag;
       this.warnLagSpec = warnLagSpec;
-      this.ignoreConsumerRegex = Pattern.compile(ignoreConsumerRegex);
+      if (ignoreConsumerRegex != null){
+        this.ignoreConsumerRegex = Pattern.compile(ignoreConsumerRegex);
+      }
       this.stormKafkaRoot = stormKafkaRoot;
     }
 
@@ -113,9 +115,11 @@ public class Config {
       if (!warning) {
         return false;
       }
-      Matcher matcher = ignoreConsumerRegex.matcher(consumer);
-      if (matcher.matches()) {
-        return false;
+      if (ignoreConsumerRegex != null) {
+        Matcher matcher = ignoreConsumerRegex.matcher(consumer);
+        if (matcher.matches()) {
+          return false;
+        }
       }
       return lag > getWarnLag(topic, consumer);
     }

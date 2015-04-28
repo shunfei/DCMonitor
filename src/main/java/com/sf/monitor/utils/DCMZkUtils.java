@@ -72,7 +72,7 @@ public class DCMZkUtils {
       List<String> list = Resources.curator.getChildren().forPath(path);
       return list == null ? Collections.<String>emptyList() : list;
     } catch (Exception e) {
-      log.error(e, "read children of [%s] from zookeeper failed!", path);
+      log.warn(e, "read children of [%s] from zookeeper failed!", path);
       return Collections.emptyList();
     }
   }
@@ -106,7 +106,7 @@ public class DCMZkUtils {
       }
       return new String(bytes.toByteArray(), StandardCharsets.UTF_8);
     } catch (Throwable e) {
-      log.debug(e, "try decompress failed.");
+      log.warn(e, "try decompress failed.");
       return new String(compressedData, StandardCharsets.UTF_8);
     }
   }

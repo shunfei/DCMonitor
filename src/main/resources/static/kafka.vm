@@ -21,14 +21,22 @@
 
                 </table>
             </div>
+        </div>
 
+        <div class="col-md-12">
             <div class="col-md-6">
-                <h4>Active Topic<a class="plus">-</a></h4>
+                <h4>Active Topics<a class="plus">-</a></h4>
                 <table id="kafka_active" class="m_table table table-bordered table-striped success">
 
                 </table>
             </div>
+            <div class="col-md-6">
+                <h4>Storm Kafka Clients<a class="plus">-</a></h4>
+                <table id="storm_kafka_client" class="m_table table table-bordered table-striped success">
+                </table>
+            </div>
         </div>
+
 
         <div class="col-md-12">
 

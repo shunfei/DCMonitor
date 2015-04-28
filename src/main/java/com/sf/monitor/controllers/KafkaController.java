@@ -107,11 +107,12 @@ public class KafkaController {
   }
 
   @RequestMapping("/topic/{topic}")
-  public String topicDetailHtml(@PathVariable String topic, String consumer, Map<String, Object> mp) {
+  public String topicDetailHtml(@PathVariable String topic, String consumer, String type, Map<String, Object> mp) {
     mp.put("topic", topic);
     mp.put("consumer", consumer);
     mp.put("period", period);
     mp.put("timeZoneOffsetHour", timeZoneOffsetHour);
+    mp.put("type", type);
     return "topic_consumer";
   }
 
@@ -138,11 +139,19 @@ public class KafkaController {
     return Resources.kafkaInfos.getTrendConsumeInfos(consumer, topic, fromDate, toDate);
   }
 
-  @RequestMapping("/consumerInfo")
+  @RequestMapping("/consumer_info")
   public
   @ResponseBody
   List<KafkaInfos.PartitionInfo> consumerInfos(final String topic, String consumer) {
     return Resources.kafkaInfos.getPartitionInfos(consumer, topic);
   }
+
+  @RequestMapping("/storm_kafka_consumer_info")
+  public
+  @ResponseBody
+  List<KafkaInfos.PartitionInfo> stormKafkaConsumerInfo(final String clientId) {
+    return Resources.kafkaInfos.getStormkafkaPartitionInfos(clientId);
+  }
+
 }
 

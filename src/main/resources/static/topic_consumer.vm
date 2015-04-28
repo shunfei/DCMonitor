@@ -13,7 +13,24 @@
     <script src="/js/highstock.js"></script>
     <script src="/js/kafka_topic.js"></script>
     <script src="/js/WdatePicker.js"></script>
-
+    <script >
+      var topic = '${topic}';
+      var consumer = '${consumer}';
+      if ('${type}' == "storm") {
+        $.post('/kafka/storm_kafka_consumer_info',{
+            'clientId' : consumer,
+        },function(data){
+            buildTable(data, $('#kfk_table'));
+        });
+      } else {
+        $.post('/kafka/consumer_info',{
+            'topic' : topic,
+            'consumer' : consumer
+        },function(data){
+            buildTable(data, $('#kfk_table'));
+        });
+      }
+    </script>
 </head>
 <body>
 

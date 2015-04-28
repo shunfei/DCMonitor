@@ -73,8 +73,9 @@ public class KafkaInfos implements Closeable {
 
   private long getTopicLogSize(String topic, int pid) {
     Option<Object> o = ZkUtils.getLeaderForPartition(zkClient, topic, pid);
-    if (o.get() == null) {
+    if (o.isEmpty() || o.get() == null) {
       log.error("No broker for partition %s - %s", topic, pid);
+      return 0;
     }
     Integer leaderId = Int.unbox(o.get());
     SimpleConsumer consumer = consumerMap.get(leaderId);
@@ -152,20 +153,34 @@ public class KafkaInfos implements Closeable {
       if (StringUtils.isEmpty(zkRoot)) {
         return null;
       }
-      Stat stat = new Stat();
-      String msg = zkClient.readData(
-        String.format(
-          "%s/%s/partition_%d",
-          zkRoot,
-          clientId,
-          pid
-        ), stat
-      );
-      StormkafkaPartitionInfo pInfo = Resources.jsonMapper.readValue(msg, StormkafkaPartitionInfo.class);
-
-      Long offset = pInfo.offset;
-      DateTime creation = new DateTime(stat.getCtime());
-      DateTime modified = new DateTime(stat.getMtime());
+      StormkafkaPartitionInfo pInfo;
+      DateTime creation;
+      DateTime modified;
+      try {
+        Stat stat = new Stat();
+        String msg = zkClient.readData(
+          String.format(
+            "%s/%s/partition_%d",
+            zkRoot,
+            clientId,
+            pid
+          ), stat
+        );
+        creation = new DateTime(stat.getCtime());
+        modified = new DateTime(stat.getMtime());
+        pInfo = Resources.jsonMapper.readValue(msg, StormkafkaPartitionInfo.class);
+      }catch (Exception e) {
+        log.warn("Storm kafka clientId[%s], partition[%d] not found", clientId, pid);
+        pInfo = new StormkafkaPartitionInfo();
+        pInfo.offset = 0;
+        pInfo.partition = 0;
+        pInfo.topic = "unkown";
+        pInfo.topology = new StormTopology();
+        pInfo.topology.topoName = "unknown";
+        pInfo.topology.workerId = "unknown";
+        creation = new DateTime();
+        modified = new DateTime();
+      }
 
       long logSize = getTopicLogSize(pInfo.topic, pid);
 
@@ -173,9 +188,9 @@ public class KafkaInfos implements Closeable {
       info.group = clientId;
       info.topic = pInfo.topic;
       info.partition = pid;
-      info.offset = offset;
+      info.offset = pInfo.offset;
       info.logSize = logSize;
-      info.lag = logSize - offset;
+      info.lag = logSize - pInfo.offset;
       info.owner = pInfo.topology.topoName + "|" + pInfo.topology.workerId;
       info.creation = creation;
       info.modified = modified;
@@ -184,7 +199,7 @@ public class KafkaInfos implements Closeable {
 
       return info;
     } catch (Exception e) {
-      log.error(e, "Could not parse storm kafka partition info. clientId: [%s] topic: [%d]", clientId, pid);
+      log.warn(e, "Could not parse storm kafka partition info. clientId: [%s] topic: [%d]", clientId, pid);
       return null;
     }
   }
@@ -192,7 +207,7 @@ public class KafkaInfos implements Closeable {
   public List<PartitionInfo> getStormkafkaPartitionInfos(final String clientId) {
     final String zkRoot = Config.config.kafka.stormKafkaRoot;
     if (StringUtils.isEmpty(zkRoot)) {
-      return null;
+      return Collections.emptyList();
     }
     List<String> partitions = DCMZkUtils.getZKChildren(String.format("%s/%s", zkRoot, clientId));
     return Lists.transform(
@@ -333,13 +348,14 @@ public class KafkaInfos implements Closeable {
         public StormKafkaClientInfo apply(String id) {
           StormKafkaClientInfo it = new StormKafkaClientInfo();
           it.clientId = id;
-          PartitionInfo info = getStormKafkaPartitionInfo(id, 0);
-          if (info == null) {
-            return it;
-          } else {
-            it.topic = info.topic;
-            return it;
+          List<PartitionInfo> infos = getStormkafkaPartitionInfos(id);
+          for (PartitionInfo info : infos) {
+            if (!"unkown".equals(info.topic)){
+              it.topic = info.topic;
+              break;
+            }
           }
+          return it;
         }
       }
     );
