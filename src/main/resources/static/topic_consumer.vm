@@ -16,20 +16,34 @@
     <script >
       var topic = '${topic}';
       var consumer = '${consumer}';
-      if ('${type}' == "storm") {
-        $.post('/kafka/storm_kafka_consumer_info',{
-            'clientId' : consumer,
-        },function(data){
-            buildTable(data, $('#kfk_table'));
-        });
-      } else {
-        $.post('/kafka/consumer_info',{
-            'topic' : topic,
-            'consumer' : consumer
-        },function(data){
-            buildTable(data, $('#kfk_table'));
-        });
-      }
+			if(isNaN('${partitionId}')){
+          if ('${type}' == "storm" ) {
+              $.post('/kafka/storm_kafka_consumer_info',{
+                  'clientId' : consumer,
+              },function(data){
+                  buildTable(data, $('#kfk_table'));
+                  //add href
+                  $('#kfk_table').find('tbody tr').each(function(){
+                      var partition = $(this).find('td').eq(2).find('a').html();
+                      $(this).find('td a').eq(1).attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer + "&type=storm&partitionId=" + partition).addClass("mtr");
+                  });
+
+              });
+          } else  {
+              $.post('/kafka/consumer_info',{
+                  'topic' : topic,
+                  'consumer' : consumer
+              },function(data){
+                  buildTable(data, $('#kfk_table'));
+
+                  $('#kfk_table').find('tbody tr').each(function(){
+                      var partition = $(this).find('td').eq(2).find('a').html();
+                      $(this).find('td a').eq(1).attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer + "&type=storm&partitionId=" + partition).addClass("mtr");
+                  });
+
+              });
+          }
+			}
     </script>
 </head>
 <body>
@@ -39,9 +53,18 @@
 <div>
     <ul class="list-inline">
 				<li>topic:</li>
-        <li><h3 id="kafka_topic">$topic</h3></li>
+        <li><h3 id="kafka_topic">${topic}</h3></li>
+
+
 		  	<li>consumer:</li>
-				<li><h3 id="kafka_consumer">$consumer</h3</li>
+				<li><h3 id="kafka_consumer">${consumer}</h3></li>
+
+
+				#if (${partitionId})
+						<li>partitionId:</li>
+						<li><h3 id="partitionId">${partitionId}</h3</li>
+				#end
+
     </ul>
 </div>
 
@@ -86,12 +109,12 @@
 
     </div>
 
-    <h4>Consumer Offsets <a class="plus">-</a></h4>
-    <table id="kfk_table" class="m_table table table-bordered table-striped success">
+		#if (!${partitionId})
+				<h4>Consumer Offsets <a class="plus">-</a></h4>
+				<table id="kfk_table" class="m_table table table-bordered table-striped success">
 
-    </table>
-
-
+				</table>
+		#end
 
 </div>
 
