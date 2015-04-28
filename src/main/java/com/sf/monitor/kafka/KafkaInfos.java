@@ -53,7 +53,6 @@ public class KafkaInfos implements Closeable {
 
   private SimpleConsumer createSimpleConsumer(Integer brokerId) {
 
-
     try {
       String brokerInfo = zkClient.readData(ZkUtils.BrokerIdsPath() + "/" + brokerId, true);
       if (brokerInfo == null) {
@@ -171,7 +170,7 @@ public class KafkaInfos implements Closeable {
         creation = new DateTime(stat.getCtime());
         modified = new DateTime(stat.getMtime());
         pInfo = Resources.jsonMapper.readValue(msg, StormkafkaPartitionInfo.class);
-      }catch (Exception e) {
+      } catch (Exception e) {
         log.warn("Storm kafka clientId[%s], partition[%d] not found", clientId, pid);
         pInfo = new StormkafkaPartitionInfo();
         pInfo.offset = 0;
@@ -352,7 +351,7 @@ public class KafkaInfos implements Closeable {
           it.clientId = id;
           List<PartitionInfo> infos = getStormkafkaPartitionInfos(id);
           for (PartitionInfo info : infos) {
-            if (!"unkown".equals(info.topic)){
+            if (!"unkown".equals(info.topic)) {
               it.topic = info.topic;
               break;
             }
@@ -364,16 +363,23 @@ public class KafkaInfos implements Closeable {
   }
 
   // 获取topic消费历史数据
-  public List<OffsetInfo> getTrendConsumeInfos(String consumer, String topic, DateTime from, DateTime to) {
+  public List<OffsetInfo> getTrendConsumeInfos(
+    String consumer,
+    String topic,
+    int partitionId,
+    DateTime from,
+    DateTime to
+  ) {
     String fromStr = from.withZone(DateTimeZone.UTC).toString();
     String toStr = to.withZone(DateTimeZone.UTC).toString();
     String sql = String.format(
       "select size, offs, lag from %s "
-      + "where consumer='%s' and topic='%s' and partition='-1' and time >= '%s' and time <= '%s' "
+      + "where consumer='%s' and topic='%s' and partition='%d' and time >= '%s' and time <= '%s' "
       + "group by topic, consumer",
       KafkaStats.tableName,
       consumer,
       topic,
+      partitionId,
       fromStr,
       toStr
     );
@@ -529,6 +535,7 @@ public class KafkaInfos implements Closeable {
         checker.getTrendConsumeInfos(
           "clicki_track_storm",
           "clicki_track_topic",
+          -1,
           from,
           to
         )

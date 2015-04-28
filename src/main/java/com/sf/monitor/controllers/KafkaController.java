@@ -119,7 +119,7 @@ public class KafkaController {
   @RequestMapping("/detail")
   public
   @ResponseBody
-  List<KafkaInfos.OffsetInfo> topicDetail(String topic, String consumer, String from, String to) {
+  List<KafkaInfos.OffsetInfo> topicDetail(String topic, String consumer, String from, String to, Integer partitionId) {
     DateTime fromDate = null;
     DateTime toDate = null;
     DateTime now = new DateTime();
@@ -136,7 +136,8 @@ public class KafkaController {
     if (from == null || to.equals(from)) {
       fromDate = toDate.minus(new Period(timeOffset));
     }
-    return Resources.kafkaInfos.getTrendConsumeInfos(consumer, topic, fromDate, toDate);
+    partitionId = (partitionId == null) ? -1 : partitionId;
+    return Resources.kafkaInfos.getTrendConsumeInfos(consumer, topic, partitionId, fromDate, toDate);
   }
 
   @RequestMapping("/consumer_info")
