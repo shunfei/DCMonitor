@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -13,10 +15,10 @@ import com.sf.influxdb.dto.Series;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
+import com.sf.monitor.utils.DCMZkUtils;
 import com.sf.monitor.utils.JsonValues;
 import com.sf.monitor.utils.TagValue;
 import com.sf.monitor.utils.Utils;
-import com.sf.monitor.utils.DCMZkUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -35,6 +37,28 @@ public class DruidInfos {
     public String role;
     public String regTime;
     public String serviceType;
+
+    public static Iterable<Map<String, Object>> toMaps(Iterable<AnnounceNode> nodes) {
+      return Iterables.transform(
+        nodes, new Function<AnnounceNode, Map<String, Object>>() {
+          @Override
+          public Map<String, Object> apply(AnnounceNode node) {
+            return ImmutableMap.of(
+              "host",
+              node.host,
+              "name",
+              node.name,
+              "role",
+              node,
+              "regTime",
+              node.regTime,
+              "serviceType",
+              node.serviceType
+            );
+          }
+        }
+      );
+    }
   }
 
   @JsonProperty
@@ -117,7 +141,8 @@ public class DruidInfos {
 
   private List<AnnounceNode> getAnnounceNodes(String serviceName, String leaderElectionPath) {
     List<AnnounceNode> nodes = Lists.transform(
-      DCMZkUtils.getZKChildrenContent(zkDiscoveryPath + "/" + serviceName, false), new Function<String, AnnounceNode>() {
+      DCMZkUtils.getZKChildrenContent(zkDiscoveryPath + "/" + serviceName, false),
+      new Function<String, AnnounceNode>() {
         @Override
         public AnnounceNode apply(String input) {
           Map<String, Object> m = Utils.toMap(input);
