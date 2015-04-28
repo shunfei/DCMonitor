@@ -4,12 +4,17 @@ $(function(){
     var pt = $('#period').html();
     var topic = $('#kafka_topic').html().trim();
     var consumer = $('#kafka_consumer').html().trim();
+    var paritionId = -1;
 
+    if($('#partitionId').html()) {
+        paritionId =   $('#partitionId').html().trim();
+    }
     createTheam();
 
     $.post('/kafka/detail', {
         'topic' : topic,
-        'consumer' : consumer
+        'consumer' : consumer,
+        'partitionId' : paritionId
     },function(data){
         buildKafkaGraps(data,topic,consumer,true,pt);
     });
@@ -20,6 +25,7 @@ $(function(){
         $.post('/kafka/detail', {
             'topic' : topic,
             'consumer' : consumer,
+            'partitionId' : paritionId,
             'from' : from,
             'to' : to
         },function(data){
