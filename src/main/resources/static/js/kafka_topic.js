@@ -6,12 +6,6 @@ $(function(){
     var consumer = $('#kafka_consumer').html().trim();
 
     createTheam();
-    $.post('/kafka/consumerInfo',{
-        'topic' : topic,
-        'consumer' : consumer
-    },function(data){
-        buildTable(data, $('#kfk_table'));
-    });
 
     $.post('/kafka/detail', {
         'topic' : topic,

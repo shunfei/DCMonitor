@@ -12,7 +12,17 @@ $(document).ready(function() {
             var p = $(this);
             var topic = p.find('td').eq(0).find('a').html().trim();
             var consumer = p.find('td').eq(1).find('a').html().trim();
-            p.find('td a').attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer).addClass("mtr");
+            p.find('td a').attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer+ "&type=normal").addClass("mtr");
+        });
+    });
+
+    $.get('/kafka/storm_kafka',function(data){
+        buildTable(data,$('#storm_kafka_client'));
+        $('#storm_kafka_client').find('tbody tr').each(function(){
+            var p = $(this);
+            var topic = p.find('td').eq(0).find('a').html().trim();
+            var clientId = p.find('td').eq(1).find('a').html().trim();
+            p.find('td a').attr("href", "/kafka/topic/"+topic +"?consumer=" + clientId + "&type=storm").addClass("mtr");
         });
     });
 
