@@ -52,6 +52,8 @@ public class KafkaInfos implements Closeable {
   }
 
   private SimpleConsumer createSimpleConsumer(Integer brokerId) {
+
+
     try {
       String brokerInfo = zkClient.readData(ZkUtils.BrokerIdsPath() + "/" + brokerId, true);
       if (brokerInfo == null) {

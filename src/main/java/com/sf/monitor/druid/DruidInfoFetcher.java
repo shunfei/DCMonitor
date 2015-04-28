@@ -2,9 +2,6 @@ package com.sf.monitor.druid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
@@ -15,14 +12,6 @@ import java.util.List;
 
 public class DruidInfoFetcher implements InfoFetcher {
   private static final Logger log = new Logger(DruidInfoFetcher.class);
-  private static final ObjectMapper jsonMapper = new ObjectMapper();
-
-  static {
-    jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    jsonMapper.configure(SerializationFeature.INDENT_OUTPUT, false);
-    jsonMapper.enable(SerializationFeature.INDENT_OUTPUT);
-  }
-
 
   @JsonProperty
   public String fetchPeriod;
@@ -39,7 +28,10 @@ public class DruidInfoFetcher implements InfoFetcher {
       }
     );
     List<Point> points = EmitMetricsAnalyzer.fetchReceivedInfos(rawInfos);
-    log.debug(jsonMapper.writeValueAsString(points));
+
+    if (log.isDebugEnabled()){
+      log.debug(Resources.jsonMapper.writeValueAsString(points));
+    }
 
     Resources.influxDB.write(
       Config.config.influxdb.influxdbDatabase,

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -49,6 +50,17 @@ public class JsonValues {
       }
     }
     return values;
+  }
+
+  public static Iterable<Map<String, Object>> toMaps(Iterable<JsonValues> values) {
+    return Iterables.transform(
+      values, new Function<JsonValues, Map<String, Object>>() {
+        @Override
+        public Map<String, Object> apply(JsonValues input) {
+          return input.values;
+        }
+      }
+    );
   }
 
   public static class ValuesJsonSerializer extends JsonSerializer<JsonValues> {
