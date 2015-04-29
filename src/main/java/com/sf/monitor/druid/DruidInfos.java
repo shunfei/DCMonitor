@@ -1,12 +1,12 @@
 package com.sf.monitor.druid;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -38,18 +38,18 @@ public class DruidInfos {
     public String regTime;
     public String serviceType;
 
-    public static Iterable<Map<String, Object>> toMaps(Iterable<AnnounceNode> nodes) {
-      return Iterables.transform(
+    public static List<Map<String, Object>> toMaps(List<AnnounceNode> nodes) {
+      return Lists.transform(
         nodes, new Function<AnnounceNode, Map<String, Object>>() {
           @Override
           public Map<String, Object> apply(AnnounceNode node) {
             return ImmutableMap.of(
               "host",
-              node.host,
+              (Object) node.host,
               "name",
               node.name,
               "role",
-              node,
+              node.role,
               "regTime",
               node.regTime,
               "serviceType",
@@ -66,11 +66,17 @@ public class DruidInfos {
   @JsonProperty
   public String zkDiscoveryPath;
   @JsonProperty
-  public String zkOverlordName;
+  public String overlordName;
   @JsonProperty
-  public String zkBrokerName;
+  public String brokerName;
   @JsonProperty
-  public String zkCoordinatorName;
+  public String coordinatorName;
+  @JsonProperty
+  public String realtimeName;
+  @JsonProperty
+  public String historicalName;
+  @JsonProperty
+  public String middleManagerName;
 
   private DruidService<DruidService.OverlordService> overlordService;
   private DruidService<DruidService.CoordinatorService> coordinatorService;
@@ -86,7 +92,7 @@ public class DruidInfos {
     );
   }
 
-  private List<JsonValues> getDataServiceNodes(String type) {
+  private List<JsonValues> getDataServiceNodes(String type, String name) {
     DruidService.CoordinatorService service = coordinatorService.getService();
     if (service == null) {
       log.warn("coordinator service not found!");
@@ -97,18 +103,19 @@ public class DruidInfos {
     for (Map<String, Object> node : nodes) {
       if (type.equals(node.get("type"))) {
         node.put("used", (Double) node.get("currSize") / (Double) node.get("maxSize"));
-        typeNodes.add(JsonValues.of(node, "type", "host", "maxSize", "currSize", "used", "tier", "priority"));
+        node.put("name", name);
+        typeNodes.add(JsonValues.of(node, "name", "host", "type", "maxSize", "currSize", "used", "tier", "priority"));
       }
     }
     return typeNodes;
   }
 
   public List<JsonValues> getRealtimeNodes() {
-    return getDataServiceNodes("realtime");
+    return getDataServiceNodes("realtime", realtimeName);
   }
 
   public List<JsonValues> getHistoricalNodes() {
-    return getDataServiceNodes("historical");
+    return getDataServiceNodes("historical", historicalName);
   }
 
   public List<JsonValues> getMiddleManagerNodes() {
@@ -128,15 +135,15 @@ public class DruidInfos {
   }
 
   public List<AnnounceNode> getBrokerNodes() {
-    return getAnnounceNodes(zkBrokerName, null);
+    return getAnnounceNodes(brokerName, null);
   }
 
   public List<AnnounceNode> getCoordinatorNodes() {
-    return getAnnounceNodes(zkCoordinatorName, zkRootPath + coordinatorLeaderElectionPath);
+    return getAnnounceNodes(coordinatorName, zkRootPath + coordinatorLeaderElectionPath);
   }
 
   public List<AnnounceNode> getOverlordNodes() {
-    return getAnnounceNodes(zkOverlordName, zkRootPath + overlordLeaderElectionPath);
+    return getAnnounceNodes(overlordName, zkRootPath + overlordLeaderElectionPath);
   }
 
   private List<AnnounceNode> getAnnounceNodes(String serviceName, String leaderElectionPath) {
@@ -148,7 +155,7 @@ public class DruidInfos {
           Map<String, Object> m = Utils.toMap(input);
           AnnounceNode node = new AnnounceNode();
           node.host = (String) m.get("address") + ":" + (Integer) m.get("port");
-          node.name = (String) m.get("topoName");
+          node.name = (String) m.get("name");
           node.role = "-";
           node.regTime = new DateTime((Long) m.get("registrationTimeUTC")).toString();
           node.serviceType = (String) m.get("serviceType");
@@ -190,11 +197,16 @@ public class DruidInfos {
   public static class MetricsParam {
     public String from;
     public String to;
-    public DateTime fromDateTime;
-    public DateTime toDateTime;
     public List<String> metrics;
     public List<TagValue> tagValues;
+    public List<String> groups;
     public boolean debug;
+    public Integer limit;
+
+    @JsonIgnore
+    public DateTime fromDateTime;
+    @JsonIgnore
+    public DateTime toDateTime;
   }
 
   public static class Result<T> {
@@ -209,7 +221,12 @@ public class DruidInfos {
     }
   }
 
-  public Result<List<JsonValues>> getTrendData(MetricsParam param) {
+  public static class TaggedValues {
+    public Map<String, Object> tags;
+    public List<JsonValues> values;
+  }
+
+  public Result<List<TaggedValues>> getTrendData(MetricsParam param) {
     List<TagValue> nullCheck = Lists.transform(
       param.metrics, new Function<String, TagValue>() {
         @Override
@@ -236,49 +253,71 @@ public class DruidInfos {
         }
       )
     );
+    String groupby;
+    if (param.groups == null || param.groups.size() == 0) {
+      groupby = "";
+    } else {
+      groupby = " group by " + Joiner.on(",").join(param.groups);
+    }
+    String limit;
+    if (param.limit == null) {
+      limit = "";
+    } else {
+      limit = " limit " + param.limit;
+    }
 
     String sql = String.format(
-      "select %s from %s where %s ",
+      "select %s from %s where %s%s%s",
       selects,
       EmitMetricsAnalyzer.tableName,
-      where
+      where,
+      groupby,
+      limit
     );
 
-    System.out.println(sql);
+    log.debug(sql);
 
     Results results = Resources.influxDB.query(
       Config.config.influxdb.influxdbDatabase,
       sql
     );
-    Series series = results.getFirstSeries();
-
     Object debugMsg = param.debug ? sql : null;
-    List<JsonValues> res;
-    if (series == null) {
-      res = Collections.emptyList();
+    final List<TaggedValues> taggedValuesList;
+
+    Series series = results.getFirstSeries();
+    final List<Series> seriesList = results.getFirstResSeriesList();
+    if (seriesList == null) {
+      taggedValuesList = Collections.emptyList();
     } else {
-      res = Lists.transform(
-        series.indexedValues(), new Function<Map<String, Object>, JsonValues>() {
+      taggedValuesList = Lists.transform(
+        seriesList, new Function<Series, TaggedValues>() {
           @Override
-          public JsonValues apply(Map<String, Object> row) {
-            return JsonValues.of(row);
+          public TaggedValues apply(Series series) {
+            TaggedValues taggedValues = new TaggedValues();
+            taggedValues.tags = series.tags;
+            taggedValues.values = Lists.transform(
+              series.indexedValues(),
+              new Function<Map<String, Object>, JsonValues>() {
+                @Override
+                public JsonValues apply(Map<String, Object> row) {
+                  return JsonValues.of(row);
+                }
+              }
+            );
+            return taggedValues;
           }
         }
       );
     }
-    return new Result<List<JsonValues>>(res, true, debugMsg);
+    return new Result<List<TaggedValues>>(taggedValuesList, true, debugMsg);
   }
 
-  public Result<JsonValues> getLatestData(MetricsParam param) {
+  public Result<List<TaggedValues>> getLatestData(MetricsParam param) {
     DateTime now = new DateTime();
     param.fromDateTime = now.minusMinutes(5);
     param.toDateTime = now;
-    Result<List<JsonValues>> result = getTrendData(param);
-    if (result.res.size() > 0) {
-      return new Result<JsonValues>(result.res.get(0), true, result.debugMsg);
-    } else {
-      return new Result<JsonValues>(null, true, result.debugMsg);
-    }
+    param.limit = 1;
+    return getTrendData(param);
   }
 
   public static void main(String[] args) throws Exception {

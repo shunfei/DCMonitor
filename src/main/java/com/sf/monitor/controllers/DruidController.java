@@ -48,7 +48,7 @@ public class DruidController {
   @ResponseStatus(HttpStatus.OK)
   public
   @ResponseBody
-  Object getTrendMetrics(HttpEntity<String> httpEntity) throws Exception {
+  DruidInfos.Result<List<DruidInfos.TaggedValues>> getTrendMetrics(HttpEntity<String> httpEntity) throws Exception {
     try {
       DruidInfos.MetricsParam param = Resources.jsonMapper.readValue(
         httpEntity.getBody(),
@@ -59,7 +59,7 @@ public class DruidController {
       return Resources.druidInfos.getTrendData(param);
     } catch (Exception e) {
       log.error(e, "");
-      return new DruidInfos.Result<List<JsonValues>>(null, false, "");
+      return new DruidInfos.Result<List<DruidInfos.TaggedValues>>(null, false, "");
     }
   }
 
@@ -70,7 +70,7 @@ public class DruidController {
   @ResponseStatus(HttpStatus.OK)
   public
   @ResponseBody
-  Object getLatestMetrics(HttpEntity<String> httpEntity) throws Exception {
+  DruidInfos.Result<List<DruidInfos.TaggedValues>> getLatestMetrics(HttpEntity<String> httpEntity) throws Exception {
     try {
       DruidInfos.MetricsParam param = Resources.jsonMapper.readValue(
         httpEntity.getBody(),
@@ -79,29 +79,29 @@ public class DruidController {
       return Resources.druidInfos.getLatestData(param);
     } catch (Exception e) {
       log.error(e, "");
-      return new DruidInfos.Result<JsonValues>(null, false, "");
+      return new DruidInfos.Result<List<DruidInfos.TaggedValues>>(null, false, "");
     }
   }
 
   @RequestMapping("/realtime_nodes")
   public
   @ResponseBody
-  Iterable<Map<String, Object>> getRealtimeNodes() {
-    return JsonValues.toMaps(Resources.druidInfos.getRealtimeNodes());
+  List<JsonValues> getRealtimeNodes() {
+    return Resources.druidInfos.getRealtimeNodes();
   }
 
   @RequestMapping("/historical_nodes")
   public
   @ResponseBody
-  Iterable<Map<String, Object>> getHistoricalNodes() {
-    return JsonValues.toMaps(Resources.druidInfos.getHistoricalNodes());
+  List<JsonValues> getHistoricalNodes() {
+    return Resources.druidInfos.getHistoricalNodes();
   }
 
   @RequestMapping("/middle_manager_nodes")
   public
   @ResponseBody
-  Iterable<Map<String, Object>> getMiddleManagerNodes() {
-    return JsonValues.toMaps(Resources.druidInfos.getMiddleManagerNodes());
+  List<JsonValues> getMiddleManagerNodes() {
+    return Resources.druidInfos.getMiddleManagerNodes();
   }
 
   @RequestMapping("/broker_nodes")
