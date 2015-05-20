@@ -22,7 +22,10 @@
         "@comment": "realtime node is transform by middle manager",
         "realtimeName": "druid:prod:middlemanager",
         "middleManagerName": "druid:prod:middlemanager",
-        "historicalName": "druid:prod:historical"
+        "historicalName": "druid:prod:historical",
+        "warningSpecs": {
+            "server/segment/totalUsedPercent": true
+        }
     },
     "kafka": {
         "warning": true,

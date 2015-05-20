@@ -77,9 +77,20 @@ public class DruidInfos {
   public String historicalName;
   @JsonProperty
   public String middleManagerName;
+  @JsonProperty
+  public Map<String, Boolean> warningSpecs;
 
   private DruidService<DruidService.OverlordService> overlordService;
   private DruidService<DruidService.CoordinatorService> coordinatorService;
+
+  public boolean shouldWarn(String metric) {
+    if (warningSpecs == null) {
+      return false;
+    } else {
+      Boolean b = warningSpecs.get(metric);
+      return b == null ? false : b;
+    }
+  }
 
   public void init() {
     overlordService = new DruidService<DruidService.OverlordService>(

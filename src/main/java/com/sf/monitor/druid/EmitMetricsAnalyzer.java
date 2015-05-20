@@ -143,7 +143,7 @@ public class EmitMetricsAnalyzer {
 
   private static MetricFetchers indexMetrics = new MetricFetchers(
     new MetricFetcher("events")
-        .withKeys("thrownAway", "unparseable", "processed")
+      .withKeys("thrownAway", "unparseable", "processed")
       .withUsers("user2", "dataSource"),
     new MetricFetcher("rows/output")
       .withUsers("user2", "dataSource"),
@@ -257,7 +257,7 @@ public class EmitMetricsAnalyzer {
       } else if (watcher == Watcher.ShouldSmaller) {
         shouldWarn = info.value > threshold;
       }
-      if (shouldWarn) {
+      if (shouldWarn && Config.config.druidInfos.shouldWarn(info.metric)) {
         String warnMsg = getWarning(info, tags);
         Utils.sendNotify("druid", warnMsg);
         log.warn("druid - " + warnMsg);

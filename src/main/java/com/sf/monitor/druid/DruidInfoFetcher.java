@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
-import com.sf.monitor.Config;
+import com.sf.monitor.CommonFetcher;
 import com.sf.monitor.InfoFetcher;
 import com.sf.monitor.Resources;
 
 import java.util.List;
 
-public class DruidInfoFetcher implements InfoFetcher {
+public class DruidInfoFetcher extends CommonFetcher {
   private static final Logger log = new Logger(DruidInfoFetcher.class);
 
   @JsonProperty
@@ -32,12 +32,8 @@ public class DruidInfoFetcher implements InfoFetcher {
     if (log.isDebugEnabled()){
       log.debug(Resources.jsonMapper.writeValueAsString(points));
     }
+    saveMetrics(points);
 
-    Resources.influxDB.write(
-      Config.config.influxdb.influxdbDatabase,
-      "",
-      points
-    );
     if (rawInfos.size() > 0) {
       log.debug("writeMetrics host: [%s]", rawInfos.get(0).host);
     }
