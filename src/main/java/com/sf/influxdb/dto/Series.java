@@ -22,14 +22,14 @@ public class Series {
       }
       indexedValues = Lists.newArrayListWithCapacity(values.length);
       for (Object[] r : values) {
-        Map<String, Object> indexV = Maps.newHashMap();
-        for (int i = 0; i < columns.length; i++) {
-          indexV.put(columns[i], r[i]);
-        }
+        Map<String, Object> indexV = Maps.newLinkedHashMap();
         if (tags != null) {
           for (Map.Entry<String, Object> e : tags.entrySet()) {
             indexV.put(e.getKey(), e.getValue());
           }
+        }
+        for (int i = 0; i < columns.length; i++) {
+          indexV.put(columns[i], r[i]);
         }
         indexedValues.add(indexV);
       }

@@ -16,9 +16,16 @@
         "zkInfoCompress": false,
         "zkRootPath": "/druid/prod",
         "zkDiscoveryPath": "/prod/discovery",
-        "zkOverlordName": "druid:prod:overlord",
-        "zkBrokerName": "druid:prod:broker",
-        "zkCoordinatorName": "druid:prod:coordinator"
+        "overlordName": "druid:prod:overlord",
+        "brokerName": "druid:prod:broker",
+        "coordinatorName": "druid:prod:coordinator",
+        "@comment": "realtime node is transform by middle manager",
+        "realtimeName": "druid:prod:middlemanager",
+        "middleManagerName": "druid:prod:middlemanager",
+        "historicalName": "druid:prod:historical",
+        "warningSpecs": {
+            "server/segment/totalUsedPercent": true
+        }
     },
     "kafka": {
         "warning": true,

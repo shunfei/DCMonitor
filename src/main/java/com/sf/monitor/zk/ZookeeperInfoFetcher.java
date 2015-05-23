@@ -2,11 +2,12 @@ package com.sf.monitor.zk;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sf.log.Logger;
+import com.sf.monitor.CommonFetcher;
 import com.sf.monitor.InfoFetcher;
 import com.sf.monitor.Resources;
 import org.joda.time.Period;
 
-public class ZookeeperInfoFetcher implements InfoFetcher {
+public class ZookeeperInfoFetcher extends CommonFetcher {
   private static final Logger log = new Logger(ZookeeperInfoFetcher.class);
 
   @JsonProperty

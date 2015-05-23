@@ -3,14 +3,13 @@ package com.sf.monitor.kafka;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
-import com.sf.monitor.Config;
+import com.sf.monitor.CommonFetcher;
 import com.sf.monitor.InfoFetcher;
-import com.sf.monitor.Resources;
 import org.joda.time.Period;
 
 import java.util.List;
 
-public class KafkaInfoFetcher implements InfoFetcher {
+public class KafkaInfoFetcher extends CommonFetcher {
   private static final Logger log = new Logger(KafkaInfoFetcher.class);
 
   @JsonProperty
@@ -40,12 +39,7 @@ public class KafkaInfoFetcher implements InfoFetcher {
             log.info("kafka fetch [%s] times", fetchCount);
 
             List<Point> series = KafkaStats.fetchTrendInfos();
-
-            Resources.influxDB.write(
-              Config.config.influxdb.influxdbDatabase,
-              "",
-              series
-            );
+            saveMetrics(series);
 
             Thread.sleep(period);
           } catch (Exception e) {

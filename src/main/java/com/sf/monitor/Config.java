@@ -34,7 +34,7 @@ public class Config {
   public Fetchers fetchers;
 
   public List<InfoFetcher> fetcherList() {
-    return ImmutableList.of(fetchers.druidFetcher, fetchers.kafkaFetcher, fetchers.zookeeperFetcher);
+    return ImmutableList.<InfoFetcher>of(fetchers.druidFetcher, fetchers.kafkaFetcher, fetchers.zookeeperFetcher);
   }
 
   public static class InfluxdbConfig {
