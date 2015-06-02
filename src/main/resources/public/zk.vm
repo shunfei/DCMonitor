@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-	#include("/static/tags.html")
 <html>
 <head>
-	#include("/static/head.html")
+	#include("/public/head.html")
     <title>
         Zookeeper Monitor
     </title>
     <script src="/js/zk_console.js"></script>
 </head>
 <body>
-	#include("/static/nav.html")
+	#include("/public/nav.html")
 
 <div class="container">
 
