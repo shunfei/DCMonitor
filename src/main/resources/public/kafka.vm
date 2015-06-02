@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-	#include("/static/tags.html")
 <html>
 <head>
     <title>
         Kafka Monitor
     </title>
 
-	#include("/static/head.html")
+	#include("/public/head.html")
    <script src="/js/kafka_console.js"></script>
 
 </head>
 <body>
-#include("/static/nav.html")
+#include("/public/nav.html")
 <div class="container">
 
         <div class="col-md-12">
             <div class="col-md-6">
                 <h4>Kafka Clusters<a class="plus">-</a></h4>
-                <table id="kafka_table" class="m_table table table-bordered table-striped success">
+                <table id="kafka_table" class="m_table table table-bordered table-striped tablesorter">
 
                 </table>
             </div>
@@ -26,7 +25,7 @@
         <div class="col-md-12">
             <div class="col-md-6">
                 <h4>Active Topics<a class="plus">-</a></h4>
-                <table id="kafka_active" class="m_table table table-bordered table-striped success">
+                <table id="kafka_active" class="m_table table table-bordered table-striped">
 
                 </table>
             </div>

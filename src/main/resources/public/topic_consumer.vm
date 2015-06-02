@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-	#include("/static/tags.html")
 <html>
 <head>
     <title>
         Kafka Monitor
     </title>
 
-	#include("/static/head.html")
+	#include("/public/head.html")
     <script>
        var  timeZoneOffsetHour = parseInt("$!{timeZoneOffsetHour}");
 		</script>
@@ -22,12 +21,7 @@
                   'clientId' : consumer,
               },function(data){
                   buildTable(data, $('#kfk_table'));
-                  //add href
-                  $('#kfk_table').find('tbody tr').each(function(){
-                      var partition = $(this).find('td').eq(2).find('a').html();
-                      $(this).find('td a').eq(1).attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer + "&type=storm&partitionId=" + partition).addClass("mtr");
-                  });
-
+                  $('#kfk_table').tablesorter();
               });
           } else  {
               $.post('/kafka/consumer_info',{
@@ -35,20 +29,21 @@
                   'consumer' : consumer
               },function(data){
                   buildTable(data, $('#kfk_table'));
-
-                  $('#kfk_table').find('tbody tr').each(function(){
-                      var partition = $(this).find('td').eq(2).find('a').html();
-                      $(this).find('td a').eq(1).attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer + "&type=storm&partitionId=" + partition).addClass("mtr");
-                  });
-
+                  $('#kfk_table').tablesorter();
               });
           }
+
+          //add href
+          $('#kfk_table').find('tbody tr').each(function(){
+              var partition = $(this).find('td').eq(2).find('a').html();
+              $(this).find('td a').eq(1).attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer + "&type=${type}&partitionId=" + partition).addClass("mtr");
+          });
 			}
     </script>
 </head>
 <body>
 
-	#include("/static/nav.html")
+	#include("/public/nav.html")
 
 <div>
     <ul class="list-inline">
@@ -111,7 +106,7 @@
 
 		#if (!${partitionId})
 				<h4>Consumer Offsets <a class="plus">-</a></h4>
-				<table id="kfk_table" class="m_table table table-bordered table-striped success">
+				<table id="kfk_table" class="m_table table table-bordered table-striped tablesorter">
 
 				</table>
 		#end

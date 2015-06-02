@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	#include("/public/head.html")
+    <title>
+        Zookeeper Monitor
+    </title>
+    <link rel="stylesheet" href="/css/smartpaginator.css">
+    <script src="/js/druid_console.js"></script>
+    <script src="/js/smartpaginator.js"></script>
+
+</head>
+<body>
+	#include("/public/nav.html")
+
+<div class="container">
+
+
+    <div class="col-md-12">
+        <h4>RealTime Nodes<a class="plus">-</a></h4>
+        <table id="druid_realtime" class="m_table table table-bordered table-striped tablesorter">
+
+        </table>
+    </div>
+
+
+    <div class="col-md-12">
+        <h4>MiddleManager Nodes<a class="plus">-</a></h4>
+        <table id="druid_middle" class="m_table table table-bordered table-striped tablesorter">
+
+        </table>
+    </div>
+
+
+
+
+    <div class="col-md-12">
+            <h4>Coordinator Nodes<a class="plus">-</a></h4>
+            <table id="druid_coordinator" class="m_table table table-bordered table-striped tablesorter">
+
+            </table>
+        </div>
+
+
+        <div class="col-md-12">
+            <h4>Overload Nodes<a class="plus">-</a></h4>
+            <table id="druid_overload" class="m_table table table-bordered table-striped tablesorter success">
+            </table>
+        </div>
+
+
+
+
+
+		<div class="col-md-12">
+				<h4>Broker Nodes<a class="plus">-</a></h4>
+				<table id="druid_broker" class="m_table table table-bordered table-striped tablesorter success">
+
+				</table>
+		</div>
+
+		<div class="col-md-12">
+				<h4>Historical Nodes<a class="plus">-</a></h4>
+				<table id="druid_history" class="m_table table table-bordered table-striped tablesorter success">
+
+				</table>
+		</div>
+
+
+
+
+
+
+</div>
+
+
+</body>
+
+<script>
+
+
+</script>
+</html>

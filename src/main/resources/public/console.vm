@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-#include("/static/tags.html")
 <html>
 <head>
     <title>
         DcMonitor
     </title>
 
-#include("/static/head.html")
+#include("/public/head.html")
 
     <script type="application/javascript">
 				$(function(){
@@ -17,7 +16,7 @@
 </head>
 <body>
 
-#include("/static/nav.html")
+#include("/public/nav.html")
 
 <div class="container">
 

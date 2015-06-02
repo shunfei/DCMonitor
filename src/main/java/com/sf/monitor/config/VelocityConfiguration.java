@@ -41,12 +41,12 @@ class VelocityConfiguration implements EnvironmentAware {
   VelocityViewResolver velocityViewResolver() {
     VelocityViewResolver resolver = new VelocityViewResolver();
     resolver.setSuffix(this.environment.getProperty("suffix", ".vm"));
-    resolver.setPrefix(this.environment.getProperty("prefix", "/static/"));
+    resolver.setPrefix(this.environment.getProperty("prefix", "/public/"));
     // Needs to come before any fallback resolver (e.g. a
     // InternalResourceViewResolver)
     resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 20);
     Properties p = new Properties();
-    p.put(Velocity.FILE_RESOURCE_LOADER_PATH, "/static/");
+    p.put(Velocity.FILE_RESOURCE_LOADER_PATH, "/public/");
     p.put("input.encoding", "utf-8");
     p.put("output.encoding", "utf-8");
     resolver.setAttributes(p);
