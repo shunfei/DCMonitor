@@ -18,9 +18,9 @@ $(function(){
         $('#druid_coordinator').tablesorter();
     });
 
-    $.post("/druid/coordinator_nodes", function(data){
-        buildTable( data, $('#druid_overload'));
-        $('#druid_overload').tablesorter();
+    $.post("/druid/overlord_nodes", function(data){
+        buildTable( data, $('#druid_overlord'));
+        $('#druid_overlord').tablesorter();
     });
 
     $.post("/druid/broker_nodes", function(data){
@@ -32,15 +32,4 @@ $(function(){
         buildTable( data, $('#druid_history'));
         $('#druid_history').tablesorter();
     });
-
-    $.post("/druid/coordinator_nodes", function(data){
-        buildTable( data, $('#druid_overload'));
-        $('#druid_overload').tablesorter();
-    });
-
-    $.post("/druid/coordinator_nodes", function(data){
-        buildTable( data, $('#druid_overload'));
-        $('#druid_overload').tablesorter();
-    });
-
 });
