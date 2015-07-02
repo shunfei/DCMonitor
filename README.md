@@ -16,7 +16,9 @@ It is written in java, and use [InfluxDB v0.9](https://github.com/influxdb/influ
 ![](img/kafka_sum.png)
 ![](img/kafka_offset.png)
 
+###Druid monitor
 
+![](img/druid_sum.png)
 
 ##Dependences
 
