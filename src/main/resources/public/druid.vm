@@ -43,8 +43,8 @@
 
 
         <div class="col-md-12">
-            <h4>Overload Nodes<a class="plus">-</a></h4>
-            <table id="druid_overload" class="m_table table table-bordered table-striped tablesorter success">
+            <h4>Overlord Nodes<a class="plus">-</a></h4>
+            <table id="druid_overlord" class="m_table table table-bordered table-striped tablesorter success">
             </table>
         </div>
 

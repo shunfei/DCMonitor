@@ -3,10 +3,6 @@ package com.sf.monitor.utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
@@ -14,7 +10,6 @@ import com.sf.notify.Notify;
 import org.joda.time.DateTime;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -84,37 +79,6 @@ public class Utils {
         true
       );
     }
-  }
-
-  public static List<Point> mergePoints(Iterable<Point> points, String tableName, String timestamp) {
-    Map<String, Point> pointMap = Maps.newHashMap();
-    for (Point p : points) {
-      String key = Joiner.on("-").join(
-        Iterables.transform(
-          p.tags.entrySet(), new Function<Map.Entry<String, String>, String>() {
-            @Override
-            public String apply(Map.Entry<String, String> input) {
-              return input.getKey() + ":" + input.getValue();
-            }
-          }
-        )
-      );
-      Point oldPoint = pointMap.get(key);
-      if (oldPoint == null) {
-        Point newPoint = new Point();
-        newPoint.name = tableName;
-        newPoint.timestamp = timestamp;
-        newPoint.tags = Maps.newHashMap(p.tags);
-        newPoint.fields = Maps.newHashMap(p.fields);
-        pointMap.put(key, newPoint);
-      } else {
-        for (Map.Entry<String, Object> e : p.fields.entrySet()) {
-          oldPoint.fields.put(e.getKey(), e.getValue());
-        }
-        pointMap.put(key, oldPoint);
-      }
-    }
-    return Lists.newArrayList(pointMap.values());
   }
 }
 

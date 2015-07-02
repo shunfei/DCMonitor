@@ -8,11 +8,11 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.sf.influxdb.dto.Results;
-import com.sf.influxdb.dto.Series;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
+import com.sf.monitor.influxdb.Event;
+import com.sf.monitor.influxdb.InfluxDBUtils;
 import com.sf.monitor.utils.DCMZkUtils;
 import kafka.api.OffsetRequest;
 import kafka.api.OffsetResponse;
@@ -383,24 +383,17 @@ public class KafkaInfos implements Closeable {
       fromStr,
       toStr
     );
-    Results results = Resources.influxDB.query(
-      Config.config.influxdb.influxdbDatabase,
-      sql
-    );
-    Series series = results.getFirstSeries();
-    if (series == null) {
-      return Collections.emptyList();
-    }
-    return Lists.transform(
-      series.indexedValues(), new Function<Map<String, Object>, OffsetInfo>() {
+
+    return  Lists.transform(
+      InfluxDBUtils.commonQueryFirstSeries(sql), new Function<Event, OffsetInfo>() {
         @Override
-        public OffsetInfo apply(Map<String, Object> row) {
+        public OffsetInfo apply(Event event) {
           OffsetInfo info = new OffsetInfo();
-          info.logSize = ((Double) row.get("size")).longValue();
-          info.offset = ((Double) row.get("offs")).longValue();
-          info.lag = ((Double) row.get("lag")).longValue();
-          info.timeStr = (String) row.get("time");
-          info.time = DateTime.parse(info.timeStr);
+          info.logSize = ((Double) event.values.get("size")).longValue();
+          info.offset = ((Double) event.values.get("offs")).longValue();
+          info.lag = ((Double) event.values.get("lag")).longValue();
+          info.timeStr = event.timestamp.toString();
+          info.time = event.timestamp;
           info.timeStamp = info.time.getMillis();
           return info;
         }
@@ -522,8 +515,8 @@ public class KafkaInfos implements Closeable {
     );
 
     System.out.println(
-      "fetchTrendInfos: " + Resources.jsonMapper.writeValueAsString(
-        KafkaStats.fetchTrendInfos()
+      "fetchCurrentInfos: " + Resources.jsonMapper.writeValueAsString(
+        KafkaStats.fetchCurrentInfos()
       )
     );
 
@@ -541,6 +534,5 @@ public class KafkaInfos implements Closeable {
         )
       )
     );
-
   }
 }

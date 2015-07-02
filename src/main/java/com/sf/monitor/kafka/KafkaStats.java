@@ -2,10 +2,10 @@ package com.sf.monitor.kafka;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
+import com.sf.monitor.influxdb.Event;
 import com.sf.monitor.utils.Utils;
 
 import java.util.List;
@@ -16,8 +16,8 @@ public class KafkaStats {
   private static final Logger log = new Logger(KafkaStats.class);
   public static final String tableName = "kafka_metrics";
 
-  public static List<Point> fetchTrendInfos() {
-    List<Point> points = Lists.newArrayList();
+  public static List<Event> fetchCurrentInfos() {
+    List<Event> points = Lists.newArrayList();
 
     fetchKafkaPartitionInfos(points);
     fetchStormKafkaPartitionInfos(points);
@@ -25,7 +25,7 @@ public class KafkaStats {
     return points;
   }
 
-  private static void fetchKafkaPartitionInfos(List<Point> points) {
+  private static void fetchKafkaPartitionInfos(List<Event> points) {
     try {
       KafkaInfos.ActiveTopics activeInfos = Resources.kafkaInfos.getActiveTopicMap();
       Map<String, Set<String>> groupToTopic = activeInfos.consumerToTopic;
@@ -41,7 +41,7 @@ public class KafkaStats {
     }
   }
 
-  private static void fetchStormKafkaPartitionInfos(List<Point> points) {
+  private static void fetchStormKafkaPartitionInfos(List<Event> points) {
     try {
       List<KafkaInfos.StormKafkaClientInfo> infos = Resources.kafkaInfos.getStormKafkaClients();
       for (KafkaInfos.StormKafkaClientInfo info : infos) {
@@ -61,7 +61,7 @@ public class KafkaStats {
     String topic,
     String consumer,
     List<KafkaInfos.PartitionInfo> infos,
-    List<Point> points
+    List<Event> points
   ) {
     long totalSize = 0;
     long totalOffset = 0;
@@ -88,10 +88,10 @@ public class KafkaStats {
     }
   }
 
-  private static Point createPoint(String topic, String consumer, int partition, long logSize, long offset) {
-    Point p = new Point();
+  private static Event createPoint(String topic, String consumer, int partition, long logSize, long offset) {
+    Event p = new Event();
     p.name = tableName;
-    p.fields = ImmutableMap.<String, Object>of(
+    p.values = ImmutableMap.<String, Object>of(
       "size",
       logSize,
       "offs", // Stupid influxdb cannot use key word, e.g. offset, as field topoName!
@@ -118,7 +118,7 @@ public class KafkaStats {
     Config.init("config");
     Resources.init();
 
-    System.out.printf("series: %s", Resources.jsonMapper.writeValueAsString(fetchTrendInfos()));
+    System.out.printf("series: %s", Resources.jsonMapper.writeValueAsString(fetchCurrentInfos()));
 
   }
 }

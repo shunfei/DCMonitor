@@ -1,10 +1,10 @@
 package com.sf.monitor.kafka;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
 import com.sf.monitor.CommonFetcher;
 import com.sf.monitor.InfoFetcher;
+import com.sf.monitor.influxdb.Event;
 import org.joda.time.Period;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class KafkaInfoFetcher extends CommonFetcher {
             fetchCount++;
             log.info("kafka fetch [%s] times", fetchCount);
 
-            List<Point> series = KafkaStats.fetchTrendInfos();
+            List<Event> series = KafkaStats.fetchCurrentInfos();
             saveMetrics(series);
 
             Thread.sleep(period);

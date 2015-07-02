@@ -7,13 +7,14 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
+import com.sf.monitor.influxdb.Event;
 import com.sf.monitor.utils.Utils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 
 import java.util.Collections;
 import java.util.List;
@@ -44,22 +45,22 @@ public class EmitMetricsAnalyzer {
     public Object user10;
   }
 
-  public static List<Point> fetchReceivedInfos(List<MetricInfo> rawInfos) {
+  public static List<Event> fetchReceivedInfos(List<MetricInfo> rawInfos) {
     if (rawInfos == null || rawInfos.size() == 0) {
       return Collections.emptyList();
     }
     String timestamp = rawInfos.get(0).timestamp;
-    List<Point> points = Lists.newArrayList();
+    List<Event> points = Lists.newArrayList();
     for (MetricInfo info : rawInfos) {
       for (MetricFetchers fetchers : allMetrics) {
-        Point p = fetchers.toPoint(info);
+        Event p = fetchers.toPoint(info);
         if (p != null) {
           points.add(p);
         }
       }
     }
 
-    return Utils.mergePoints(points, tableName, timestamp);
+    return Event.mergePoints(points, tableName, DateTime.parse(timestamp));
   }
 
   private static MetricFetchers systemMetrics = new MetricFetchers(
@@ -200,10 +201,10 @@ public class EmitMetricsAnalyzer {
       return accpetMetrics;
     }
 
-    Point toPoint(MetricInfo info) {
-      Point p = new Point();
+    Event toPoint(MetricInfo info) {
+      Event p = new Event();
       String metricName = Utils.smoothText.apply(info.metric);
-      p.fields = ImmutableMap.of(metricName, (Object) info.value);
+      p.values = ImmutableMap.of(metricName, (Object) info.value);
       Warning warning = warnings.get(info.metric);
       p.tags = Maps.newLinkedHashMap(); // We need the order!
       p.tags.put("service", info.service.replace("/", ":")); // Transform into real service name.
@@ -299,7 +300,7 @@ public class EmitMetricsAnalyzer {
       }
     }
 
-    Point toPoint(MetricInfo info) {
+    Event toPoint(MetricInfo info) {
       if (!"metrics".equals(info.feed)) {
         return null;
       }
@@ -329,7 +330,7 @@ public class EmitMetricsAnalyzer {
 
     String msg = IOUtils.toString(ClassLoader.getSystemResourceAsStream("druid_metrics_msg"));
 
-    List<Point> points = EmitMetricsAnalyzer.fetchReceivedInfos(parseMetrics(msg));
+    List<Event> points = EmitMetricsAnalyzer.fetchReceivedInfos(parseMetrics(msg));
 
     //Resources.influxDB.write("dcmonitor", "", points);
 
