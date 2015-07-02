@@ -20,45 +20,75 @@ It is written in java, and use [InfluxDB v0.9](https://github.com/influxdb/influ
 
 ##Dependences
 
-* Run & Compile
+* Run
 	* java(1.6 or later)
+* Compile
+	* java(1.7 or later)
 
 ##Installation
 
 * Set up your Zookeeper, Kafka, Druid(If you have) for monitoring.
-* Set up [InfluxDB](https://github.com/influxdb/influxdb) v0.9.
+* Set up [InfluxDB 0.9 Stable](https://influxdb.com/docs/v0.9/introduction/installation.html).
 	
-	* install influxdb
+	* Download and Install InfluxDB.
 	
-	If v0.9 haven't been finally released by now, you may have to compile it yourself. Check its [doc](https://github.com/influxdb/influxdb/blob/master/CONTRIBUTING.md) to see how to compile InfluxDB.
+	* Configure InfluxDB
+		
+		Two ways to create a database for metrics storing.
+		
+		* You can choose to create a database for DCMonitor by youself, can be done by sending HTTP POST requests like this:
 	
-	* create a database for DCMonitor, can be done by sending HTTP POST requests like:
+			```
+			curl -G 'http://192.168.10.51:8086/query?u=root&p=root' --data-urlencode "q=CREATE database dcmonitor"
+			
+			curl -G 'http://192.168.10.51:8086/query?u=root&p=root&db=dcmonitor' --data-urlencode "q=CREATE RETENTION POLICY seven_days ON dcmonitor DURATION 168h REPLICATION 1 DEFAULT"
+		
+			```
 	
-	```
-	curl -G 'http://192.168.10.60:8086/query?u=root&p=root' --data-urlencode "q=CREATE database dcmonitor"
-	
-	curl -G 'http://192.168.10.60:8086/query?u=root&p=root&db=dcmonitor' --data-urlencode "q=CREATE RETENTION POLICY seven_days ON dcmonitor DURATION 168h REPLICATION 1 DEFAULT"
+		here `192.168.10.51:8086` is where InfluxDB installed, `dcmonitor` is the database you configured in config.json, and `168h` shows we only keep the last 7 days historical metrics. Check [here](https://influxdb.com/docs/v0.9/query_language/database_administration.html) for detail.
+		
+		* Or you don't have to do anyting, leave DCMonitor do this for you. DCMonitor will automatically create a database with seven days retention policy if it doesn't exits. Node that you still can change the retention policy later by
+		
+			```
+			ALTER RETENTION POLICY seven_days ON dcmonitor DURATION 2d
+			```
+			
+			or create another new default one to replace the old default:
+			
+			```
+			CREATE RETENTION POLICY two_days ON dcmonitor DURATION 2d REPLICATION 1 DEFAULT
+			```
 
-	```
-	here `192.168.10.60:8086` is where InfluxDB installed, and `168h` shows we only keep the last 7 days historical metrics. Check [here](https://github.com/influxdb/influxdb.org/blob/master/source/docs/v0.9/query_language/database_administration.md) for detail.
-
+			DCMonitor will choose the default policy to ingest metrics.
+		
 * Compile & deploy DCMonitor
 
-	* compile
+	* Currently [influxdb-java](https://github.com/influxdb/influxdb-java) haven't been published to maven host yet, you have to compile & install it to your maven local repository. 
 	
-	```
-	git clone git@github.com:shunfei/DCMonitor.git
-	cd DCMonitor
-	./build.sh
-	```
-Then a `target` folder will be generated under root folder.
+		If you are using java 1.7, you probably have to remove the test code, otherwise may cause [issue](https://github.com/influxdb/influxdb-java/issues/37)
+			
+		```
+		git@github.com:influxdb/influxdb-java.git
+		cd influxdb-java
+		rm -rf src/test
+		mvn clean install
+		```
+		
+	* Compile DCMonitor
+	
+		```
+		git clone git@github.com:shunfei/DCMonitor.git
+		cd DCMonitor
+		./build.sh
+		```
+		Then a `target` folder will be generated under root folder.
 	
 	* deploy
 	
-	You only need to deploy `target`, `run.sh`, `config` to target machine. 
-	
-	Modify configurations in `config/config.json`.
-	
-	Run `run.sh`, if every thing is fine, visit `http://hostname:8075` to enjoy!
+		You only need to deploy `target`, `run.sh`, `config` to target machine. 
+		
+		Modify configurations in `config/config.json`.
+		
+		Run `run.sh`, if every thing is fine, visit `http://hostname:8075` to enjoy!
 	
 	
