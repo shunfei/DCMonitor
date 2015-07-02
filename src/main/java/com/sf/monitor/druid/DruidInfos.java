@@ -10,11 +10,11 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sf.influxdb.dto.Results;
-import com.sf.influxdb.dto.Series;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
+import com.sf.monitor.influxdb.Event;
+import com.sf.monitor.influxdb.InfluxDBUtils;
 import com.sf.monitor.utils.DCMZkUtils;
 import com.sf.monitor.utils.JsonValues;
 import com.sf.monitor.utils.TagValue;
@@ -233,7 +233,7 @@ public class DruidInfos {
   }
 
   public static class TaggedValues {
-    public Map<String, Object> tags;
+    public Map<String, String> tags;
     public List<JsonValues> values;
   }
 
@@ -288,38 +288,26 @@ public class DruidInfos {
 
     log.debug(sql);
 
-    Results results = Resources.influxDB.query(
-      Config.config.influxdb.influxdbDatabase,
-      sql
-    );
     Object debugMsg = param.debug ? sql : null;
-    final List<TaggedValues> taggedValuesList;
-
-    Series series = results.getFirstSeries();
-    final List<Series> seriesList = results.getFirstResSeriesList();
-    if (seriesList == null) {
-      taggedValuesList = Collections.emptyList();
-    } else {
-      taggedValuesList = Lists.transform(
-        seriesList, new Function<Series, TaggedValues>() {
-          @Override
-          public TaggedValues apply(Series series) {
-            TaggedValues taggedValues = new TaggedValues();
-            taggedValues.tags = series.tags;
-            taggedValues.values = Lists.transform(
-              series.indexedValues(),
-              new Function<Map<String, Object>, JsonValues>() {
-                @Override
-                public JsonValues apply(Map<String, Object> row) {
-                  return JsonValues.of(row);
-                }
-              }
-            );
-            return taggedValues;
+    final List<TaggedValues> taggedValuesList = Lists.transform(
+      InfluxDBUtils.commonQuery(sql), new Function<List<Event>, TaggedValues>() {
+        public TaggedValues apply(List<Event> events) {
+          TaggedValues taggedValues = new TaggedValues();
+          if (!events.isEmpty()) {
+            taggedValues.tags = events.get(0).tags;
           }
+          taggedValues.values = Lists.transform(
+            events, new Function<Event, JsonValues>() {
+              @Override
+              public JsonValues apply(Event event) {
+                return JsonValues.of(event.values);
+              }
+            }
+          );
+          return taggedValues;
         }
-      );
-    }
+      }
+    );
     return new Result<List<TaggedValues>>(taggedValuesList, true, debugMsg);
   }
 

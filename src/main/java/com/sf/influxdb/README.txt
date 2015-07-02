@@ -1,1 +1,0 @@
-This package should be replace by official influxdb java client after they supported InfluxDB 0.9.0.

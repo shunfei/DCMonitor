@@ -2,11 +2,11 @@ package com.sf.monitor.druid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.sf.influxdb.dto.Point;
 import com.sf.log.Logger;
 import com.sf.monitor.CommonFetcher;
 import com.sf.monitor.InfoFetcher;
 import com.sf.monitor.Resources;
+import com.sf.monitor.influxdb.Event;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class DruidInfoFetcher extends CommonFetcher {
       msg, new TypeReference<List<EmitMetricsAnalyzer.MetricInfo>>() {
       }
     );
-    List<Point> points = EmitMetricsAnalyzer.fetchReceivedInfos(rawInfos);
+    List<Event> points = EmitMetricsAnalyzer.fetchReceivedInfos(rawInfos);
 
     if (log.isDebugEnabled()){
       log.debug(Resources.jsonMapper.writeValueAsString(points));
