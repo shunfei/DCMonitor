@@ -5,6 +5,10 @@ A simple, lightweight Data Center monitor, currently includes Zookeeper, Kafka, 
 
 It is written in java, and use [InfluxDB v0.9](https://github.com/influxdb/influxdb) as historical metrics storage.
 
+### NOTE
+
+Everyone should check this [issue](https://github.com/shunfei/DCMonitor/issues/27) before deploying DCMonitor.
+
 ###Zookeeper monitor
 
 
