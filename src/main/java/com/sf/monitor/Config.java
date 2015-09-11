@@ -97,7 +97,7 @@ public class Config {
       this.warning = warning;
       this.warnDefaultLag = warnDefaultLag;
       this.warnLagSpec = warnLagSpec;
-      if (ignoreConsumerRegex != null){
+      if (ignoreConsumerRegex != null) {
         this.ignoreConsumerRegex = Pattern.compile(ignoreConsumerRegex);
       }
       this.stormKafkaRoot = stormKafkaRoot;
@@ -121,7 +121,7 @@ public class Config {
           return false;
         }
       }
-      return lag > getWarnLag(topic, consumer);
+      return lag > getWarnLag(topic, consumer) || lag < 0;
     }
   }
 

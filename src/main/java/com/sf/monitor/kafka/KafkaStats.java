@@ -77,7 +77,7 @@ public class KafkaStats {
     long lag = totalSize - totalOffset;
     if (Config.config.kafka.shouldAlarm(topic, consumer, lag)) {
       String warnMsg = String.format(
-        "topic:[%s],consumer:[%s] - consum lag: current[%d],threshold[%d], topic lag too long!",
+        "topic:[%s],consumer:[%s] - consum lag: current[%d],threshold[%d], topic lag illegal!",
         topic,
         consumer,
         lag,
