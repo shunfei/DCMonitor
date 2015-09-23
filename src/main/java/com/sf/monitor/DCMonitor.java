@@ -27,12 +27,12 @@ public class DCMonitor extends SpringBootServletInitializer {
     return application.sources(DCMonitor.class);
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception{
     preare();
     SpringApplication.run(DCMonitor.class);
   }
 
-  private static void preare() {
+  private static void preare() throws Exception{
     Config.init("config");
     Resources.init();
 

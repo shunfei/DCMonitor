@@ -3,18 +3,16 @@ package com.sf.monitor.druid;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
+import com.sf.monitor.Event;
 import com.sf.monitor.Resources;
-import com.sf.monitor.influxdb.Event;
 import com.sf.monitor.utils.Utils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
 
 import java.util.Collections;
 import java.util.List;
@@ -60,7 +58,7 @@ public class EmitMetricsAnalyzer {
       }
     }
 
-    return Event.mergePoints(points, tableName, DateTime.parse(timestamp));
+    return points;
   }
 
   private static MetricFetchers systemMetrics = new MetricFetchers(
@@ -203,11 +201,11 @@ public class EmitMetricsAnalyzer {
 
     Event toPoint(MetricInfo info) {
       Event p = new Event();
-      String metricName = Utils.smoothText.apply(info.metric);
-      p.values = ImmutableMap.of(metricName, (Object) info.value);
+      p.metricName = Utils.smoothText.apply(info.metric);
+      p.metricValue = info.value;
       Warning warning = warnings.get(info.metric);
       p.tags = Maps.newLinkedHashMap(); // We need the order!
-      p.tags.put("service", info.service.replace("/", ":")); // Transform into real service name.
+      p.tags.put("service", info.service.replace("/", ":")); // Transform into real service modelName.
       p.tags.put("host", info.host);
       for (Map.Entry<String, String> e : userMap.entrySet()) {
         String user = e.getKey();

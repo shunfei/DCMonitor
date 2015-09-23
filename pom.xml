@@ -8,7 +8,6 @@
   <artifactId>dcmonitor</artifactId>
   <version>1.0</version>
 
-
   <dependencies>
     <dependency>
       <groupId>org.apache.curator</groupId>
@@ -64,7 +63,6 @@
       <artifactId>retrofit</artifactId>
       <version>1.8.0</version>
     </dependency>
-    <!-- If we use okhttp instead of java urlconnection we achieve server failover of the influxdb server address resolves to all influxdb server ips.-->
     <dependency>
       <groupId>com.squareup.okhttp</groupId>
       <artifactId>okhttp</artifactId>
@@ -111,38 +109,32 @@
     </dependency>
 
     <dependency>
-      <groupId>org.influxdb</groupId>
-      <artifactId>influxdb-java</artifactId>
-      <version>2.0-SNAPSHOT</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>1.0.2.RELEASE</version>
-
+      <version>1.2.6.RELEASE</version>
       <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>jcl-over-slf4j</artifactId>
-        </exclusion>
-
+        <!--<exclusion>-->
+          <!--<groupId>org.slf4j</groupId>-->
+          <!--<artifactId>jcl-over-slf4j</artifactId>-->
+        <!--</exclusion>-->
         <exclusion>
           <groupId>org.slf4j</groupId>
           <artifactId>jul-to-slf4j</artifactId>
         </exclusion>
-
         <exclusion>
           <groupId>org.slf4j</groupId>
           <artifactId>log4j-over-slf4j</artifactId>
         </exclusion>
-
         <exclusion>
           <groupId>ch.qos.logback</groupId>
           <artifactId>logback-classic</artifactId>
         </exclusion>
       </exclusions>
-
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>4.1.7.RELEASE</version>
     </dependency>
 
     <dependency>
@@ -151,19 +143,36 @@
       <version>1.2</version>
     </dependency>
 
-
     <dependency>
       <groupId>org.apache.velocity</groupId>
       <artifactId>velocity</artifactId>
       <version>1.7</version>
     </dependency>
 
+    <!-- The client -->
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context-support</artifactId>
-      <version>4.0.5.RELEASE</version>
+      <groupId>io.prometheus</groupId>
+      <artifactId>client</artifactId>
+      <version>0.0.10</version>
     </dependency>
-
+    <!-- Hotspot 'jvmstat/perfdata' metrics -->
+    <dependency>
+      <groupId>io.prometheus.client.utility</groupId>
+      <artifactId>jvmstat</artifactId>
+      <version>0.0.10</version>
+    </dependency>
+    <!-- Exposition servlet -->
+    <dependency>
+      <groupId>io.prometheus.client.utility</groupId>
+      <artifactId>servlet</artifactId>
+      <version>0.0.10</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-servlet</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
   </dependencies>
 
   <build>
@@ -180,7 +189,14 @@
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

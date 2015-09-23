@@ -4,23 +4,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
-import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
-import com.sf.monitor.influxdb.Event;
-import com.sf.monitor.influxdb.InfluxDBUtils;
 import com.sf.monitor.utils.DCMZkUtils;
 import com.sf.monitor.utils.JsonValues;
 import com.sf.monitor.utils.TagValue;
 import com.sf.monitor.utils.Utils;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 import java.util.Collections;
 import java.util.List;
@@ -238,77 +233,7 @@ public class DruidInfos {
   }
 
   public Result<List<TaggedValues>> getTrendData(MetricsParam param) {
-    List<TagValue> nullCheck = Lists.transform(
-      param.metrics, new Function<String, TagValue>() {
-        @Override
-        public TagValue apply(String input) {
-          return new TagValue(input, TagValue.GreaterEqual, 0);
-        }
-      }
-    );
-    String fromStr = param.fromDateTime.withZone(DateTimeZone.UTC).toString();
-    String toStr = param.toDateTime.withZone(DateTimeZone.UTC).toString();
-    List<TagValue> timeLimit = ImmutableList.of(
-      new TagValue("time", TagValue.GreaterEqual, fromStr),
-      new TagValue("time", TagValue.LessEqaul, toStr)
-    );
-    String selects = Joiner.on(",").join(param.metrics);
-    String where = Joiner.on(" and ").join(
-      Iterators.transform(
-        Iterators.concat(param.tagValues.iterator(), nullCheck.iterator(), timeLimit.iterator()),
-        new Function<TagValue, String>() {
-          @Override
-          public String apply(TagValue input) {
-            return "(" + input.toSql() + ")";
-          }
-        }
-      )
-    );
-    String groupby;
-    if (param.groups == null || param.groups.size() == 0) {
-      groupby = "";
-    } else {
-      groupby = " group by " + Joiner.on(",").join(param.groups);
-    }
-    String limit;
-    if (param.limit == null) {
-      limit = "";
-    } else {
-      limit = " limit " + param.limit;
-    }
-
-    String sql = String.format(
-      "select %s from %s where %s%s%s",
-      selects,
-      EmitMetricsAnalyzer.tableName,
-      where,
-      groupby,
-      limit
-    );
-
-    log.debug(sql);
-
-    Object debugMsg = param.debug ? sql : null;
-    final List<TaggedValues> taggedValuesList = Lists.transform(
-      InfluxDBUtils.commonQuery(sql), new Function<List<Event>, TaggedValues>() {
-        public TaggedValues apply(List<Event> events) {
-          TaggedValues taggedValues = new TaggedValues();
-          if (!events.isEmpty()) {
-            taggedValues.tags = events.get(0).tags;
-          }
-          taggedValues.values = Lists.transform(
-            events, new Function<Event, JsonValues>() {
-              @Override
-              public JsonValues apply(Event event) {
-                return JsonValues.of(event.values);
-              }
-            }
-          );
-          return taggedValues;
-        }
-      }
-    );
-    return new Result<List<TaggedValues>>(taggedValuesList, true, debugMsg);
+    throw new UnsupportedOperationException();
   }
 
   public Result<List<TaggedValues>> getLatestData(MetricsParam param) {

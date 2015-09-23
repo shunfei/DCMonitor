@@ -3,8 +3,10 @@ package com.sf.monitor.controllers;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+import com.sf.monitor.Event;
 import com.sf.monitor.Resources;
 import com.sf.monitor.kafka.KafkaInfos;
+import com.sf.monitor.kafka.KafkaStats;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.format.DateTimeFormat;
@@ -120,7 +122,7 @@ public class KafkaController {
   @RequestMapping("/detail")
   public
   @ResponseBody
-  List<KafkaInfos.OffsetInfo> topicDetail(String topic, String consumer, String from, String to, Integer partitionId) {
+  Map<String, List<Event>> topicDetail(String topic, String consumer, String from, String to, Integer partitionId) {
     DateTime fromDate = null;
     DateTime toDate = null;
     DateTime now = new DateTime();
@@ -138,7 +140,7 @@ public class KafkaController {
       fromDate = toDate.minus(new Period(timeOffset));
     }
     partitionId = (partitionId == null) ? -1 : partitionId;
-    return Resources.kafkaInfos.getTrendConsumeInfos(consumer, topic, partitionId, fromDate, toDate);
+    return KafkaStats.getTrendConsumeInfos(consumer, topic, partitionId, fromDate, toDate);
   }
 
   @RequestMapping("/consumer_info")
