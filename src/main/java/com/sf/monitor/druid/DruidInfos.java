@@ -1,19 +1,18 @@
 package com.sf.monitor.druid;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
+import com.sf.monitor.Event;
 import com.sf.monitor.Resources;
 import com.sf.monitor.utils.DCMZkUtils;
 import com.sf.monitor.utils.JsonValues;
-import com.sf.monitor.utils.TagValue;
+import com.sf.monitor.utils.PrometheusUtils;
 import com.sf.monitor.utils.Utils;
 import org.joda.time.DateTime;
 
@@ -200,48 +199,8 @@ public class DruidInfos {
     return Lists.newArrayList(nodeMap.values());
   }
 
-  public static class MetricsParam {
-    public String from;
-    public String to;
-    public List<String> metrics;
-    public List<TagValue> tagValues;
-    public List<String> groups;
-    public boolean debug;
-    public Integer limit;
-
-    @JsonIgnore
-    public DateTime fromDateTime;
-    @JsonIgnore
-    public DateTime toDateTime;
-  }
-
-  public static class Result<T> {
-    public T res;
-    public boolean suc;
-    public Object debugMsg;
-
-    public Result(T res, boolean suc, Object debugMsg) {
-      this.res = res;
-      this.suc = suc;
-      this.debugMsg = debugMsg;
-    }
-  }
-
-  public static class TaggedValues {
-    public Map<String, String> tags;
-    public List<JsonValues> values;
-  }
-
-  public Result<List<TaggedValues>> getTrendData(MetricsParam param) {
-    throw new UnsupportedOperationException();
-  }
-
-  public Result<List<TaggedValues>> getLatestData(MetricsParam param) {
-    DateTime now = new DateTime();
-    param.fromDateTime = now.minusMinutes(5);
-    param.toDateTime = now;
-    param.limit = 1;
-    return getTrendData(param);
+  public Map<String, List<Event>> getTrendData(Map<String, String> tags, DateTime from, DateTime to) {
+    return PrometheusUtils.getEvents(EmitMetricsAnalyzer.tableName, tags, from, to);
   }
 
   public static void main(String[] args) throws Exception {
@@ -256,28 +215,6 @@ public class DruidInfos {
     System.out.println("middle manager: " + om.writeValueAsString(infos.getMiddleManagerNodes()));
     System.out.println("coodinator: " + om.writeValueAsString(infos.getCoordinatorNodes()));
     System.out.println("overlord: " + om.writeValueAsString(infos.getOverlordNodes()));
-
-    MetricsParam param = new MetricsParam();
-    param.toDateTime = new DateTime();
-    param.fromDateTime = param.toDateTime.minusMinutes(10);
-    param.metrics = ImmutableList.of(
-      "events_processed",
-      "events_thrownAway",
-      "events_unparseable"
-    );
-    param.tagValues = ImmutableList.of(
-      new TagValue(
-        "host",
-        TagValue.In,
-        ImmutableList.of(
-          "192.168.10.51:8001",
-          "192.168.10.52:8001"
-        )
-      )
-    );
-
-    System.out.println("trendData: " + om.writeValueAsString(infos.getTrendData(param)));
-    System.out.println("latestData: " + om.writeValueAsString(infos.getLatestData(param)));
 
     Resources.close();
   }

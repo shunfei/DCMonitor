@@ -123,24 +123,24 @@ public class KafkaController {
   public
   @ResponseBody
   Map<String, List<Event>> topicDetail(String topic, String consumer, String from, String to, Integer partitionId) {
-    DateTime fromDate = null;
-    DateTime toDate = null;
+    DateTime fromTime = null;
+    DateTime toTime = null;
     DateTime now = new DateTime();
     try {
-      fromDate = DateTime.parse(from, formatter);
+      fromTime = DateTime.parse(from, formatter);
     } catch (Exception e) {
-      fromDate = now;
+      fromTime = now;
     }
     try {
-      toDate = DateTime.parse(to, formatter);
+      toTime = DateTime.parse(to, formatter);
     } catch (Exception e) {
-      toDate = now;
+      toTime = now;
     }
     if (from == null || to.equals(from)) {
-      fromDate = toDate.minus(new Period(timeOffset));
+      fromTime = toTime.minus(new Period(timeOffset));
     }
     partitionId = (partitionId == null) ? -1 : partitionId;
-    return KafkaStats.getTrendConsumeInfos(consumer, topic, partitionId, fromDate, toDate);
+    return KafkaStats.getTrendConsumeInfos(consumer, topic, partitionId, fromTime, toTime);
   }
 
   @RequestMapping("/consumer_info")
