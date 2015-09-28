@@ -42,7 +42,9 @@ public class PrometheusUtils {
 
   public static void saveEvents(String modelName, List<Event> events) {
     try {
-      log.debug("saveEvents, modelName: %s, events: %s", modelName, Resources.jsonMapper.writeValueAsString(events));
+      if (log.isDebugEnabled()) {
+        log.debug("saveEvents, modelName: %s, events: %s", modelName, Resources.jsonMapper.writeValueAsString(events));
+      }
     } catch (Exception e) {
     }
     Gauge gauge = getGauge(modelName);
@@ -99,7 +101,7 @@ public class PrometheusUtils {
       for (Object[] vs : item.values) {
         Event event = new Event();
         event.metricName = metricName;
-        event.timeStamp =  (long) ((double) vs[0]) * 1000;
+        event.timeStamp = (long) ((double) vs[0]) * 1000;
         event.metricValue = Double.valueOf((String) vs[1]);
         events.add(event);
       }
