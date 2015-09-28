@@ -99,15 +99,17 @@ public class KafkaInfos implements Closeable {
   private PartitionInfo getPartitionInfo(String group, String topic, int pid) {
     try {
       Stat stat = new Stat();
-      String offsetStr = zkClient.readData(
-        String.format(
-          "%s/%s/offsets/%s/%d",
-          ZkUtils.ConsumersPath(),
-          group,
-          topic,
-          pid
-        ), stat
+      String offsetPath = String.format(
+        "%s/%s/offsets/%s/%d",
+        ZkUtils.ConsumersPath(),
+        group,
+        topic,
+        pid
       );
+      if (!zkClient.exists(offsetPath)) {
+        return null;
+      }
+      String offsetStr = zkClient.readData(offsetPath, stat);
       Long offset = Long.valueOf(offsetStr);
       DateTime creation = new DateTime(stat.getCtime());
       DateTime modified = new DateTime(stat.getMtime());
