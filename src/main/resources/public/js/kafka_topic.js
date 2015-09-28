@@ -81,6 +81,7 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                                            'topic' : topic,
                                                            'consumer' : consumer
                                                        },function(data){
+                                                           ds = new Array([],[],[]);
                                                            data["offset"].map(function(d){
                                                                ds[0].push( {x : d["timeStamp"], y : d[metricValue] } )
                                                            });
@@ -90,6 +91,10 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                                            data["lag"].map(function(d){
                                                                ds[2].push( {x : d["timeStamp"], y : d[metricValue] } )
                                                            });
+
+                                                           s0.setData(ds[0],true,true,true);
+                                                           s1.setData(ds[1],true,true,true);
+                                                           s2.setData(ds[2],true,true,true);
 
                                                        });
                                                    }, parseInt(pt));
