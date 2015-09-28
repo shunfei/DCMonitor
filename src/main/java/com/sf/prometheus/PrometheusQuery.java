@@ -67,7 +67,7 @@ public class PrometheusQuery {
       query,
       String.valueOf(startMS / 1000),
       String.valueOf(endMS / 1000),
-      "1"
+      "5s"
     );
   }
 }
