@@ -111,7 +111,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>1.2.6.RELEASE</version>
+      <version>1.0.2.RELEASE</version>
       <exclusions>
         <!--<exclusion>-->
           <!--<groupId>org.slf4j</groupId>-->
@@ -134,7 +134,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
-      <version>4.1.7.RELEASE</version>
+      <version>4.0.5.RELEASE</version>
     </dependency>
 
     <dependency>
@@ -177,6 +177,8 @@
 
   <build>
     <plugins>
+
+
       <plugin>
         <groupId>com.jolira</groupId>
         <artifactId>onejar-maven-plugin</artifactId>
@@ -189,14 +191,20 @@
           </execution>
         </executions>
       </plugin>
+
+
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+        <source>1.7</source>
+        <target>1.7</target>
         </configuration>
       </plugin>
+
     </plugins>
+
+
   </build>
 </project>
