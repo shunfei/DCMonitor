@@ -178,7 +178,6 @@
   <build>
     <plugins>
 
-
       <plugin>
         <groupId>com.jolira</groupId>
         <artifactId>onejar-maven-plugin</artifactId>
@@ -191,8 +190,6 @@
           </execution>
         </executions>
       </plugin>
-
-
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

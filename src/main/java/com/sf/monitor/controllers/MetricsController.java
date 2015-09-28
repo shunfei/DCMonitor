@@ -13,7 +13,7 @@ import java.io.IOException;
 @RequestMapping("/metrics")
 public class MetricsController extends MetricsServlet {
 
-  @RequestMapping("/")
+  @RequestMapping()
   public void metrics(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     super.doGet(req, resp);
   }
