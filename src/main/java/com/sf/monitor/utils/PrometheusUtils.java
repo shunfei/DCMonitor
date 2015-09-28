@@ -99,7 +99,7 @@ public class PrometheusUtils {
       for (Object[] vs : item.values) {
         Event event = new Event();
         event.metricName = metricName;
-        event.timeStr = new DateTime((long) ((double) vs[0]) * 1000).toString();
+        event.timeStamp =  (long) ((double) vs[0]) * 1000;
         event.metricValue = Double.valueOf((String) vs[1]);
         events.add(event);
       }

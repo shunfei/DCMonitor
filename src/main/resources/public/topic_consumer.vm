@@ -5,111 +5,142 @@
         Kafka Monitor
     </title>
 
-	#include("/public/head.html")
+  #include("/public/head.html")
     <script>
-       var  timeZoneOffsetHour = parseInt("$!{timeZoneOffsetHour}");
-		</script>
+        var timeZoneOffsetHour = parseInt("$!{timeZoneOffsetHour}");
+    </script>
     <script src="/js/highstock.js"></script>
     <script src="/js/kafka_topic.js"></script>
     <script src="/js/WdatePicker.js"></script>
-    <script >
-      var topic = '${topic}';
-      var consumer = '${consumer}';
-			if(isNaN('${partitionId}')){
-          if ('${type}' == "storm" ) {
-              $.post('/kafka/storm_kafka_consumer_info',{
-                  'clientId' : consumer,
-              },function(data){
-                  buildTable(data, $('#kfk_table'));
-                  $('#kfk_table').tablesorter();
-              });
-          } else  {
-              $.post('/kafka/consumer_info',{
-                  'topic' : topic,
-                  'consumer' : consumer
-              },function(data){
-                  buildTable(data, $('#kfk_table'));
-                  $('#kfk_table').tablesorter();
-              });
-          }
+    <script>
+        var topic = '${topic}';
+        var consumer = '${consumer}';
+        if (isNaN('${partitionId}')) {
+            if ('${type}' == "storm") {
+                $.post(
+                        '/kafka/storm_kafka_consumer_info', {
+                            'clientId': consumer,
+                        }, function (data)
+                        {
+                            buildTable(data, $('#kfk_table'));
+                            $('#kfk_table').tablesorter();
+                            addPartionHref();
+                        }
+                );
+            } else {
+                $.post(
+                        '/kafka/consumer_info', {
+                            'topic': topic,
+                            'consumer': consumer
+                        }, function (data)
+                        {
+                            buildTable(data, $('#kfk_table'));
+                            $('#kfk_table').tablesorter();
+                            addPartionHref();
+                        }
+                );
+            }
 
-          //add href
-          $('#kfk_table').find('tbody tr').each(function(){
-              var partition = $(this).find('td').eq(2).find('a').html();
-              $(this).find('td a').eq(1).attr("href", "/kafka/topic/"+topic +"?consumer=" + consumer + "&type=${type}&partitionId=" + partition).addClass("mtr");
-          });
-			}
+        }
+
+        function addPartionHref()
+        {
+            //add href
+            $('#kfk_table').find('tbody tr').each(
+                    function ()
+                    {
+                        var partition = $(this).find('td').eq(2).find('a').html();
+                        $(this).find('td a').eq(2).attr(
+                                "href",
+                                "/kafka/topic/"
+                                + topic
+                                + "?consumer="
+                                + consumer
+                                + "&type=${type}&partitionId="
+                                + partition
+                        ).addClass("mtr");
+                    }
+            );
+        }
+
     </script>
 </head>
 <body>
 
-	#include("/public/nav.html")
+  #include("/public/nav.html")
 
 <div>
     <ul class="list-inline">
-				<li>topic:</li>
+        <li>topic:</li>
         <li><h3 id="kafka_topic">${topic}</h3></li>
 
 
-		  	<li>consumer:</li>
-				<li><h3 id="kafka_consumer">${consumer}</h3></li>
+        <li>consumer:</li>
+        <li><h3 id="kafka_consumer">${consumer}</h3></li>
 
 
-				#if (${partitionId})
-						<li>partitionId:</li>
-						<li><h3 id="partitionId">${partitionId}</h3</li>
-				#end
+      #if (${partitionId})
+          <li>partitionId:</li>
+          <li><h3 id="partitionId">${partitionId}</h3</li>
+      #end
 
     </ul>
 </div>
 
 <div class="container">
 
-		<div style="display: none">
+    <div style="display: none">
         <a id="period">${period}</a>
-		</div>
+    </div>
     <h4>Analysis <a class="plus">-</a></h4>
+
     <div class="col-md-12">
-				<div>
+        <div>
             <form class="form-inline">
                 <div class="form-group">
                     <label for="from">Start Time</label>
-                    <input type="text" class="form-control" id="from" placeholder="From" onfocus="WdatePicker({isShowWeek:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                    <input type="text" class="form-control" id="from" placeholder="From"
+                           onfocus="WdatePicker({isShowWeek:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})">
                 </div>
                 <div class="form-group">
                     <label for="to">End Time</label>
-                    <input type="text" class="form-control" id="to" placeholder="To" onfocus="WdatePicker({isShowWeek:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                    <input type="text" class="form-control" id="to" placeholder="To"
+                           onfocus="WdatePicker({isShowWeek:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})">
                 </div>
-                <input  id="go" type="button" class="btn btn-default" value="GO" />
+                <input id="go" type="button" class="btn btn-default" value="GO"/>
             </form>
-				</div>
+        </div>
 
-			  <div data="data" class="ng-scope ng-isolate-scope grap">
+        <div data="data" class="ng-scope ng-isolate-scope grap">
             <div class="ng-scope">
-                <div class="row speed" ng-hide="loading"><div class="label label-info col-md-3">
-                    <strong class="ng-binding" id="pro_rate">0.000</strong>
-                    <span class="small">msg/s</span><br><small class="ng-binding timePeriod"></small>
-                </div>
+                <div class="row speed" ng-hide="loading">
+                    <div class="label label-info col-md-3">
+                        <strong class="ng-binding" id="pro_rate">0.000</strong>
+                        <span class="small">msg/s</span><br>
+                        <small class="ng-binding timePeriod"></small>
+                    </div>
                     <div class="label label-info  col-md-3 col-md-offset-5">
-												<strong class="ng-binding" id="consu_rate">0.000</strong>
-                        <span class="small">msg/s</span> <br><small class="ng-binding timePeriod"></small></div>
+                        <strong class="ng-binding" id="consu_rate">0.000</strong>
+                        <span class="small">msg/s</span> <br>
+                        <small class="ng-binding timePeriod"></small>
+                    </div>
                 </div>
             </div>
 
-            <div  id="container" style="width:100%; height:400px;">
+            <div id="container" style="width:100%; height:400px;">
 
-					  </div>
+            </div>
 
         </div>
 
     </div>
 
-		#if (!${partitionId})
-				<h4>Consumer Offsets <a class="plus">-</a></h4>
-				<table id="kfk_table" class="m_table table table-bordered table-striped tablesorter">
+  #if (!${partitionId})
+      <h4>Consumer Offsets <a class="plus">-</a></h4>
+      <table id="kfk_table" class="m_table table table-bordered table-striped tablesorter">
 
-				</table>
-		#end
+      </table>
+  #end
 
 </div>
 
