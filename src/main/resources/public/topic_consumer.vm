@@ -50,7 +50,7 @@
                     function ()
                     {
                         var partition = $(this).find('td').eq(2).find('a').html();
-                        $(this).find('td a').eq(0).attr(
+                        $(this).find('td a').eq(2).attr(
                                 "href",
                                 "/kafka/topic/"
                                 + topic
