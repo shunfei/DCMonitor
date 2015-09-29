@@ -1,9 +1,8 @@
 {
-    "influxdb": {
-        "influxdbUrl": "http://192.168.10.51:8086",
-        "influxdbDatabase": "dcmonitor",
-        "influxdbUser": "root",
-        "influxdbPassword": "root"
+    "prometheus":{
+        "namespace": "dcmonitor",
+        "@serverUrl": "The host:port of the prometheus server",
+        "serverUrl": "http://localhost:9090"
     },
     "zookeeper": {
         "addrs": "192.168.10.51:2181,192.168.10.41:2181,192.168.10.42:2181",
@@ -33,7 +32,7 @@
         "warnLagSpec": {
             "test|dsp_druid_ingester_0": 200
         },
-        "@comment": "set ignoreConsumerRegex to ignore sending warning on those test consumers",
+        "@ignoreConsumerRegex": "set ignoreConsumerRegex to ignore sending warning on those test consumers",
         "ignoreConsumerRegex": "^console-consumer-.+$",
         "stormKafkaRoot": "/storm_kafka"
     },

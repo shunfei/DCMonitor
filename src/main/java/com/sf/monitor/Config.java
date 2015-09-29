@@ -21,7 +21,7 @@ public class Config {
   private static final Logger log = new Logger(Config.class);
 
   @JsonProperty
-  public InfluxdbConfig influxdb;
+  public Prometheus prometheus;
   @JsonProperty
   public CuratorConfig zookeeper;
   @JsonProperty("druid")
@@ -37,15 +37,11 @@ public class Config {
     return ImmutableList.<InfoFetcher>of(fetchers.druidFetcher, fetchers.kafkaFetcher, fetchers.zookeeperFetcher);
   }
 
-  public static class InfluxdbConfig {
+  public static class Prometheus {
     @JsonProperty
-    public String influxdbUrl;
+    public String namespace;
     @JsonProperty
-    public String influxdbDatabase;
-    @JsonProperty
-    public String influxdbUser;
-    @JsonProperty
-    public String influxdbPassword;
+    public String serverUrl;
   }
 
   public static class CuratorConfig {
@@ -97,7 +93,7 @@ public class Config {
       this.warning = warning;
       this.warnDefaultLag = warnDefaultLag;
       this.warnLagSpec = warnLagSpec;
-      if (ignoreConsumerRegex != null){
+      if (ignoreConsumerRegex != null) {
         this.ignoreConsumerRegex = Pattern.compile(ignoreConsumerRegex);
       }
       this.stormKafkaRoot = stormKafkaRoot;
@@ -121,7 +117,7 @@ public class Config {
           return false;
         }
       }
-      return lag > getWarnLag(topic, consumer);
+      return lag > getWarnLag(topic, consumer) || lag < 0;
     }
   }
 

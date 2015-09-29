@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sf.log.Logger;
 import com.sf.monitor.CommonFetcher;
 import com.sf.monitor.InfoFetcher;
-import com.sf.monitor.influxdb.Event;
+import com.sf.monitor.Event;
 import org.joda.time.Period;
 
 import java.util.List;

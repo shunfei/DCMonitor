@@ -47,11 +47,20 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                           });
 
     var ds = new Array([],[],[]);
-    data.map(function(p){
-           ds[0].push([p['timeStamp']  , p['logSize']]);
-           ds[1].push([p['timeStamp']  , p['offset']]);
-           ds[2].push([p['timeStamp'] , p['lag']]);
+
+    var metricValue = "metricValue";
+
+    data["offset"].map(function(d){
+        ds[0].push( {x : d["timeStamp"], y : d[metricValue] } )
     });
+    data["size"].map(function(d){
+        ds[1].push( {x : d["timeStamp"], y : d[metricValue] } )
+    });
+    data["lag"].map(function(d){
+        ds[2].push( {x : d["timeStamp"], y : d[metricValue] } )
+    });
+
+
 
     $('#container').highcharts('StockChart',{
                                     rangeSelector: {
@@ -72,25 +81,30 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                                            'topic' : topic,
                                                            'consumer' : consumer
                                                        },function(data){
-                                                           var ds = new Array([],[],[]);
-                                                           data.map(function(p){
-                                                               ds[0].push([p['timeStamp']  , p['logSize']]);
-                                                               ds[1].push([p['timeStamp']  , p['offset']]);
-                                                               ds[2].push([p['timeStamp'] , p['lag']]);
+                                                           ds = new Array([],[],[]);
+                                                           data["offset"].map(function(d){
+                                                               ds[0].push( {x : d["timeStamp"], y : d[metricValue] } )
                                                            });
+                                                           data["size"].map(function(d){
+                                                               ds[1].push( {x : d["timeStamp"], y : d[metricValue] } )
+                                                           });
+                                                           data["lag"].map(function(d){
+                                                               ds[2].push( {x : d["timeStamp"], y : d[metricValue] } )
+                                                           });
+
                                                            s0.setData(ds[0],true,true,true);
                                                            s1.setData(ds[1],true,true,true);
                                                            s2.setData(ds[2],true,true,true);
+
                                                        });
                                                    }, parseInt(pt));
                                                }
                                                //初始化rate
-                                               var tmp = data;
-                                               var len = tmp.length;
-                                               var logDiffs = tmp[len-1]['logSize'] - tmp[0]['logSize'];
-                                               var offDiffs = tmp[len-1]['offset'] - tmp[0]['offset'];
+                                               var len = ds[0].length;
+                                               var logDiffs = ds[1][len-1].y  - ds[1][0].y;
+                                               var offDiffs = ds[0][len-1].y  - ds[0][0].y;
 
-                                               var millSeconds =   tmp[len-1]['timeStamp'] - tmp[0]['timeStamp'];
+                                               var millSeconds =   ds[0][len-1].x - ds[0][0].x;
 
                                                $('#pro_rate').html( Math.round(logDiffs
                                                                                * 1000.0

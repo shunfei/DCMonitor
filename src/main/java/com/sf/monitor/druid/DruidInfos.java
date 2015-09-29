@@ -1,26 +1,20 @@
 package com.sf.monitor.druid;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
+import com.sf.monitor.Event;
 import com.sf.monitor.Resources;
-import com.sf.monitor.influxdb.Event;
-import com.sf.monitor.influxdb.InfluxDBUtils;
 import com.sf.monitor.utils.DCMZkUtils;
 import com.sf.monitor.utils.JsonValues;
-import com.sf.monitor.utils.TagValue;
+import com.sf.monitor.utils.PrometheusUtils;
 import com.sf.monitor.utils.Utils;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 
 import java.util.Collections;
 import java.util.List;
@@ -205,118 +199,8 @@ public class DruidInfos {
     return Lists.newArrayList(nodeMap.values());
   }
 
-  public static class MetricsParam {
-    public String from;
-    public String to;
-    public List<String> metrics;
-    public List<TagValue> tagValues;
-    public List<String> groups;
-    public boolean debug;
-    public Integer limit;
-
-    @JsonIgnore
-    public DateTime fromDateTime;
-    @JsonIgnore
-    public DateTime toDateTime;
-  }
-
-  public static class Result<T> {
-    public T res;
-    public boolean suc;
-    public Object debugMsg;
-
-    public Result(T res, boolean suc, Object debugMsg) {
-      this.res = res;
-      this.suc = suc;
-      this.debugMsg = debugMsg;
-    }
-  }
-
-  public static class TaggedValues {
-    public Map<String, String> tags;
-    public List<JsonValues> values;
-  }
-
-  public Result<List<TaggedValues>> getTrendData(MetricsParam param) {
-    List<TagValue> nullCheck = Lists.transform(
-      param.metrics, new Function<String, TagValue>() {
-        @Override
-        public TagValue apply(String input) {
-          return new TagValue(input, TagValue.GreaterEqual, 0);
-        }
-      }
-    );
-    String fromStr = param.fromDateTime.withZone(DateTimeZone.UTC).toString();
-    String toStr = param.toDateTime.withZone(DateTimeZone.UTC).toString();
-    List<TagValue> timeLimit = ImmutableList.of(
-      new TagValue("time", TagValue.GreaterEqual, fromStr),
-      new TagValue("time", TagValue.LessEqaul, toStr)
-    );
-    String selects = Joiner.on(",").join(param.metrics);
-    String where = Joiner.on(" and ").join(
-      Iterators.transform(
-        Iterators.concat(param.tagValues.iterator(), nullCheck.iterator(), timeLimit.iterator()),
-        new Function<TagValue, String>() {
-          @Override
-          public String apply(TagValue input) {
-            return "(" + input.toSql() + ")";
-          }
-        }
-      )
-    );
-    String groupby;
-    if (param.groups == null || param.groups.size() == 0) {
-      groupby = "";
-    } else {
-      groupby = " group by " + Joiner.on(",").join(param.groups);
-    }
-    String limit;
-    if (param.limit == null) {
-      limit = "";
-    } else {
-      limit = " limit " + param.limit;
-    }
-
-    String sql = String.format(
-      "select %s from %s where %s%s%s",
-      selects,
-      EmitMetricsAnalyzer.tableName,
-      where,
-      groupby,
-      limit
-    );
-
-    log.debug(sql);
-
-    Object debugMsg = param.debug ? sql : null;
-    final List<TaggedValues> taggedValuesList = Lists.transform(
-      InfluxDBUtils.commonQuery(sql), new Function<List<Event>, TaggedValues>() {
-        public TaggedValues apply(List<Event> events) {
-          TaggedValues taggedValues = new TaggedValues();
-          if (!events.isEmpty()) {
-            taggedValues.tags = events.get(0).tags;
-          }
-          taggedValues.values = Lists.transform(
-            events, new Function<Event, JsonValues>() {
-              @Override
-              public JsonValues apply(Event event) {
-                return JsonValues.of(event.values);
-              }
-            }
-          );
-          return taggedValues;
-        }
-      }
-    );
-    return new Result<List<TaggedValues>>(taggedValuesList, true, debugMsg);
-  }
-
-  public Result<List<TaggedValues>> getLatestData(MetricsParam param) {
-    DateTime now = new DateTime();
-    param.fromDateTime = now.minusMinutes(5);
-    param.toDateTime = now;
-    param.limit = 1;
-    return getTrendData(param);
+  public Map<String, List<Event>> getTrendData(Map<String, String> tags, DateTime from, DateTime to) {
+    return PrometheusUtils.getEvents(EmitMetricsAnalyzer.tableName, tags, from, to);
   }
 
   public static void main(String[] args) throws Exception {
@@ -331,28 +215,6 @@ public class DruidInfos {
     System.out.println("middle manager: " + om.writeValueAsString(infos.getMiddleManagerNodes()));
     System.out.println("coodinator: " + om.writeValueAsString(infos.getCoordinatorNodes()));
     System.out.println("overlord: " + om.writeValueAsString(infos.getOverlordNodes()));
-
-    MetricsParam param = new MetricsParam();
-    param.toDateTime = new DateTime();
-    param.fromDateTime = param.toDateTime.minusMinutes(10);
-    param.metrics = ImmutableList.of(
-      "events_processed",
-      "events_thrownAway",
-      "events_unparseable"
-    );
-    param.tagValues = ImmutableList.of(
-      new TagValue(
-        "host",
-        TagValue.In,
-        ImmutableList.of(
-          "192.168.10.51:8001",
-          "192.168.10.52:8001"
-        )
-      )
-    );
-
-    System.out.println("trendData: " + om.writeValueAsString(infos.getTrendData(param)));
-    System.out.println("latestData: " + om.writeValueAsString(infos.getLatestData(param)));
 
     Resources.close();
   }

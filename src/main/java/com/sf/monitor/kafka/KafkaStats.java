@@ -4,9 +4,11 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
+import com.sf.monitor.Event;
 import com.sf.monitor.Resources;
-import com.sf.monitor.influxdb.Event;
+import com.sf.monitor.utils.PrometheusUtils;
 import com.sf.monitor.utils.Utils;
+import org.joda.time.DateTime;
 
 import java.util.List;
 import java.util.Map;
@@ -69,15 +71,20 @@ public class KafkaStats {
       totalSize += info.logSize;
       totalOffset += info.offset;
 
-      points.add(createPoint(info.topic, info.group, info.partition, info.logSize, info.offset));
+      points.add(createPoint(info.topic, info.group, info.partition, "size", info.logSize));
+      points.add(createPoint(info.topic, info.group, info.partition, "offset", info.offset));
+      points.add(createPoint(info.topic, info.group, info.partition, "lag", info.logSize - info.offset));
+
     }
 
-    points.add(createPoint(topic, consumer, -1, totalSize, totalOffset));
+    points.add(createPoint(topic, consumer, -1, "size", totalSize));
+    points.add(createPoint(topic, consumer, -1, "offset", totalOffset));
+    points.add(createPoint(topic, consumer, -1, "lag", totalSize - totalOffset));
 
     long lag = totalSize - totalOffset;
     if (Config.config.kafka.shouldAlarm(topic, consumer, lag)) {
       String warnMsg = String.format(
-        "topic:[%s],consumer:[%s] - consum lag: current[%d],threshold[%d], topic lag too long!",
+        "topic:[%s],consumer:[%s] - consum lag: current[%d],threshold[%d], topic lag illegal!",
         topic,
         consumer,
         lag,
@@ -88,17 +95,8 @@ public class KafkaStats {
     }
   }
 
-  private static Event createPoint(String topic, String consumer, int partition, long logSize, long offset) {
+  private static Event createPoint(String topic, String consumer, int partition, String metric, long value) {
     Event p = new Event();
-    p.name = tableName;
-    p.values = ImmutableMap.<String, Object>of(
-      "size",
-      logSize,
-      "offs", // Stupid influxdb cannot use key word, e.g. offset, as field topoName!
-      offset,
-      "lag",
-      logSize - offset
-    );
     p.tags = ImmutableMap.of(
       "topic",
       topic,
@@ -107,11 +105,32 @@ public class KafkaStats {
       "partition",
       String.valueOf(partition)
     );
+    p.metricName = metric;
+    p.metricValue = (double) value;
     return p;
   }
 
-  private static class TotalInfo {
-    long totalSize, totalOffset;
+  // 获取topic消费历史数据
+  public static Map<String, List<Event>> getTrendConsumeInfos(
+    String consumer,
+    String topic,
+    int partitionId,
+    DateTime from,
+    DateTime to
+  ) {
+    return PrometheusUtils.getEvents(
+      KafkaStats.tableName,
+      ImmutableMap.of(
+        "consumer",
+        consumer,
+        "topic",
+        topic,
+        "partition",
+        String.valueOf(partitionId)
+      ),
+      from,
+      to
+    );
   }
 
   public static void main(String[] args) throws Exception {

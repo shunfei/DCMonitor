@@ -11,8 +11,6 @@ import com.google.common.collect.Sets;
 import com.sf.log.Logger;
 import com.sf.monitor.Config;
 import com.sf.monitor.Resources;
-import com.sf.monitor.influxdb.Event;
-import com.sf.monitor.influxdb.InfluxDBUtils;
 import com.sf.monitor.utils.DCMZkUtils;
 import kafka.api.OffsetRequest;
 import kafka.api.OffsetResponse;
@@ -27,8 +25,6 @@ import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.lang.StringUtils;
 import org.apache.zookeeper.data.Stat;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.Period;
 import scala.Int;
 import scala.Option;
 import scala.collection.JavaConversions;
@@ -103,29 +99,35 @@ public class KafkaInfos implements Closeable {
   private PartitionInfo getPartitionInfo(String group, String topic, int pid) {
     try {
       Stat stat = new Stat();
-      String offsetStr = zkClient.readData(
-        String.format(
-          "%s/%s/offsets/%s/%d",
-          ZkUtils.ConsumersPath(),
-          group,
-          topic,
-          pid
-        ), stat
-      );
-      Long offset = Long.valueOf(offsetStr);
-      DateTime creation = new DateTime(stat.getCtime());
-      DateTime modified = new DateTime(stat.getMtime());
-
-      String owner = zkClient.readData(
-        String.format(
-          "%s/%s/owners/%s/%d",
-          ZkUtils.ConsumersPath(),
-          group,
-          topic,
-          pid
-        ), true
+      String offsetPath = String.format(
+        "%s/%s/offsets/%s/%d",
+        ZkUtils.ConsumersPath(),
+        group,
+        topic,
+        pid
       );
 
+      Long offset = 0L;
+      DateTime creation = new DateTime(0);
+      DateTime modified = new DateTime(0);
+      if (zkClient.exists(offsetPath)) {
+        String offsetStr = zkClient.readData(offsetPath, stat);
+        offset = Long.valueOf(offsetStr);
+        creation = new DateTime(stat.getCtime());
+        modified = new DateTime(stat.getMtime());
+      }
+
+      String ownerPath = String.format(
+        "%s/%s/owners/%s/%d",
+        ZkUtils.ConsumersPath(),
+        group,
+        topic,
+        pid
+      );
+      String owner = "unknown";
+      if (zkClient.exists(ownerPath)) {
+        owner = zkClient.readData(ownerPath, true);
+      }
       long logSize = getTopicLogSize(topic, pid);
 
       PartitionInfo info = new PartitionInfo();
@@ -362,45 +364,6 @@ public class KafkaInfos implements Closeable {
     );
   }
 
-  // 获取topic消费历史数据
-  public List<OffsetInfo> getTrendConsumeInfos(
-    String consumer,
-    String topic,
-    int partitionId,
-    DateTime from,
-    DateTime to
-  ) {
-    String fromStr = from.withZone(DateTimeZone.UTC).toString();
-    String toStr = to.withZone(DateTimeZone.UTC).toString();
-    String sql = String.format(
-      "select size, offs, lag from %s "
-      + "where consumer='%s' and topic='%s' and partition='%d' and time >= '%s' and time <= '%s' "
-      + "group by topic, consumer",
-      KafkaStats.tableName,
-      consumer,
-      topic,
-      partitionId,
-      fromStr,
-      toStr
-    );
-
-    return  Lists.transform(
-      InfluxDBUtils.commonQueryFirstSeries(sql), new Function<Event, OffsetInfo>() {
-        @Override
-        public OffsetInfo apply(Event event) {
-          OffsetInfo info = new OffsetInfo();
-          info.logSize = ((Double) event.values.get("size")).longValue();
-          info.offset = ((Double) event.values.get("offs")).longValue();
-          info.lag = ((Double) event.values.get("lag")).longValue();
-          info.timeStr = event.timestamp.toString();
-          info.time = event.timestamp;
-          info.timeStamp = info.time.getMillis();
-          return info;
-        }
-      }
-    );
-  }
-
   @Override
   public void close() {
     for (SimpleConsumer consumer : consumerMap.values()) {
@@ -435,16 +398,6 @@ public class KafkaInfos implements Closeable {
     public DateTime creation;
     @JsonIgnore
     public DateTime modified;
-  }
-
-  public static class OffsetInfo {
-    @JsonIgnore
-    public DateTime time;
-    public String timeStr;
-    public long offset;
-    public long logSize;
-    public long lag;
-    public long timeStamp;
   }
 
   public static class BrokerInfo {
@@ -517,21 +470,6 @@ public class KafkaInfos implements Closeable {
     System.out.println(
       "fetchCurrentInfos: " + Resources.jsonMapper.writeValueAsString(
         KafkaStats.fetchCurrentInfos()
-      )
-    );
-
-    DateTime to = new DateTime();
-    DateTime from = to.minus(new Period("PT3H"));
-
-    System.out.println(
-      "getTrendOffsetInfos: " + Resources.jsonMapper.writeValueAsString(
-        checker.getTrendConsumeInfos(
-          "clicki_track_storm",
-          "clicki_track_topic",
-          -1,
-          from,
-          to
-        )
       )
     );
   }
