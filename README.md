@@ -37,8 +37,11 @@ It is written in java, and use [Prometheus](http://prometheus.io/) as historical
 ##Installation
 
 * Set up your Zookeeper, Kafka, Druid(If you have) for monitoring.
+
 * Set up [Prometheus/](http://prometheus.io/).
+
 	* Download a Prometheus release from [https://github.com/prometheus/prometheus/releases](https://github.com/prometheus/prometheus/releases) and set it up following [http://prometheus.io/docs/introduction/getting_started/](http://prometheus.io/docs/introduction/getting_started/), you can stop before [here](http://prometheus.io/docs/introduction/getting_started/#using-the-graphing-interface) if you don't want to go deep into prometheus. And don't worry, it is extremely easy.
+	
 	* Add a job to scrape DCMonitor's metrics, job config should looks like:
 	
 		```
@@ -47,12 +50,13 @@ It is written in java, and use [Prometheus](http://prometheus.io/) as historical
 		    scrape_timeout: 10s
 		    target_groups:
 		      - targets: ['localhost:8075']
-      ```
-    Here `localhost:8075` is the DCMonitor's host:port which web service listen on (configured in `application.properties`). The completed example is [here](https://github.com/shunfei/DCMonitor/blob/master/config/prometheus.yml).
-    
-    After that go to `http://<hostname>:9090/status`, expected to see the dcmonitor endpoints in targets section. It is in `UNHEALTHY` state because we havn't set up DCMonitor web service yet!
+		```
+    	Here `localhost:8075` is the DCMonitor's host:port which web service listen on (configured in `application.properties`). The completed example is [here](https://github.com/shunfei/DCMonitor/blob/master/config/prometheus.yml).
+
+		After that go to `http://<hostname>:9090/status`, expected to see the dcmonitor endpoints in targets section. It is in `UNHEALTHY` state because we havn't set up DCMonitor web service yet!
     
     ![](img/prometheus_status.png)
+
 
 * Compile & deploy DCMonitor
 
