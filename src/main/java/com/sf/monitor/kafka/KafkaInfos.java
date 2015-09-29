@@ -106,24 +106,28 @@ public class KafkaInfos implements Closeable {
         topic,
         pid
       );
-      if (!zkClient.exists(offsetPath)) {
-        return null;
+
+      Long offset = 0L;
+      DateTime creation = new DateTime(0);
+      DateTime modified = new DateTime(0);
+      if (zkClient.exists(offsetPath)) {
+        String offsetStr = zkClient.readData(offsetPath, stat);
+        offset = Long.valueOf(offsetStr);
+        creation = new DateTime(stat.getCtime());
+        modified = new DateTime(stat.getMtime());
       }
-      String offsetStr = zkClient.readData(offsetPath, stat);
-      Long offset = Long.valueOf(offsetStr);
-      DateTime creation = new DateTime(stat.getCtime());
-      DateTime modified = new DateTime(stat.getMtime());
 
-      String owner = zkClient.readData(
-        String.format(
-          "%s/%s/owners/%s/%d",
-          ZkUtils.ConsumersPath(),
-          group,
-          topic,
-          pid
-        ), true
+      String ownerPath = String.format(
+        "%s/%s/owners/%s/%d",
+        ZkUtils.ConsumersPath(),
+        group,
+        topic,
+        pid
       );
-
+      String owner = "unknown";
+      if (zkClient.exists(ownerPath)) {
+        owner = zkClient.readData(ownerPath, true);
+      }
       long logSize = getTopicLogSize(topic, pid);
 
       PartitionInfo info = new PartitionInfo();

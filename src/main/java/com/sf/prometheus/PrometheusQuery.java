@@ -20,6 +20,7 @@ import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
 public class PrometheusQuery {
+  private static final int MaxPoints = 800;
 
   private static class MyErrorHandler implements ErrorHandler {
     @Override
@@ -63,11 +64,16 @@ public class PrometheusQuery {
   }
 
   public PrometheusQueryService.Result query(String query, long startMS, long endMS) {
+    long period = endMS - startMS;
+    long step = 5; // default 5 seconds.
+    if (period / 1000 >= MaxPoints) {
+      step = period / 1000 / MaxPoints;
+    }
     return agent.query(
       query,
       String.valueOf(startMS / 1000),
       String.valueOf(endMS / 1000),
-      "5s"
+      String.format("%ds", step)
     );
   }
 }
