@@ -38,7 +38,7 @@ It is written in java, and use [Prometheus](http://prometheus.io/) as historical
 
 * Set up your Zookeeper, Kafka, Druid(If you have) for monitoring.
 
-* Set up [Prometheus/](http://prometheus.io/).
+* Set up [Prometheus](http://prometheus.io/).
 
 	* Download a Prometheus release from [https://github.com/prometheus/prometheus/releases](https://github.com/prometheus/prometheus/releases) and set it up following [http://prometheus.io/docs/introduction/getting_started/](http://prometheus.io/docs/introduction/getting_started/), you can stop before [here](http://prometheus.io/docs/introduction/getting_started/#using-the-graphing-interface) if you don't want to go deep into prometheus. And don't worry, it is extremely easy.
 	
@@ -75,4 +75,4 @@ It is written in java, and use [Prometheus](http://prometheus.io/) as historical
 		
 		Modify configurations in `config/config.json` and `application.properties`.
 		
-		Run `run.sh`, we start the DCMonitor web service, if every thing is fine, visit `http://<hostname>:8075` to enjoy!
+		Run `run.sh`, will start the DCMonitor web service. If every thing is fine, visit `http://<hostname>:8075` to enjoy!
