@@ -75,12 +75,21 @@ function buildRotatTable(data,jq){
     }
 
     for(var i in brr){
-        html += "<tr><td>"+ brr[i] + "</td>"
+      if(i == 0){
+        html += "<thead><tr><td>"+ brr[i] + "</td>"
         for(var j in arr[brr[i]]){
-            html += "<td>" + arr[brr[i]][j] + "</td>";
+          html += "<td>" + arr[brr[i]][j] + "</td>";
         }
-        html += "</tr>"
+        html += "</tr></thead><tbody>"
+        continue;
+      }
+      html += "<tr><td>"+ brr[i] + "</td>"
+      for(var j in arr[brr[i]]){
+          html += "<td>" + arr[brr[i]][j] + "</td>";
+      }
+      html += "</tr>"
     }
+    html += "</tbody>";
     jq.html(html);
 }
 

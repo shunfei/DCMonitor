@@ -2,7 +2,7 @@
     "prometheus":{
         "namespace": "dcmonitor",
         "@serverUrl": "The host:port of the prometheus server",
-        "serverUrl": "http://localhost:9090"
+        "serverUrl": "http://192.168.10.51:9090"
     },
     "zookeeper": {
         "addrs": "192.168.10.51:2181,192.168.10.41:2181,192.168.10.42:2181",

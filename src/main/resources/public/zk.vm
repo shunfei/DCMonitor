@@ -14,7 +14,7 @@
 
     <div class="panel panel-warning">
         <div class="panel-heading"> Zk Cluster <a class="plus">-</a></div>
-				<table id="zk_table" class="panel-body m_table table table-bordered table-striped success">
+				<table id="zk_table" class="ui celled striped table">
 
 				</table>
     </div>
@@ -25,40 +25,47 @@
             Zk Cmd<a class="plus">-</a>
 				</div>
 
-        <form class="form-inline panel-body">
-            <div class="form-group">
-                <label for="zk_select"> host: </label>
-                <select id="zk_select" class="form-control">
-                </select>
+        <form class="ui form">
+            <div class="inline fields">
+
+                <div class="four wide field">
+                    <label> host: </label>
+                    <select id="zk_select" class="ui fluid dropdow">
+                    </select>
+                </div>
+
+
+                <div class="four wide  field">
+                    <label>cmd:</label>
+                    <select id="zk_cmd"  class="ui fluid dropdow">
+                        <option value="conf">conf</option>
+                        <option value="cons">cons</option>
+                        <option value="crst">crst</option>
+                        <option value="dump">dump</option>
+                        <option value="envi">envi</option>
+                        <option value="ruok">ruok</option>
+                        <option value="srst">srst</option>
+                        <option value="srvr">srvr</option>
+                        <option value="stat">stat</option>
+                        <option value="wchs">wchs</option>
+                        <option value="wchc">wchc</option>
+                        <option value="wchp">wchp</option>
+                        <option value="mntr">mntr</option>
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <input type="button" id="zk_cmd_go" value="go" class="ui button submit"/>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label  for="zk_cmd">cmd:</label>
-                <select id="zk_cmd"  class="form-control">
-                    <option value="conf">conf</option>
-                    <option value="cons">cons</option>
-                    <option value="crst">crst</option>
-                    <option value="dump">dump</option>
-                    <option value="envi">envi</option>
-                    <option value="ruok">ruok</option>
-                    <option value="srst">srst</option>
-                    <option value="srvr">srvr</option>
-                    <option value="stat">stat</option>
-                    <option value="wchs">wchs</option>
-                    <option value="wchc">wchc</option>
-                    <option value="wchp">wchp</option>
-                    <option value="mntr">mntr</option>
-                </select>
-            </div>
 
-
-					<div class="form-group">
-              <input type="button" id="zk_cmd_go" value="go" class="btn-primary"/>
-					</div>
-
-            <div>
+            <div class="field">
+                <label>Output</label>
                 <textarea name="" id="zk_res" cols="150" rows="30"></textarea>
             </div>
+
         </form>
     </div>
 

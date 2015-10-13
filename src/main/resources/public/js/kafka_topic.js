@@ -37,6 +37,20 @@ $(function(){
 
 
 
+function prettyTime(seconds){
+  var sign = "seconds"
+  var t = seconds;
+  if(seconds >= 3600){
+    t /= 3600.0;
+    sign = "hours";
+  }else if(seconds >= 60 ){
+    t /= 60.0;
+    sign = "minutes";
+  }
+  t = t.toFixed(2);
+  return t + "  " +  sign;
+}
+
 function buildKafkaGraps(data,topic,consumer,needFlush,pt){
 
     Highcharts.setOptions({
@@ -113,7 +127,7 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                                                                 * 1000.0
                                                                                 / millSeconds));
 
-                                               $('.timePeriod').html("over " + Math.round(millSeconds/1000)  + " seconds.");
+                                             $('.timePeriod').html("over " + prettyTime(millSeconds/1000));
                                            }
 
                                        }
@@ -140,7 +154,7 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                                                        * 1000.0
                                                                        / millSeconds));
 
-                                               $('.timePeriod').html("over " + Math.round(millSeconds/1000)  + " seconds.");
+                                               $('.timePeriod').html("over " + prettyTime(millSeconds/1000));
                                            }
                                        }
                                    },

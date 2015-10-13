@@ -9,9 +9,9 @@
     <script>
         var timeZoneOffsetHour = parseInt("$!{timeZoneOffsetHour}");
     </script>
-    <script src="/js/highstock.js"></script>
+    <script src="/lib/highcharts/highstock.js"></script>
     <script src="/js/kafka_topic.js"></script>
-    <script src="/js/WdatePicker.js"></script>
+    <script src="/lib/wdata/WdatePicker.js"></script>
     <script>
         var topic = '${topic}';
         var consumer = '${consumer}';
@@ -69,22 +69,19 @@
 
   #include("/public/nav.html")
 
-<div>
-    <ul class="list-inline">
-        <li>topic:</li>
+<div class="ui ">
+    <ul class="list-inline" style="margin-left: 30px;padding:20px;">
+        <li>Topic:</li>
         <li><h3 id="kafka_topic">${topic}</h3></li>
-
-
-        <li>consumer:</li>
+        <li>Consumer:</li>
         <li><h3 id="kafka_consumer">${consumer}</h3></li>
 
-
       #if (${partitionId})
-          <li>partitionId:</li>
-          <li><h3 id="partitionId">${partitionId}</h3</li>
+       <li> PartitionId:</li>
+          <li><h3 id="partitionId">${partitionId}</h3></li><
       #end
-
     </ul>
+
 </div>
 
 <div class="container">
@@ -115,11 +112,13 @@
             <div class="ng-scope">
                 <div class="row speed" ng-hide="loading">
                     <div class="label label-info col-md-3">
+                        <a class="small">Produces:</a>
                         <strong class="ng-binding" id="pro_rate">0.000</strong>
                         <span class="small">msg/s</span><br>
                         <small class="ng-binding timePeriod"></small>
                     </div>
                     <div class="label label-info  col-md-3 col-md-offset-5">
+                        <a class="small">Consumes:</a>
                         <strong class="ng-binding" id="consu_rate">0.000</strong>
                         <span class="small">msg/s</span> <br>
                         <small class="ng-binding timePeriod"></small>
@@ -137,7 +136,7 @@
 
   #if (!${partitionId})
       <h4>Consumer Offsets <a class="plus">-</a></h4>
-      <table id="kfk_table" class="m_table table table-bordered table-striped tablesorter">
+      <table id="kfk_table" class="ui celled table">
 
       </table>
   #end
