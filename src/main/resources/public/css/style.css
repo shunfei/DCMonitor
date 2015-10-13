@@ -30,6 +30,9 @@ thead{
     display: inline;
 }
 
+.small{
+    font-size: 1.0rem;
+}
 
 td a {
     color : #000;

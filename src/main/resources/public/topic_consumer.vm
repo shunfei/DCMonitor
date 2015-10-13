@@ -112,11 +112,13 @@
             <div class="ng-scope">
                 <div class="row speed" ng-hide="loading">
                     <div class="label label-info col-md-3">
+                        <a class="small">Produces:</a>
                         <strong class="ng-binding" id="pro_rate">0.000</strong>
                         <span class="small">msg/s</span><br>
                         <small class="ng-binding timePeriod"></small>
                     </div>
                     <div class="label label-info  col-md-3 col-md-offset-5">
+                        <a class="small">Consumes:</a>
                         <strong class="ng-binding" id="consu_rate">0.000</strong>
                         <span class="small">msg/s</span> <br>
                         <small class="ng-binding timePeriod"></small>
