@@ -1,5 +1,4 @@
 DCMonitor
-=====
 
 A simple, lightweight Data Center monitor, currently includes Zookeeper, Kafka, [Druid](http://druid.io/)(in progress). Motivated by [KafkaOffsetMonitor](https://github.com/quantifind/KafkaOffsetMonitor), but faster and more stable.
 
@@ -38,10 +37,8 @@ It is written in java, and use [Prometheus](http://prometheus.io/) as historical
 
 * Set up your Zookeeper, Kafka, Druid(If you have) for monitoring.
 
-* Set up [Prometheus](http://prometheus.io/).
-
-	* Download a Prometheus release from [https://github.com/prometheus/prometheus/releases](https://github.com/prometheus/prometheus/releases) and set it up following [http://prometheus.io/docs/introduction/getting_started/](http://prometheus.io/docs/introduction/getting_started/), you can stop before [here](http://prometheus.io/docs/introduction/getting_started/#using-the-graphing-interface) if you don't want to go deep into prometheus. And don't worry, it is extremely easy.
-	
+* Set up [Prometheus/](http://prometheus.io/).
+	* Download a Prometheus release 0.16.0 from [https://github.com/prometheus/prometheus/releases](https://github.com/prometheus/prometheus/releases) and set it up following [http://prometheus.io/docs/introduction/getting_started/](http://prometheus.io/docs/introduction/getting_started/), you can stop before [here](http://prometheus.io/docs/introduction/getting_started/#using-the-graphing-interface) if you don't want to go deep into prometheus. And don't worry, it is extremely easy.
 	* Add a job to scrape DCMonitor's metrics, job config should looks like:
 	
 		```
