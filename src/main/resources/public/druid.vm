@@ -18,7 +18,7 @@
 
     <div class="col-md-12">
         <h4>RealTime Nodes<a class="plus">-</a></h4>
-        <table id="druid_realtime" class="m_table table table-bordered table-striped tablesorter">
+        <table id="druid_realtime" class="ui celled table">
 
         </table>
     </div>
@@ -26,7 +26,7 @@
 
     <div class="col-md-12">
         <h4>MiddleManager Nodes<a class="plus">-</a></h4>
-        <table id="druid_middle" class="m_table table table-bordered table-striped tablesorter">
+        <table id="druid_middle" class="ui celled table">
 
         </table>
     </div>
@@ -36,7 +36,7 @@
 
     <div class="col-md-12">
             <h4>Coordinator Nodes<a class="plus">-</a></h4>
-            <table id="druid_coordinator" class="m_table table table-bordered table-striped tablesorter">
+            <table id="druid_coordinator" class="ui celled table">
 
             </table>
         </div>
@@ -44,7 +44,7 @@
 
         <div class="col-md-12">
             <h4>Overlord Nodes<a class="plus">-</a></h4>
-            <table id="druid_overlord" class="m_table table table-bordered table-striped tablesorter success">
+            <table id="druid_overlord" class="ui celled table">
             </table>
         </div>
 
@@ -54,14 +54,14 @@
 
 		<div class="col-md-12">
 				<h4>Broker Nodes<a class="plus">-</a></h4>
-				<table id="druid_broker" class="m_table table table-bordered table-striped tablesorter success">
+				<table id="druid_broker" class="ui celled table">
 
 				</table>
 		</div>
 
 		<div class="col-md-12">
 				<h4>Historical Nodes<a class="plus">-</a></h4>
-				<table id="druid_history" class="m_table table table-bordered table-striped tablesorter success">
+				<table id="druid_history" class="ui celled table">
 
 				</table>
 		</div>

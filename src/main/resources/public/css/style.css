@@ -7,13 +7,16 @@
 
 body {
     padding-top: 60px;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
 }
 
-nav {
-    font-size: 25px;
+
+.menu {
+    font-size: 1.8rem;
 }
+
 thead{
-    background-color: burlywood;
+    background-color: #EEF;
 }
 
 .active{
@@ -27,8 +30,12 @@ thead{
     display: inline;
 }
 
+
+td a {
+    color : #000;
+}
 .mtr{
-    color : #EAF;
+    color: #4183c4;
 }
 .grap{
     background-color: #272b30;
@@ -43,5 +50,4 @@ thead{
 }
 
 .container{
-    margin-bottom:  100px;
 }

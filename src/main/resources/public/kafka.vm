@@ -11,44 +11,45 @@
 </head>
 <body>
 #include("/public/nav.html")
-<div class="container">
+<div class="ui container">
 
-        <div class="col-md-12">
-            <div class="col-md-6">
+        <div class="ui two column grid">
+            <div class="eight wide column">
                 <h4>Kafka Clusters<a class="plus">-</a></h4>
-                <table id="kafka_table" class="m_table table table-bordered table-striped tablesorter">
+                <table id="kafka_table" class="ui celled striped table">
 
                 </table>
+
             </div>
         </div>
 
-        <div class="col-md-12">
-            <div class="col-md-6">
+        <div class="ui two column grid">
+            <div class="eight wide column">
                 <h4>Active Topics<a class="plus">-</a></h4>
-                <table id="kafka_active" class="m_table table table-bordered table-striped">
+                <table id="kafka_active" class="ui celled table">
 
                 </table>
             </div>
-            <div class="col-md-6">
+            <div class="eight wide column">
                 <h4>Storm Kafka Clients<a class="plus">-</a></h4>
-                <table id="storm_kafka_client" class="m_table table table-bordered table-striped success">
+                <table id="storm_kafka_client" class="ui celled table">
                 </table>
             </div>
         </div>
 
 
-        <div class="col-md-12">
+        <div class="ui two column grid">
 
-            <div class="col-md-6">
+            <div class="eight wide column">
                 <h4>Topics<a class="plus">-</a></h4>
-                <table id="kafka_topic" class="m_table table table-bordered table-striped success">
+                <table id="kafka_topic" class="ui celled table">
 
                 </table>
             </div>
 
-            <div class="col-md-6">
+            <div class="eight wide column">
                 <h4>Consumers<a class="plus">-</a></h4>
-                <table id="kafka_consumer" class="m_table table table-bordered table-striped success">
+                <table id="kafka_consumer" class="ui celled table">
 
                 </table>
             </div>
