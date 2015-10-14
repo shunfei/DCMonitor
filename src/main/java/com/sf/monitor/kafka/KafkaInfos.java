@@ -32,6 +32,7 @@ import scala.collection.Seq;
 import scala.collection.immutable.Map.Map1;
 
 import java.io.Closeable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -344,24 +345,24 @@ public class KafkaInfos implements Closeable {
     if (StringUtils.isEmpty(zkRoot)) {
       return Collections.emptyList();
     }
-    List<String> ids = DCMZkUtils.getZKChildren(zkRoot);
-    return Lists.transform(
-      ids, new Function<String, StormKafkaClientInfo>() {
-        @Override
-        public StormKafkaClientInfo apply(String id) {
-          StormKafkaClientInfo it = new StormKafkaClientInfo();
-          it.clientId = id;
-          List<PartitionInfo> infos = getStormkafkaPartitionInfos(id);
-          for (PartitionInfo info : infos) {
-            if (!"unkown".equals(info.topic)) {
-              it.topic = info.topic;
-              break;
-            }
-          }
-          return it;
+    List<String> clientIds = DCMZkUtils.getZKChildren(zkRoot);
+    List<StormKafkaClientInfo> skcInfos = new ArrayList<>();
+    for (String clientId : clientIds) {
+      String topic = null;
+      List<PartitionInfo> infos = getStormkafkaPartitionInfos(clientId);
+      for (PartitionInfo info : infos) {
+        if (!"unkown".equals(info.topic)) {
+          topic = info.topic;
+          break;
         }
       }
-    );
+      if (topic != null) {
+        StormKafkaClientInfo cInfo = new StormKafkaClientInfo();
+        cInfo.clientId = clientId;
+        cInfo.topic = topic;
+      }
+    }
+    return skcInfos;
   }
 
   @Override
