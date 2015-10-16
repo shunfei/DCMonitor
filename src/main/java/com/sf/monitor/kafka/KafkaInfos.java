@@ -360,6 +360,7 @@ public class KafkaInfos implements Closeable {
         StormKafkaClientInfo cInfo = new StormKafkaClientInfo();
         cInfo.clientId = clientId;
         cInfo.topic = topic;
+        skcInfos.add(cInfo);
       }
     }
     return skcInfos;
