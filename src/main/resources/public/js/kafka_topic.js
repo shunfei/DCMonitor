@@ -143,8 +143,8 @@ function buildKafkaGraps(data,topic,consumer,needFlush,pt){
                                            afterSetExtremes: function (event)
                                            {
                                                // log the min and max of the primary, datetime x-axis
-                                               var logDiffs = event.target.series[0].dataMax - event.target.series[0].dataMin;
-                                               var offDiffs = event.target.series[1].dataMax - event.target.series[1].dataMin;
+                                               var offDiffs = event.target.series[0].dataMax - event.target.series[0].dataMin;
+                                               var logDiffs = event.target.series[1].dataMax - event.target.series[1].dataMin;
                                                var millSeconds = event.max - event.min;
 
                                                $('#pro_rate').html( Math.round(logDiffs
