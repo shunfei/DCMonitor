@@ -6,7 +6,7 @@
 
   <groupId>com.sf.monitor</groupId>
   <artifactId>dcmonitor</artifactId>
-  <version>1.0</version>
+  <version>0.1.4</version>
 
   <dependencies>
     <dependency>
