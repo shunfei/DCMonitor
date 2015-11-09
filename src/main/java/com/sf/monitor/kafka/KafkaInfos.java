@@ -350,7 +350,13 @@ public class KafkaInfos implements Closeable {
     for (String clientId : clientIds) {
       String topic = null;
       List<PartitionInfo> infos = getStormkafkaPartitionInfos(clientId);
+      if(infos == null) {
+        continue;
+      }
       for (PartitionInfo info : infos) {
+        if(info == null){
+          continue;
+        }
         if (!"unkown".equals(info.topic)) {
           topic = info.topic;
           break;
